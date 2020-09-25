@@ -28,6 +28,8 @@ Lo primero que debe hacer, en cualquier sistema operativo, ¡es actualizar el si
 
 ## Terminal
 
+Fuentes Fira (Code, Mono y Sans) desde [Google Fonts](https://fonts.google.com/?query=fira)
+
 *Columnas 120 > Filas 35 > Fira Mono 11 > Esquema de color OneDark*
 
 Checkear esto https://github.com/Mayccoll/Gogh
@@ -38,7 +40,7 @@ Checkear esto https://github.com/Mayccoll/Gogh
 **En macOS**
 
 - instalamos primero [Homebrew](http://brew.sh/)
-- luego *Git* > `brew install git`
+- luego *Git* > `brew install curl git`
 
 On a Mac, it is important to remember to add `.DS_Store` (a hidden macOS system file that's put in folders) to your project `.gitignore` files. You also set up a global `.gitignore` file, located for instance in your home directory (but you'll want to make sure any collaborators also do it):
 
@@ -162,6 +164,10 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 ```
+
+## Apps
+brew cask install dbeaver-community
+brew cask install superproductivity
 
 ## Projects folder
 
