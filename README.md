@@ -4,8 +4,16 @@ Estos documentos describen cómo configuré mis entornos de desarrollo en Ubuntu
 
 **Contribución**: Si encuentra algún error en los pasos descritos a continuación, o si alguno de los comandos no está actualizado, ¡hágamelo saber!.
 
-- [Preferencias](#preferencias)
-- [Terminal](#Terminal)
+Lo primero que debe hacer, en cualquier sistema operativo, ¡es actualizar el sistema!
+
+**macOS:** *Icono de Apple > Acerca de esta Mac* y luego *Actualización de software*.
+
+**ubuntu:** `sudo apt update && sudo apt upgrade -y`
+
+## Configuraciones
+
+- [Terminal](#terminal)
+- [Gestores de paquetes](#gestores-de-paquetes)
 - [Git](#git)
 - [Zsh](#zsh)
 - [Node.js](#node.js)
@@ -16,46 +24,42 @@ Estos documentos describen cómo configuré mis entornos de desarrollo en Ubuntu
 - [Android Studio](#android-studio)
 - [Projects folder](#projects-folder)
 
-
-## Preferencias
-
-Lo primero que debe hacer, en cualquier sistema operativo, ¡es actualizar el sistema!
-
-**macOS:** *Icono de Apple > Acerca de esta Mac* y luego *Actualización de software*.
-
-**ubuntu:** `sudo apt update && sudo apt upgrade -y`
-
-
 ## Terminal
 
-Fuentes Fira (Code, Mono y Sans) desde [Google Fonts](https://fonts.google.com/?query=fira)
+Como vamos a pasar bastante tiempo en la terminal le vamos a dar un toque de color y productividad.
+
+Descargamos e instalamos desde [Google Fonts](https://fonts.google.com/?query=fira) las fuentes Fira Code, Fira Mono y Fira Sans.
 
 *Columnas 120 > Filas 35 > Fira Mono 11 > Esquema de color OneDark*
 
-Checkear esto https://github.com/Mayccoll/Gogh
+Para *Ubuntu* checkear esto https://github.com/Mayccoll/Gogh
 
+### Gestores de paquetes
+
+- macOS: [Homebrew](http://brew.sh/)
+- Ubuntu `sudo apt install synaptic -y`
+- Windows [Chocolatey](https://chocolatey.org/)
 
 ### Git
 
-**En macOS**
+- macOS `brew install curl git`
 
-- instalamos primero [Homebrew](http://brew.sh/)
-- luego *Git* > `brew install curl git`
+  On a Mac, it is important to remember to add `.DS_Store` (a hidden macOS system file that's put in folders) to your project `.gitignore` files. You also set up a global `.gitignore` file, located for instance in your home directory (but you'll want to make sure any collaborators also do it):
 
-On a Mac, it is important to remember to add `.DS_Store` (a hidden macOS system file that's put in folders) to your project `.gitignore` files. You also set up a global `.gitignore` file, located for instance in your home directory (but you'll want to make sure any collaborators also do it):
-
-```
-cd ~
-curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/.gitignore
-git config --global core.excludesfile ~/.gitignore
-```
+  ```
+  cd ~
+  curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/dotfiles/.gitignore
+  git config --global core.excludesfile ~/.gitignore
+  ```
 
 ### Zsh
 
 Ahora vamos a agregar ZSH y OhMyZsh siguiendo [esta guía][instalar zsh]:
 
-- Para instalarlo: `sudo apt install curl git zsh -y`
-- Para poner ZSH como shell por defecto: `chsh -s $(which zsh)`, (en macOS es importante hacer el cambio por la versión instalada desde `brew install zsh` con `chsh -s /usr/local/bin/zsh`)
+- Ubuntu `sudo apt install curl git zsh -y`
+  `chsh -s $(which zsh)`
+- macOS `brew install zsh`
+  `chsh -s /usr/local/bin/zsh`
 
 Luego cerrar sesión y volver a entrar. Cuando iniciemps por primera vez la terminal nos va a preguntar por el archivo de configuración, elegimo la opción 0 y continuamos.
 
