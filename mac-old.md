@@ -1,12 +1,5 @@
 # macOS Development Setup
 
-Este documento describe cómo configuré mi entorno de desarrollador en un nuevo MacBook o iMac. Configuraremos lenguajes de programación populares (por ejemplo, [Nodo] (http://nodejs.org/) (JavaScript), [Python] (http://www.python.org/), y [Ruby] (http: //www.ruby-lang.org/)). Es posible que no los necesite todos para sus proyectos, aunque le recomiendo que los configure, ya que siempre son útiles.
-
-El documento asume que usted es nuevo en Mac, pero también puede ser útil si está reinstalando un sistema y necesita algún recordatorio. Los pasos a continuación se probaron en ** macOS High Sierra ** (10.13), pero también deberían funcionar para versiones más recientes.
-
-**Contribución**: Si encuentra algún error en los pasos descritos a continuación, o si alguno de los comandos no está actualizado, ¡hágamelo saber! Para cualquier otra sugerencia, comprenda si no incluyo todo. Esta guía fue escrita originalmente para algunos amigos, comenzando con la programación en una Mac y como una referencia personal para mí. Estoy tratando de mantenerlo simple!
-
-
 This document describes how I set up my developer environment on a new MacBook or iMac. We will set up popular programming languages (for example [Node](http://nodejs.org/) (JavaScript), [Python](http://www.python.org/), and [Ruby](http://www.ruby-lang.org/)). You may not need all of them for your projects, although I recommend having them set up as they always come in handy.
 
 The document assumes you are new to Mac, but can also be useful if you are reinstalling a system and need some reminder. The steps below were tested on **macOS High Sierra** (10.13), but should work for more recent versions as well.

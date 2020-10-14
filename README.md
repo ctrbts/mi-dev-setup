@@ -1,17 +1,10 @@
 # My Development Setup
 
-Estos documentos describen cómo configuré mis entornos de desarrollo en Ubuntu y macOS. Es solo una guia personal para cuando necesito recordar algo. Intento mantenerla actualizada constantemente y espero le resulte útil a alguien más.
+Configuración de desarrollo para mis entornos de trabajo en distintas plataformas. Esta guía fue escrita como referencia personal y la actualizo a medida de mis necesidades (comprenda si no incluyo algunos stack de desarrollo).
 
-**Contribución**: Si encuentra algún error en los pasos descritos a continuación, o si alguno de los comandos no está actualizado, ¡hágamelo saber!.
+**Contribución**: Si encuentra algún error en los pasos descritos a continuación, o si alguno de los comandos no está actualizado, ¡hágamelo saber!
 
-Lo primero que debe hacer, en cualquier sistema operativo, ¡es actualizar el sistema!
-
-**macOS:** *Icono de Apple > Acerca de esta Mac* y luego *Actualización de software*.
-
-**ubuntu:** `sudo apt update && sudo apt upgrade -y`
-
-## Configuraciones
-
+- [Actualización](#actualización)
 - [Terminal](#terminal)
 - [Gestores de paquetes](#gestores-de-paquetes)
 - [Git](#git)
@@ -23,6 +16,15 @@ Lo primero que debe hacer, en cualquier sistema operativo, ¡es actualizar el si
 - [Netbeans IDE](#netbeans-ide)
 - [Android Studio](#android-studio)
 - [Projects folder](#projects-folder)
+
+## Actualización
+
+Lo primero accien cualquier sistema operativo, ¡es actualizar el sistema!
+
+**macOS:** *Icono de Apple > Acerca de esta Mac* y luego *Actualización de software*.
+
+**ubuntu:** `sudo apt update && sudo apt upgrade -y`
+
 
 ## Terminal
 
@@ -59,9 +61,12 @@ Ahora vamos a agregar ZSH y OhMyZsh siguiendo [esta guía][instalar zsh]:
 - Ubuntu `sudo apt install curl git zsh -y`
   `chsh -s $(which zsh)`
 - macOS `brew install zsh`
-  `chsh -s /usr/local/bin/zsh`
 
-Luego cerrar sesión y volver a entrar. Cuando iniciemps por primera vez la terminal nos va a preguntar por el archivo de configuración, elegimo la opción 0 y continuamos.
+  Editar el archivo /etc/shells y añadir la ruta /usr/local/bin/zsh al final de la lista: `sudo nano /etc/shells`
+
+  Cambiamos la shell por defecto:`chsh -s /usr/local/bin/zsh`
+
+  Luego cerrar sesión y volver a entrar. Cuando iniciemps por primera vez la terminal nos va a preguntar por el archivo de configuración, elegimo la opción 0 y continuamos.
 
 [Oh My ZSH][omz] es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH.
 
