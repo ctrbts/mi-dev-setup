@@ -6,29 +6,6 @@ The document assumes you are new to Mac, but can also be useful if you are reins
 
 **Contributing**: If you find any mistakes in the steps described below, or if any of the commands are outdated, do let me know! For any other suggestions, please understand if I don't include everything. This guide was originally written for some friends getting started with programming on a Mac, and as a personal reference for myself. I'm trying to keep it simple!
 
-- [System update](#system-update)
-- [System preferences](#system-preferences)
-- [Security](#security)
-- [Terminal](#terminal)
-- [Homebrew](#homebrew)
-- [Git](#git)
-- [Visual Studio Code](#visual-studio-code)
-- [Vim](#vim)
-- [Python](#python)
-- [Node.js](#nodejs)
-- [Ruby](#ruby)
-- [Heroku](#heroku)
-- [PostgreSQL](#postgresql)
-- [Redis](#redis)
-- [Elasticsearch](#elasticsearch)
-- [Projects folder](#projects-folder)
-- [Apps](#apps)
-
-## System update
-
-First thing you need to do, on any OS actually, is update the system! For that: **Apple Icon > About This Mac** then **Software Update...**.
-
-Lo primero que debe hacer, en cualquier sistema operativo, ¡es actualizar el sistema! Para eso: **Icono de Apple> Acerca de esta Mac** y luego **Actualización de software...**.
 
 ## System preferences
 
