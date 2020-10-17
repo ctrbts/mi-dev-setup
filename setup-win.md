@@ -1,6 +1,7 @@
-# Mi Ubuntu Development Setup
+# Mi Windows Development Setup
+(en construcción)
 
-- [Primeros pasos](#primeros-pasos)
+- [Actualización](#actualización)
 - [Terminal](#terminal)
 - [Gestores de paquetes](#gestores-de-paquetes)
 - [Git](#git)
@@ -12,25 +13,17 @@
 - [Netbeans IDE](#netbeans-ide)
 - [Android Studio](#android-studio)
 
-## Primeros pasos
-
-Actualizamos el sistema, instalams un gestor de paquetes y las herramientas necesarias
-
-```
-sudo apt update && sudo apt upgrade -y
-sudo apt install synaptic --install-suggests -y
-sudo apt install curl git -y
-```
+## Actualización
 
 ## Terminal
 
-Como vamos a pasar bastante tiempo en la terminal le vamos a dar un toque de color y productividad.
+### Gestores de paquetes
 
-Descargamos e instalamos desde [Google Fonts](https://fonts.google.com/?query=fira) las fuentes Fira Code, Fira Mono y Fira Sans.
-
-Instalamos un nuevo tema desde [Gogh Themes](http://mayccoll.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 115 > Filas 35 > Fira Mono 11*
+[Chocolatey](https://chocolatey.org/)
 
 ### Git
+
+[Git](https://git-scm.com/)
 
 Para configurar un archivo *gitignore* de forma global:
 
@@ -42,11 +35,19 @@ Para configurar un archivo *gitignore* de forma global:
 
 ### Zsh
 
-Instalamos  con `sudo apt install curl git zsh -y` y luego cambiamos el shell por defecto con `chsh -s $(which zsh)`, una vez instalado *zsh* eliminar los archivos *bash* y *profile*
+Ahora vamos a agregar ZSH y OhMyZsh siguiendo [esta guía][instalar zsh]:
+
+- macOS `brew install zsh`
+
+  Editar el archivo /etc/shells y añadir la ruta /usr/local/bin/zsh al final de la lista: `sudo nano /etc/shells`
+
+  Cambiamos la shell por defecto:`chsh -s /usr/local/bin/zsh`
 
 Luego cerrar sesión y volver a entrar. Cuando iniciemps por primera vez la terminal nos va a preguntar por el archivo de configuración, elegimo la opción 0 y continuamos.
 
-[Oh My ZSH](https://ohmyz.sh/) es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH, para instalarlo: `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+[Oh My ZSH][omz] es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH.
+
+Para instalarlo: `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
 OhMyZsh tiene muchos plugins, los que mas uso son:
 
@@ -83,6 +84,8 @@ La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](h
 
 Para instalar `nvm` copiamos y pegamos el [install script command](https://github.com/creationix/nvm#install--update-script) en la terminal.
 
+Reiniciamos la terminal y comprobamos se ejecute correctamente con `command -v nvm`
+
 Ahora verificamos las versiones dispinibles de Node `nvm ls-remote --lts`
 
 Instalamos la última LTS `nvm install --lts` o alguna versión específica `nvm install 11.15.0`
@@ -97,27 +100,14 @@ El resto de los comandos estan disponibles desde el repositorio de NVM
 
 ## OpenJDK
 
-Import the official AdoptOpenJDK GPG key by running the following command: `wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -` > then > Import the AdoptOpenJDK DEB repository by running the following command:
-```
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
-```
-Refresh your package list with sudo apt-get update and then install your chosen AdoptOpenJDK package. For example, to install OpenJDK 8 with the HotSpot VM, run: `sudo apt-get install adoptopenjdk-8-hotspot`
+Instalamos el ***JDK*** desde https://adoptopenjdk.net/installation.html#installers
 
 ## Gradle
 
-Descargamos el binario desde https://gradle.org/next-steps/?version=6.6.1&format=bin > creamos el directorio con `sudo mkdir /opt/gradle` y descomprimimos con `sudo unzip -d /opt/gradle ~/Descargas/gradle-6.6.1-bin.zip`
-
-Add the following lines to your ~/.zshrc) config file:
-```
-export GRADLE_HOME=/opt/gradle/gradle-6.6.1
-export PATH=$PATH:$GRADLE_HOME/bin
-```
 ## Netbeans IDE
 
 Development Environment, Tooling Platform and Application Framework.
 To download > https://netbeans.apache.org/download/index.html
-
 
 ## Android Studio
 
@@ -130,11 +120,7 @@ Next, select the "SDK Tools" tab and check the box next to "Show Package Details
 
 Finally, click "Apply" to download and install the Android SDK and related build tools.
 
-Add the following lines to your ~/.zshrc) config file:
-```
-export ANDROID_HOME=$HOME/android-sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-```
+## Referencias
+
+[instalar zsh]: https://www.asanzdiego.com/2018/04/instalar-y-configurar-zsh-y-ohmyzsh-en-ubuntu.html
+[omz]: https://ohmyz.sh/
