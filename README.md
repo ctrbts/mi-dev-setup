@@ -39,14 +39,16 @@ Para *Ubuntu* checkear esto https://github.com/Mayccoll/Gogh
 ### Gestores de paquetes
 
 - macOS: [Homebrew](http://brew.sh/)
-- Ubuntu `sudo apt install synaptic -y`
+- Ubuntu `sudo apt install synaptic --install-suggests -y`
 - Windows [Chocolatey](https://chocolatey.org/)
 
 ### Git
 
 - macOS `brew install curl git`
+- Ubuntu `sudo apt install curl git -y`
+- Windows [Git](https://git-scm.com/)
 
-  On a Mac, it is important to remember to add `.DS_Store` (a hidden macOS system file that's put in folders) to your project `.gitignore` files. You also set up a global `.gitignore` file, located for instance in your home directory (but you'll want to make sure any collaborators also do it):
+Para configurar un archivo *gitignore* de forma global:
 
   ```
   cd ~
@@ -58,15 +60,15 @@ Para *Ubuntu* checkear esto https://github.com/Mayccoll/Gogh
 
 Ahora vamos a agregar ZSH y OhMyZsh siguiendo [esta guía][instalar zsh]:
 
-- Ubuntu `sudo apt install curl git zsh -y`
-  `chsh -s $(which zsh)`
+- Ubuntu `sudo apt install curl git zsh -y` y luego `chsh -s $(which zsh)`, una vez instalado *zsh* eliminar los archivos *bash* y *profile*
+
 - macOS `brew install zsh`
 
   Editar el archivo /etc/shells y añadir la ruta /usr/local/bin/zsh al final de la lista: `sudo nano /etc/shells`
 
   Cambiamos la shell por defecto:`chsh -s /usr/local/bin/zsh`
 
-  Luego cerrar sesión y volver a entrar. Cuando iniciemps por primera vez la terminal nos va a preguntar por el archivo de configuración, elegimo la opción 0 y continuamos.
+Luego cerrar sesión y volver a entrar. Cuando iniciemps por primera vez la terminal nos va a preguntar por el archivo de configuración, elegimo la opción 0 y continuamos.
 
 [Oh My ZSH][omz] es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH.
 
@@ -136,7 +138,7 @@ Refresh your package list with sudo apt-get update and then install your chosen 
 
 ## Gradle
 
-**En ubuntu** > descargamos el binario desde https://gradle.org/next-steps/?version=6.6.1&format=bin > creamos el directorio con `sudo mkdir /opt/gradle` y descomprimimos con `sudo unzip -d /opt/gradle gradle-6.6.1-bin.zip`
+**En ubuntu** > descargamos el binario desde https://gradle.org/next-steps/?version=6.6.1&format=bin > creamos el directorio con `sudo mkdir /opt/gradle` y descomprimimos con `sudo unzip -d /opt/gradle ~/Descargas/gradle-6.6.1-bin.zip`
 
 **En macOS** > `brew install watchman gradle`
 
