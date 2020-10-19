@@ -18,6 +18,8 @@ Actualizamos el sistema, instalams un gestor de paquetes y las herramientas nece
 
 ```
 sudo apt update && sudo apt upgrade -y
+sudo apt install gnome-software gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo apt install synaptic --install-suggests -y
 sudo apt install curl git -y
 ```
