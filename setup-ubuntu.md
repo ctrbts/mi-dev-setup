@@ -66,7 +66,7 @@ Para instalarlo: `git clone https://github.com/zsh-users/zsh-autosuggestions.git
 
 Para instalarlo: `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting`
 
-Para activarlos hay que modificar el fichero de configuración *~/.zshrc*:
+Para activar los plugins anteriores hay que modificar el fichero de configuración *~/.zshrc*:
 
 ```
 plugins=(
