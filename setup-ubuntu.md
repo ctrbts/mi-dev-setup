@@ -99,18 +99,18 @@ El resto de los comandos estan disponibles desde el repositorio de NVM
 
 ## OpenJDK
 
-Import the official AdoptOpenJDK GPG key by running the following command: `wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -` > then > Import the AdoptOpenJDK DEB repository by running the following command:
+Importamos la clave GPG oficial del repositorio de AdoptOpenJDK con el siguiente comando: `wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -` > luego > Importamos el repositrio DEB:
 ```
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
 ```
-Refresh your package list with sudo apt-get update and then install your chosen AdoptOpenJDK package. For example, to install OpenJDK 8 with the HotSpot VM, run: `sudo apt-get install adoptopenjdk-8-hotspot`
+Actualizamos la lista de paquetes com `sudo apt-get update` e instalamos el paquete AdoptOpenJDK elejido. Por ejemplo, para instalar OpenJDK 8 con HotSpot VM, ponemos lo siguiente: `sudo apt-get install adoptopenjdk-8-hotspot`
 
 ## Gradle
 
 Descargamos el binario desde https://gradle.org/next-steps/?version=6.6.1&format=bin > creamos el directorio con `sudo mkdir /opt/gradle` y descomprimimos con `sudo unzip -d /opt/gradle ~/Descargas/gradle-6.6.1-bin.zip`
 
-Add the following lines to your ~/.zshrc) config file:
+Agregamos las siguientes lineas al archivo ~/.zshrc:
 ```
 export GRADLE_HOME=/opt/gradle/gradle-6.6.1
 export PATH=$PATH:$GRADLE_HOME/bin
