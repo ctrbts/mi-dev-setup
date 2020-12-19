@@ -24,6 +24,10 @@ sudo apt install synaptic --install-suggests -y
 sudo apt install curl git -y
 ```
 
+Algunas otras configuraciones necesarias
+En **nautilus** vamos a las Preferencias > Comportamiento > Archivo de texto ejecutables y seleccionamos *Preguntar que hacer*.
+El tamaño de iconos yo lo dejo en 67% por comodidad visual y la tipografía en no mas de 10, dependiento el tamaño de pantalla.
+
 ## Terminal
 
 Como vamos a pasar bastante tiempo en la terminal le vamos a dar un toque de color y productividad.
@@ -122,6 +126,8 @@ To download > https://netbeans.apache.org/download/index.html
 
 
 ## Android Studio
+
+https://developer.android.com/studio
 
 Select the "SDK Platforms" tab from within the SDK Manager, then check the box next to "Show Package Details" in the bottom right corner. Look for and expand the Android 10 (Q) entry, then make sure the following items are checked:
 
