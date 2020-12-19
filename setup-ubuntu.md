@@ -25,7 +25,9 @@ sudo apt install curl git -y
 ```
 
 Algunas otras configuraciones necesarias
+
 En **nautilus** vamos a las Preferencias > Comportamiento > Archivo de texto ejecutables y seleccionamos *Preguntar que hacer*.
+
 El tamaño de iconos yo lo dejo en 67% por comodidad visual y la tipografía en no mas de 10, dependiento el tamaño de pantalla.
 
 ## Terminal
