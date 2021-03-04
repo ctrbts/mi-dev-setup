@@ -1,8 +1,6 @@
 # Mi Windows Development Setup
 (en construcción)
 
-- [Actualización](#actualización)
-- [Terminal](#terminal)
 - [Gestores de paquetes](#gestores-de-paquetes)
 - [Git](#git)
 - [Zsh](#zsh)
@@ -12,10 +10,6 @@
 - [Gradle](#gradle)
 - [Netbeans IDE](#netbeans-ide)
 - [Android Studio](#android-studio)
-
-## Actualización
-
-## Terminal
 
 ### Gestores de paquetes
 
