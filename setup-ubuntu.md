@@ -87,18 +87,20 @@ plugins=(
 
 ## Node.js
 
-La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](https://github.com/creationix/nvm) (Node Version Manager) que nos permite administrar multiples versiones de Node.js en la misma máquina.
+La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](https://github.com/creationix/nvm) (Node Version Manager) que nos permite administrar multiples versiones de Node.js instaladas en el sistema.
 
 Para instalar `nvm` copiamos y pegamos el [install script command](https://github.com/creationix/nvm#install--update-script) en la terminal.
 
 Ahora verificamos las versiones dispinibles de Node `nvm ls-remote --lts`
 
-Instalamos la última LTS `nvm install --lts` o alguna versión específica `nvm install 11.15.0`
+Instalamos la última LTS `nvm install --lts` o alguna versión específica con `nvm install 11.15.0`
 
 El resto de los comandos estan disponibles desde el repositorio de NVM
 
 
-## Mobile Frameworks
+### Mobile Frameworks
+
+Con node instalado agregamos los frameworks de desarrollo hibrido mas utilizados
 
 `npm i -g cordova framework7-cli @ionic/cli`
 
@@ -112,6 +114,7 @@ sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
 ```
 Actualizamos la lista de paquetes com `sudo apt-get update` e instalamos el paquete AdoptOpenJDK elejido. Por ejemplo, para instalar OpenJDK 8 con HotSpot VM, ponemos lo siguiente: `sudo apt-get install adoptopenjdk-8-hotspot`
 
+
 ## Gradle
 
 Descargamos el binario desde https://gradle.org/next-steps/?version=6.6.1&format=bin > creamos el directorio con `sudo mkdir /opt/gradle` y descomprimimos con `sudo unzip -d /opt/gradle ~/Descargas/gradle-6.6.1-bin.zip`
@@ -123,24 +126,25 @@ export PATH=$PATH:$GRADLE_HOME/bin
 ```
 ## Netbeans IDE
 
-Development Environment, Tooling Platform and Application Framework.
-To download > https://netbeans.apache.org/download/index.html
+IDE multiplataforma para desarrollo en Java, PHP y otros lenguajes de programación.
+Para descargarlo > https://netbeans.apache.org/download/index.html
 
 
 ## Android Studio
 
-https://developer.android.com/studio
+Android Studio proporciona las herramientas más rápidas para crear aplicaciones en todo tipo de dispositivo Android.
+Descarga desde > https://developer.android.com/studio
 
-Select the "SDK Platforms" tab from within the SDK Manager, then check the box next to "Show Package Details" in the bottom right corner. Look for and expand the Android 10 (Q) entry, then make sure the following items are checked:
+Configurando el SDK: Seleccionamos la pestaña "Plataformas SDK" desde el Administrador de SDK, luego marcamos la casilla junto a "Mostrar detalles del paquete" en la esquina inferior derecha. Buscamos y expandimos la entrada de Android 10 (Q), luego nos aseguramos de que los siguientes elementos estén marcados:
 
 - Android SDK Platform 29
 - Intel x86 Atom_64 System Image or Google APIs Intel x86 Atom System Image
 
-Next, select the "SDK Tools" tab and check the box next to "Show Package Details" here as well. Look for and expand the **Android SDK Build-Tools** entry, then make sure that **29.0.2** is selected.
+A continuación, seleccionamos la pestaña "Herramientas SDK" y marcamos la casilla junto a "Mostrar detalles del paquete". Buscamos y expandimos la entrada **Android SDK Build-Tools**, luego nos aseguramos que **29.0.2** esté seleccionado.
 
-Finally, click "Apply" to download and install the Android SDK and related build tools.
+Finalmente, clic en "Aplicar" para descargar e instalar el SDK de Android y las herramientas de compilación relacionadas.
 
-Add the following lines to your ~/.zshrc) config file:
+Agregue las siguientes líneas a su archivo de configuración ~ / .zshrc):
 ```
 export ANDROID_HOME=$HOME/android-sdk
 export PATH=$PATH:$ANDROID_HOME/emulator

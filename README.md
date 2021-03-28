@@ -5,5 +5,5 @@ Configuración de desarrollo para mis entornos de trabajo en distintas plataform
 Si encuentra algún error en los pasos descritos a continuación, o si alguno de los comandos no está actualizado, ¡hágamelo saber!
 
 - [Ubuntu](https://github.com/ctrbts/my-dev-setup/blob/master/setup-ubuntu.md)
-- [macOS](https://github.com/ctrbts/my-dev-setup/blob/master/setup-mac.md)
-- [Windows](https://github.com/ctrbts/my-dev-setup/blob/master/setup-win.md)
+- [macOS](https://github.com/ctrbts/my-dev-setup/blob/master/setup-mac.md) en evolución
+- [Windows](https://github.com/ctrbts/my-dev-setup/blob/master/setup-win.md) en evolución

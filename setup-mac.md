@@ -99,7 +99,7 @@ Instalamos la última LTS `nvm install --lts` o alguna versión específica `nvm
 
 El resto de los comandos estan disponibles desde el repositorio de NVM
 
-## Mobile Frameworks
+### Mobile Frameworks
 
 `npm i -g cordova framework7-cli @ionic/cli`
 
@@ -150,7 +150,6 @@ brew cask install superproductivity
 
 [instalar zsh]: https://www.asanzdiego.com/2018/04/instalar-y-configurar-zsh-y-ohmyzsh-en-ubuntu.html
 [omz]:
-
 
 
 ---
