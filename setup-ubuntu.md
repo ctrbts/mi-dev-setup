@@ -232,3 +232,165 @@ Una vez realizados todos los cambios reiniciamos el servidor de FTP:
 /etc/init.d/vsftpd restart
 
 Ahora ya tenemos un servidor de FTP funcional y con los privilegios adecuados para que nuestros usuario puedan almacenar archivos debidamente separados.
+
+
+
+----------------------------------------------
+
+
+Instalación del servicio FTP con vsftpd
+
+Hemos de decir primero, que el servidor vsftpd, se distribuye bajo licencia libre GNU GPL y puede descargarse de la página oficial de vsftpd.
+
+Vsftpd (Very Secure FTP Daemon), es un servicio FTP que permite implementar servicios de archivos mediante protocolo FTP, caracterizándose principalmente porque se trata de un sistema muy seguro, a la vez que muy sencillo de configurar.
+
+Puedes instalar el paquete correspondiente, al servidor vsftpd, en un ordenador con Ubuntu, desde el terminal, con el siguiente comando:
+
+apt-get install vsftpd
+
+Después de haber instalado el servicio FTP, éste se queda iniciado y se iniciará automáticamente cada vez que arranque el sistema.
+
+El fichero de configuración es muy extenso, por que está autodocumentado con muchos comentarios, para ver el documento, desde el terminal, ponemos el siguiente comando:
+
+cat /etc/vsftpd.conf
+
+En este caso, para quitarse paja de encima, podemos ver las opciones activas usando grep, pidiendo las lineas que no comiencen por #:
+
+cat /etc/vsftpd.conf | grep -v “^#”
+
+El resultado, es este:
+
+listen=YES
+anonymous_enable=NO
+local_enable=YES
+dirmessage_enable=YES
+use_localtime=YES
+xferlog_enable=YES
+connect_from_port_20=YES
+secure_chroot_dir=/var/run/vsftpd/empty
+pam_service_name=vsftpd
+rsa_cert_file=/etc/ssl/private/vsftpd.pem
+
+En la configuración inicial, no se permite el acceso anónimo y si el acceso mediante las cuentas de usuarios locales del sistema. Los demás parámetros, los describiremos más adelante.
+Como añadir usuarios
+
+Para poder probar las conexiones, a parte de nuestro usuario personal, vamos a crear otro:
+
+useradd -d /home/prueba -m -s /bin/bash prueba
+
+Y le proporcionamos una clave
+
+passwd prueba
+
+El cliente gráfico Filezilla
+
+Por otro lado, además del servicio FTP, es necesario para los otros usuarios, instalar un cliente, que permita acceder al servicio. El software Filezilla Client, es un cliente gráfico FTP. Es un software multiplataforma desarrollado por Filezilla-Project, de código abierto y licencia GPL.
+
+Sitio oficial de descarga de Filezilla Client
+
+Para instalar Filezilla Client en GNU/Linux Ubuntu es más recomendable hacerlo a través de la instalación de un paquete debian, ya que la distribución que se puede descargar del sitio oficial es el código fuente del software y necesita compilarse una vez descargado.
+
+El paquete de instalación Filezilla Client para Ubuntu, se llama filezilla. Puedes instalarlo mediante comando o desde el centro de software de ubuntu. Para instalarlo desde el terminal solo tienes que ejecutar el comando,
+
+sudo apt install filezilla
+
+Inicio y parada del servicio FTP
+
+El servicio se gestiona mediante el script /etc/init.d/vsftpd. Se debe de ejecutar como superusuario o utilizando el comando sudo para ejecutarlos. En la administración del servicio podemos iniciarlo, detenerlo, reiniciarlo o comprobar su estado.
+
+Administración del servicio vsftpd con script:
+Acción 	Comando
+/etc/init.d/vsftpd
+status 	Comprobar
+el estado del servicio
+/etc/init.d/vsftpd
+stop 	Detener
+el servicio
+/etc/init.d/vsftpd
+start 	Iniciar
+el servicio
+/etc/init.d/vsftpd
+restart 	Reiniciar
+el servicio
+
+También podemos usar el comando service, para administrar el servicio sabiendo que el nombre con el que se reconoce al servicio de Ubuntu es vsftpd.
+
+Administración del servicio vsftpd con el comando service:
+Acción 	Comando
+Service vsftp status 	Comprobar el estado del servicio
+Service vstfpd stop 	Detener
+el servicio
+Service vsftpd start 	Iniciar
+el servicio
+Service vsftpd restart 	Reiniciar
+el servicio
+
+Cuando está iniciado vsftpd, el servicio debe de estar escuchando en el puerto 21. Puedes comprobarlo con el comando netstat -ltn que hay un servicio en ese puerto 21.
+Otros archivos
+
+El archivo /etc/ftpusers contiene una lista de los usuarios del sistema a los que se deniega el acceso mediante ftp. Entre esos usuarios, se deniega el acceso al usuario root como medida de seguridad.
+
+El archivo /var/log/vsftpd.log registra la información sobre las conexiones ftp establecidas. Es importante consultar este archivo para resolver cualquier incidencia producida durante las conexiones o para hacer una evaluación del comportamiento del servicio.
+Enjaular Usuarios
+
+Si los usuarios locales del servidor se conectan remotamente mediante un cliente ftp al servicio ftp podrán acceder a sus carpetas personales y además al resto del sistema de archivos. Esto es peligroso y un fallo de seguridad.
+
+Vamos a explicar, como limitarlos a su carpeta /home/usuario. Este proceso se le llama chroot (enjaular).
+
+Antes de nada vamos a sacar una copia de seguridad del fichero de configuración:
+
+mv /etc/vsftpd.conf /etc/vsftpd.conf.backup
+
+Vamos a dejar limpio el archivo:
+
+cat /etc/vsftpd.conf.backup | grep -v “^#” > /etc/vsftpd.conf
+
+Añadimos al siguiente configuración al final del fichero /etc/vsftpd.conf:
+
+chroot_local_user=YES
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd.chroot_list
+
+A continuación creamos el fichero /etc/vsftpd.chroot_list
+
+nano /etc/vsftpd.chroot_list
+
+Y ponemos nuestro usuario para evitar ser enjaulados.
+
+Por último, reiniciamos el servicio:
+
+restart vsftpd
+
+Al final de este punto, el fichero de configuración debería de estar así:
+
+listen=YES
+anonymous_enable=YES
+local_enable=YES
+dirmessage_enable=YES
+use_localtime=YES
+xferlog_enable=YES
+connect_from_port_20=YES
+secure_chroot_dir=/var/run/vsftpd/empty
+pam_service_name=vsftpd
+rsa_cert_file=/etc/ssl/private/vsftpd.pem
+chroot_local_user=YES
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd.chroot_list
+
+Usuarios anónimos
+
+Si se realiza una conexión anónima, se tiene acceso a la carpeta /srv/ftp que será compartida para todos los accesos anónimos.
+
+Se tiene que crear un fichero en esta carpeta:
+
+touch /srv/ftp/hola.txt
+
+Las conexiones anónimas se podrán hacer con los nombres del usuario anonymous y ftp (sin ninguna contraseña).
+
+Editar el fichero de configuración para permitir el acceso a usuarios anónimos:
+
+anonymous_enable=YES
+
+Reiniciar el servicio:
+
+restart vsftpd
