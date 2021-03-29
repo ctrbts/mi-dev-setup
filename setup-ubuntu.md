@@ -155,9 +155,12 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 ## Configurar un servidor FTP
 
+Instalamos el servicio y configuramos algunos parámetros
+```
 sudo apt install vsftpd
-
-nano /etc/vsftpd.conf
+sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.original
+sudo nano /etc/vsftpd.conf
+```
 
 Los parámetros que modificaremos:
 
