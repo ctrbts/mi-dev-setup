@@ -144,7 +144,7 @@ A continuación, seleccionamos la pestaña "Herramientas SDK" y marcamos la casi
 
 Finalmente, clic en "Aplicar" para descargar e instalar el SDK de Android y las herramientas de compilación relacionadas.
 
-Agregue las siguientes líneas a su archivo de configuración ~ / .zshrc):
+Agregue las siguientes líneas a su archivo de configuración ~/.zshrc:
 ```
 export ANDROID_HOME=$HOME/android-sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -152,3 +152,80 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 ```
+
+## Configurar un servidor FTP
+
+sudo apt install vsftpd
+
+nano /etc/vsftpd.conf
+
+Los parámetros que modificaremos:
+
+    listen = YES : Para que se inicie con el sistema.
+    anonymous_enable = NO : No permitimos que usuarios anónimos puedan conectarse a nuestro servidor. Es por seguridad.
+    local_enable = YES : Para poder conectarse con los usuarios locales del servidor donde está instalado.
+    write_enable = YES : Si quieres que los usuarios puedan escribir y no sólo descargar cosas.
+    local_umask = 022 : Esta máscara hace que cada vez que subas un archivo, sus permisos sean 755. Es lo más típico en servidores FTP.
+    chroot_local_user = YES
+    chroot_list_enable = YES : Sirven para que los usuarios locales puedan navegar por todo el árbol de directorios del servidor. Evidentemente esto sólo queremos permitírselo a ciertos usuarios, para ello tenemos el siguiente parámetro.
+    chroot_list_file = /etc/vsftpd.chroot_list : Indicamos el fichero donde están listados los usuarios que pueden navegar hacía arriba por los directorios del servidor, lo normal es que sea el administrador del servidor.
+
+Crear grupo de usuario para FTP
+
+    sudo groupadd ftp
+
+Creamos una shell fantasma para que no puedan entrar a la consola del servidor:
+
+    sudo mkdir /bin/ftp
+
+Editamos el listado de shells del sistema:
+
+nano /etc/shells
+
+Agregamos nuestra shell fantasma:
+
+/bin/ftp
+
+Usuario que pertenecerá al grupo FTP
+
+Debemos crear la carpeta del usuario en el servidor, será donde tendrá acceso vía FTP y asignamos los permisos correctos.
+
+mkdir /home/ftp/usuarioftp
+chmod -R 777 /home/ftp/usuarioftp
+
+Creamos el usuario que pertenece al grupo FTP
+
+sudo useradd -g ftp -d /home/ftp/usuarioftp -c "Nombre del Usuario" usuarioftp
+
+Entendamos los parámetros que usamos en la línea anterior:
+
+    -g ftp = el usuario pertenece al grupo ftp.
+    -d /home/ftp/usuarioftp = El directorio principal del usuario es /home/ftp/usuarioftp.
+    -c “Nombre del Usuario” = el nombre completo del usuario.
+    usuarioftp = la última palabra será el nombre de usuario
+
+Creamos la contraseña para el usuario:
+
+sudo passwd usuarioftp
+
+Enjaular al usuario
+
+Esto significa que el usuario no podrá escalar en la jerarquía del directorio y solamente se mantendrá en si directorio.
+
+Buscamos nuestro usuario recién creado en:
+
+nano /etc/passwd
+
+Copiamos la línea que podrá verse algo así:
+
+usuarioftp:x:1004:118:Nombre del Usuario:/home/ftp/usuarioftp:/bin/ftp
+
+Luego la pegamos en la última línea de etse archivo:
+
+nano /etc//vsftpd.chroot_list
+
+Una vez realizados todos los cambios reiniciamos el servidor de FTP:
+
+/etc/init.d/vsftpd restart
+
+Ahora ya tenemos un servidor de FTP funcional y con los privilegios adecuados para que nuestros usuario puedan almacenar archivos debidamente separados.
