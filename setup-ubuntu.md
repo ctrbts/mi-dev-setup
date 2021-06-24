@@ -104,11 +104,15 @@ Con node instalado agregamos los frameworks de desarrollo hibrido mas utilizados
 
 ## OpenJDK
 
-Importamos la clave GPG oficial del repositorio de AdoptOpenJDK con el siguiente comando: `wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -` > luego > Importamos el repositrio DEB:
-```
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
-```
+Importamos la clave GPG oficial del repositorio de AdoptOpenJDK con el siguiente comando: 
+
+    wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+
+Luego, importamos el repositrio DEB:
+
+    sudo apt-get install -y software-properties-common
+    sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+
 Actualizamos la lista de paquetes com `sudo apt-get update` e instalamos el paquete AdoptOpenJDK elejido. Por ejemplo, para instalar OpenJDK 8 con HotSpot VM, ponemos lo siguiente: `sudo apt-get install adoptopenjdk-8-hotspot`
 
 
