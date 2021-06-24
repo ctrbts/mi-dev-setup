@@ -5,7 +5,7 @@
 - [Gestores de paquetes](#gestores-de-paquetes)
 - [Git](#git)
 - [Zsh](#zsh)
-- [Node.js](#node)
+- [Node.js](#node-js)
 - [Mobile Frameworks](#mobile-frameworks)
 - [OpenJDK](#openjdk)
 - [Gradle](#gradle)
@@ -110,7 +110,7 @@ Importamos la clave GPG oficial del repositorio de AdoptOpenJDK con el siguiente
 
 Luego, importamos el repositrio DEB:
 
-    sudo apt-get install -y software-properties-common
+    sudo apt-get install -y software-properties-common &&
     sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
 
 Actualizamos la lista de paquetes com `sudo apt-get update` e instalamos el paquete AdoptOpenJDK elejido. Por ejemplo, para instalar OpenJDK 8 con HotSpot VM, ponemos lo siguiente: `sudo apt-get install adoptopenjdk-8-hotspot`
