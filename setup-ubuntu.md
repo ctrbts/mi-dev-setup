@@ -5,7 +5,7 @@
 - [Gestores de paquetes](#gestores-de-paquetes)
 - [Git](#git)
 - [Zsh](#zsh)
-- [Node.js](#node-js)
+- [Node.js](#node)
 - [Mobile Frameworks](#mobile-frameworks)
 - [OpenJDK](#openjdk)
 - [Gradle](#gradle)
@@ -82,7 +82,7 @@ plugins=(
 )
 ```
 
-## Node.js
+## Node
 
 La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](https://github.com/creationix/nvm) (Node Version Manager) que nos permite administrar multiples versiones de Node.js instaladas en el sistema.
 
