@@ -99,7 +99,7 @@ El resto de los comandos estan disponibles desde el repositorio de NVM
 
 Con node instalado agregamos los frameworks de desarrollo hibrido mas utilizados
 
-`npm i -g cordova framework7-cli @ionic/cli`
+    npm i -g cordova framework7-cli @ionic/cli
 
 
 ## OpenJDK
