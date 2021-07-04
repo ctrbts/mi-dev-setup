@@ -90,7 +90,7 @@ Para instalar `nvm` copiamos y pegamos el [install script command](https://githu
 
 Ahora verificamos las versiones dispinibles de Node `nvm ls-remote --lts`
 
-Instalamos la última LTS `nvm install --lts` o alguna versión específica con `nvm install 11.15.0`
+Instalamos la última LTS `nvm install --lts` o alguna versión específica con `nvm install 12.15.0`
 
 El resto de los comandos estan disponibles desde el repositorio de NVM
 
@@ -118,11 +118,11 @@ Actualizamos la lista de paquetes com `sudo apt-get update` e instalamos el paqu
 
 ## Gradle
 
-Descargamos el binario desde https://gradle.org/next-steps/?version=6.6.1&format=bin > creamos el directorio con `sudo mkdir /opt/gradle` y descomprimimos con `sudo unzip -d /opt/gradle ~/Descargas/gradle-6.6.1-bin.zip`
+Descargamos el binario desde https://gradle.org/next-steps/?version=7.1.1&format=bin > creamos el directorio con `sudo mkdir /opt/gradle` y descomprimimos con `sudo unzip -d /opt/gradle ~/Descargas/gradle-7.1.1-bin.zip`
 
 Agregamos las siguientes lineas al archivo ~/.zshrc:
 ```
-export GRADLE_HOME=/opt/gradle/gradle-6.6.1
+export GRADLE_HOME=/opt/gradle/gradle-7.1.1
 export PATH=$PATH:$GRADLE_HOME/bin
 ```
 ## Netbeans IDE
