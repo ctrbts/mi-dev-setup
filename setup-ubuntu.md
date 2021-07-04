@@ -35,7 +35,7 @@ Como vamos a pasar bastante tiempo en la terminal le vamos a dar un toque de col
 
 Descargamos e instalamos desde [Google Fonts](https://fonts.google.com/?query=fira) las fuentes Fira Code, Fira Mono y Fira Sans.
 
-Instalamos un nuevo tema desde [Gogh Themes](http://mayccoll.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 115 > Filas 35 > Fira Mono 11*
+Instalamos un nuevo tema desde [Gogh Themes](http://mayccoll.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 120 > Filas 35 > Fira Mono 9*
 
 ### Git
 
@@ -47,7 +47,7 @@ Ya tenemos git instalado, ahora vamos a configurar un archivo *gitignore* de for
 
 ### Zsh
 
-Bash esta bien, pero ZSH es mejor. Para instalarlo desde la terminal escribimos `sudo apt install curl git zsh -y` y luego cambiamos el shell por defecto con `chsh -s $(which zsh)`, una vez instalado *zsh* podemos eliminar los archivos *.bash* y *.profile*
+Bash esta bien, pero ZSH es mejor. Para instalarlo desde la terminal escribimos `sudo apt install zsh -y` y luego cambiamos el shell por defecto con `chsh -s $(which zsh)`, una vez instalado *zsh* podemos eliminar los archivos *.bash* y *.profile*
 
 Luego cerrar sesión y volver a entrar. Cuando iniciemos por primera vez la terminal nos va a preguntar por el archivo de configuración de zsh, elegimo la opción 0 y continuamos.
 
