@@ -41,9 +41,9 @@ Descargamos e instalamos desde [Google Fonts](https://fonts.google.com/?query=fi
 
 Instalamos un nuevo tema desde [Gogh Themes](http://mayccoll.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 120 > Filas 35 > Fira Mono 9*
 
-### Zsh
+## Zsh
 
-Bash esta bien, pero ZSH es mejor. So ya lo instalamos en los [Primeros pasos](#primeros-pasos) necesitamos cambiar el shell por defecto con 
+Bash esta bien, pero ZSH es mejor. Si ya lo instalamos en los [Primeros pasos](#primeros-pasos) necesitamos cambiar el shell por defecto con 
 
     chsh -s $(which zsh)
 
@@ -51,7 +51,9 @@ una vez instalado *zsh* podemos eliminar los archivos *.bash* y *.profile*
 
 Luego de cerrar sesión y volver a entrar, cuando iniciemos por primera vez la terminal nos va a preguntar por el archivo de configuración de zsh, elegimo la opción 0 y continuamos.
 
-[Oh My ZSH](https://ohmyz.sh/) es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH, para instalarlo: `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+[Oh My ZSH](https://ohmyz.sh/) es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH, para instalarlo: 
+
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 OhMyZsh tiene muchos plugins, los que mas uso son:
 
@@ -63,26 +65,28 @@ OhMyZsh tiene muchos plugins, los que mas uso son:
 
 **zsh-autosuggestions** este plugin busca en el historial tus últimos comandos y te va autocompletando los mismos.
 
-Para instalarlo: `git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions`
+Para instalarlo: 
+
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 **zsh-syntax-highlighting** este plugin colorea los comandos en verde o en rojo dependiendo de si son correctos o no.
 
-Para instalarlo: `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting`
+Para instalarlo: 
+
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 Para activar los plugins anteriores hay que modificar el fichero de configuración *~/.zshrc*:
 
-```
-plugins=(
-  git
-  common-aliases
-  extract
-  colored-man-pages
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
-```
+    plugins=(
+      git
+      common-aliases
+      extract
+      colored-man-pages
+      zsh-autosuggestions
+      zsh-syntax-highlighting
+    )
 
-### Git
+## Git
 
 Ya tenemos git instalado, ahora vamos a configurar un archivo *gitignore* de forma global que nos va ha permitir exluir archivos de sistema comunes:
 
@@ -96,9 +100,15 @@ La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](h
 
 Para instalar `nvm` copiamos y pegamos el [install script command](https://github.com/creationix/nvm#install--update-script) en la terminal.
 
-Ahora verificamos las versiones dispinibles de Node `nvm ls-remote --lts`
+Ahora verificamos las versiones dispinibles de Node 
+    
+    nvm ls-remote --lts
 
-Instalamos la última LTS `nvm install --lts` o alguna versión específica con `nvm install 12.15.0`
+Instalamos la última LTS 
+
+    nvm install --lts
+
+o alguna versión específica con `nvm install 12.15.0`
 
 El resto de los comandos estan disponibles desde el repositorio de NVM
 
@@ -129,10 +139,10 @@ Actualizamos la lista de paquetes com `sudo apt-get update` e instalamos el paqu
 Descargamos el binario desde https://gradle.org/next-steps/?version=7.1.1&format=bin > creamos el directorio con `sudo mkdir /opt/gradle` y descomprimimos con `sudo unzip -d /opt/gradle ~/Descargas/gradle-7.1.1-bin.zip`
 
 Agregamos las siguientes lineas al archivo ~/.zshrc:
-```
-export GRADLE_HOME=/opt/gradle/gradle-7.1.1
-export PATH=$PATH:$GRADLE_HOME/bin
-```
+
+    export GRADLE_HOME=/opt/gradle/gradle-7.1.1
+    export PATH=$PATH:$GRADLE_HOME/bin
+
 ## Netbeans IDE
 
 IDE multiplataforma para desarrollo en Java, PHP y otros lenguajes de programación.
