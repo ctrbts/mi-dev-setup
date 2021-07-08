@@ -18,11 +18,15 @@
 Actualizamos el sistema, instalamos un gestor de paquetes y las herramientas necesarias
 
     sudo apt update && sudo apt upgrade -y &&
+    sudo apt install curl git zsh -y &&
+    snap install ubuntu-make --classic
+
+<!--     
     sudo apt install gnome-software gnome-software-plugin-flatpak -y &&
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &&
-    sudo apt install synaptic --install-suggests -y &&
-    sudo apt install curl git -y
-
+    sudo apt install synaptic --install-suggests -y
+ -->
+ 
 Algunas otras configuraciones necesarias
 
 En **nautilus** vamos a las Preferencias > Comportamiento > Archivo de texto ejecutables y seleccionamos *Preguntar que hacer*.
