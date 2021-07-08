@@ -61,18 +61,15 @@ OhMyZsh tiene muchos plugins, los que mas uso son:
 
 **colored-man** colorea las páginas del manual.
 
-**extract** permite descomprimir cualquier tipo de archivo comprimido de una forma común: `x nombre-fichero-comprimido`
+**extract** permite descomprimir cualquier tipo de archivo comprimido de una forma simple con: `x nombre-fichero-comprimido`
 
 **zsh-autosuggestions** este plugin busca en el historial tus últimos comandos y te va autocompletando los mismos.
 
-Para instalarlo: 
-
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-
 **zsh-syntax-highlighting** este plugin colorea los comandos en verde o en rojo dependiendo de si son correctos o no.
 
-Para instalarlo: 
+Para instalar estos ultimos debemos descargarlo al directorio de plugins con: 
 
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions && 
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 Para activar los plugins anteriores hay que modificar el fichero de configuración *~/.zshrc*:
