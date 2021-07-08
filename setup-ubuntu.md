@@ -3,8 +3,8 @@
 - [Primeros pasos](#primeros-pasos)
 - [Terminal](#terminal)
 - [Gestores de paquetes](#gestores-de-paquetes)
-- [Git](#git)
 - [Zsh](#zsh)
+- [Git](#git)
 - [Node.js](#node)
 - [Mobile Frameworks](#mobile-frameworks)
 - [OpenJDK](#openjdk)
@@ -41,19 +41,15 @@ Descargamos e instalamos desde [Google Fonts](https://fonts.google.com/?query=fi
 
 Instalamos un nuevo tema desde [Gogh Themes](http://mayccoll.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 120 > Filas 35 > Fira Mono 9*
 
-### Git
-
-Ya tenemos git instalado, ahora vamos a configurar un archivo *gitignore* de forma global:
-
-    cd ~
-    curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/dotfiles/.gitignore
-    git config --global core.excludesfile ~/.gitignore
-
 ### Zsh
 
-Bash esta bien, pero ZSH es mejor. Para instalarlo desde la terminal escribimos `sudo apt install zsh -y` y luego cambiamos el shell por defecto con `chsh -s $(which zsh)`, una vez instalado *zsh* podemos eliminar los archivos *.bash* y *.profile*
+Bash esta bien, pero ZSH es mejor. So ya lo instalamos en los [Primeros pasos](#primeros-pasos) necesitamos cambiar el shell por defecto con 
 
-Luego cerrar sesión y volver a entrar. Cuando iniciemos por primera vez la terminal nos va a preguntar por el archivo de configuración de zsh, elegimo la opción 0 y continuamos.
+    chsh -s $(which zsh)
+
+una vez instalado *zsh* podemos eliminar los archivos *.bash* y *.profile*
+
+Luego de cerrar sesión y volver a entrar, cuando iniciemos por primera vez la terminal nos va a preguntar por el archivo de configuración de zsh, elegimo la opción 0 y continuamos.
 
 [Oh My ZSH](https://ohmyz.sh/) es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH, para instalarlo: `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
@@ -85,6 +81,14 @@ plugins=(
   zsh-syntax-highlighting
 )
 ```
+
+### Git
+
+Ya tenemos git instalado, ahora vamos a configurar un archivo *gitignore* de forma global que nos va ha permitir exluir archivos de sistema comunes:
+
+    cd ~
+    curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/dotfiles/.gitignore
+    git config --global core.excludesfile ~/.gitignore
 
 ## Node
 
