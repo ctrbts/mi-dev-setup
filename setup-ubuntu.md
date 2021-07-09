@@ -13,25 +13,24 @@
 - [Android Studio](#android-studio)
 - [Configurar un servidor FTP](#configurar-un-servidor-ftp)
 
+
 ## Primeros pasos
 
-Actualizamos el sistema, instalamos un gestor de paquetes y las herramientas necesarias
+Actualizamos el sistema e instalamos las herramientas necesarias (algunas las configuraremos mas adelante)
 
     sudo apt update && sudo apt upgrade -y &&
-    sudo apt install curl git zsh -y &&
-    snap install ubuntu-make --classic
-
-<!--     
     sudo apt install gnome-software gnome-software-plugin-flatpak -y &&
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &&
-    sudo apt install synaptic --install-suggests -y
- -->
+    sudo apt install synaptic --install-suggests -y &&
+    sudo apt install curl git zsh -y &&
+    snap install ubuntu-make --classic
  
 Algunas otras configuraciones necesarias
 
-En **nautilus** vamos a las Preferencias > Comportamiento > Archivo de texto ejecutables y seleccionamos *Preguntar que hacer*.
+En **nautilus** vamos a las Preferencias > Comportamiento > Archivo de texto ejecutables y seleccionamos *Preguntar que hacer*. Esto evita que el sistema por defecto abra algunos archivos ejecutables como si fueran archivos de texto.
 
 El tamaño de iconos yo lo dejo en 67% por comodidad visual y la tipografía en no mas de 10, dependiento el tamaño de pantalla.
+
 
 ## Terminal
 
@@ -41,15 +40,16 @@ Descargamos e instalamos desde [Google Fonts](https://fonts.google.com/?query=fi
 
 Instalamos un nuevo tema desde [Gogh Themes](http://mayccoll.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 120 > Filas 35 > Fira Mono 9*
 
+
 ## Zsh
 
-Bash esta bien, pero ZSH es mejor. Si ya lo instalamos en los [Primeros pasos](#primeros-pasos) necesitamos cambiar el shell por defecto con 
+Bash esta bien, pero ZSH esta mejor. Ya lo instalamos en los [Primeros pasos](#primeros-pasos) ahora necesitamos hacerlo nuestro shell por defecto, ejecutamos desde consola: 
 
     chsh -s $(which zsh)
 
-una vez instalado *zsh* podemos eliminar los archivos *.bash* y *.profile*
+una vez configurado *zsh* podemos eliminar los archivos *.bash* y *.profile*
 
-Luego de cerrar sesión y volver a entrar, cuando iniciemos por primera vez la terminal nos va a preguntar por el archivo de configuración de zsh, elegimo la opción 0 y continuamos.
+Necesitamps cerrar sesión y volver a entrar para que los cambios se apliquen, cuando iniciemos por primera vez la terminal nos va a preguntar por el archivo de configuración de zsh, elegimo la opción 0 y continuamos.
 
 [Oh My ZSH](https://ohmyz.sh/) es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH, para instalarlo: 
 
@@ -83,6 +83,7 @@ Para activar los plugins anteriores hay que modificar el fichero de configuraci�
       zsh-syntax-highlighting
     )
 
+
 ## Git
 
 Ya tenemos git instalado, ahora vamos a configurar un archivo *gitignore* de forma global que nos va ha permitir exluir archivos de sistema comunes:
@@ -90,6 +91,7 @@ Ya tenemos git instalado, ahora vamos a configurar un archivo *gitignore* de for
     cd ~
     curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/dotfiles/.gitignore
     git config --global core.excludesfile ~/.gitignore
+
 
 ## Node
 
