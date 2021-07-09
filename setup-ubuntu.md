@@ -120,26 +120,30 @@ Con node instalado agregamos los frameworks de desarrollo hibrido mas utilizados
 
 ## OpenJDK
 
-Importamos la clave GPG oficial del repositorio de AdoptOpenJDK con el siguiente comando: 
+Importamos la clave GPG oficial del repositorio de AdoptOpenJDK y luego agregamos el repositorio 
 
-    wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
-
-Luego, importamos el repositrio DEB:
-
+    wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add - &&
     sudo apt-get install -y software-properties-common &&
     sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
 
-Actualizamos la lista de paquetes com `sudo apt-get update` e instalamos el paquete AdoptOpenJDK elejido. Por ejemplo, para instalar OpenJDK 8 con HotSpot VM, ponemos lo siguiente: `sudo apt-get install adoptopenjdk-11-hotspot -y`
+Actualizamos la lista de paquetes e instalamos el paquete AdoptOpenJDK elejido. Por ejemplo, para instalar OpenJDK 11 con HotSpot VM, ponemos lo siguiente:
+
+    sudo apt-get update &&
+    sudo apt-get install adoptopenjdk-11-hotspot -y
 
 
 ## Gradle
 
-Descargamos el binario desde https://gradle.org/next-steps/?version=7.1.1&format=bin > creamos el directorio con `sudo mkdir /opt/gradle` y descomprimimos con `sudo unzip -d /opt/gradle ~/Descargas/gradle-7.1.1-bin.zip`
+Descargamos el binario desde https://gradle.org/next-steps/?version=7.1.1&format=bin > creamos el directorio con y descomprimimos el archivo
 
-Agregamos las siguientes lineas al archivo ~/.zshrc:
+    sudo mkdir /opt/gradle &&
+    sudo unzip -d /opt/gradle ~/Descargas/gradle-7.1.1-bin.zip
+
+Necesitamos agregar las siguientes lineas al archivo ~/.zshrc:
 
     export GRADLE_HOME=/opt/gradle/gradle-7.1.1
     export PATH=$PATH:$GRADLE_HOME/bin
+
 
 ## Netbeans IDE
 
