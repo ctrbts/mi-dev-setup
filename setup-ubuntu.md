@@ -16,14 +16,13 @@
 
 ## Primeros pasos
 
-Actualizamos el sistema e instalamos las herramientas necesarias (algunas las configuraremos mas adelante)
+Actualizamos el sistema, agregamos un gestor de paquetes, el soporte para flatpak y las herramientas necesarias (algunas las configuraremos mas adelante)
 
     sudo apt update && sudo apt upgrade -y &&
     sudo apt install gnome-software gnome-software-plugin-flatpak -y &&
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &&
     sudo apt install synaptic --install-suggests -y &&
-    sudo apt install curl git zsh -y &&
-    snap install ubuntu-make --classic
+    sudo apt install curl git zsh -y
  
 Algunas otras configuraciones necesarias
 
