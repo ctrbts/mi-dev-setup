@@ -11,7 +11,6 @@
 - [Gradle](#gradle)
 - [Netbeans IDE](#netbeans-ide)
 - [Android Studio](#android-studio)
-- [Configurar un servidor FTP](#configurar-un-servidor-ftp)
 
 
 ## Primeros pasos
