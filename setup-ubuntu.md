@@ -7,6 +7,7 @@
 - [Git](#git)
 - [Node.js](#node)
 - [Mobile Frameworks](#mobile-frameworks)
+- [Yii Framework](#yii)
 - [OpenJDK](#openjdk)
 - [Gradle](#gradle)
 - [Netbeans IDE](#netbeans-ide)
@@ -110,11 +111,25 @@ o alguna versión específica con `nvm install 12.15.0`
 El resto de los comandos estan disponibles desde el repositorio de NVM
 
 
-### Mobile Frameworks
+## Mobile Frameworks
 
 Con node instalado agregamos los frameworks de desarrollo hibrido mas utilizados
 
     npm i -g cordova framework7-cli @ionic/cli express-generator
+
+## Yii Framework
+
+Yii is a fast, secure, and efficient PHP framework. Flexible yet pragmatic. Works right out of the box. Has reasonable defaults.
+
+Instalando via Composer:
+
+    curl -sS https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer
+
+Si ya tienes composer instalado, asegúrate de tener una versión actualizada. Puedes actualizar Composer ejecutando el comando `composer self-update`
+
+Instalar Yii ejecutando los siguientes comandos en un directorio accesible vía Web:
+
+    composer create-project --prefer-dist yiisoft/yii2-app-basic basic
 
 
 ## OpenJDK
