@@ -7,7 +7,7 @@
 - [Git](#git)
 - [Node.js](#node)
 - [Mobile Frameworks](#mobile-frameworks)
-- [Yii Framework](#yii)
+- [Yii Framework](#yii-framework)
 - [OpenJDK](#openjdk)
 - [Gradle](#gradle)
 - [Netbeans IDE](#netbeans-ide)
