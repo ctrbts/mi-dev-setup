@@ -127,8 +127,13 @@ Instalando via Composer:
 
 Si ya tienes composer instalado, asegúrate de tener una versión actualizada. Puedes actualizar Composer ejecutando el comando `composer self-update`
 
+Instalamos las dependencias necesarias
+
+    sudo apt install php-mbstring php-xml
+
 Instalar Yii ejecutando los siguientes comandos en un directorio accesible vía Web:
 
+    composer require phpunit/phpunit
     composer create-project --prefer-dist yiisoft/yii2-app-basic basic
 
 
