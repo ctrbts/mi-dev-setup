@@ -5,7 +5,7 @@
 - [Gestores de paquetes](#gestores-de-paquetes)
 - [Git](#git)
 - [Zsh](#zsh)
-- [Node.js](#node.js)
+- [Node.js](#node)
 - [Mobile Frameworks](#mobile-frameworks)
 - [OpenJDK](#openjdk)
 - [Gradle](#gradle)
