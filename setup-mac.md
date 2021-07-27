@@ -14,7 +14,7 @@
 
 ## Actualización
 
-Lo primero accien cualquier sistema operativo, ¡es actualizar el sistema!
+Lo primero que debemos hacer en cualquier sistema operativo, ¡es actualizar!
 
 *Icono de Apple > Acerca de esta Mac* y luego *Actualización de software*.
 
@@ -31,30 +31,34 @@ Descargamos e instalamos desde [Google Fonts](https://fonts.google.com/?query=fi
 [Homebrew](http://brew.sh/) `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
 
 ### Git
-
-- macOS `brew install curl git`
+  
+  brew install curl git
 
 Para configurar un archivo *gitignore* de forma global:
 
-  ```
   cd ~
   curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/dotfiles/.gitignore
   git config --global core.excludesfile ~/.gitignore
-  ```
 
 ### Zsh
 
-`brew install zsh`
+  brew install zsh
 
-Editar el archivo /etc/shells y añadir la ruta /usr/local/bin/zsh al final de la lista: `sudo nano /etc/shells`
+Editar el archivo /etc/shells y añadir la ruta /usr/local/bin/zsh al final de la lista: 
 
-Cambiamos la shell por defecto:`chsh -s /usr/local/bin/zsh`
+  sudo nano /etc/shells
+
+Cambiamos la shell por defecto:
+
+  chsh -s /usr/local/bin/zsh
 
 Luego cerrar sesión y volver a entrar. Cuando iniciemps por primera vez la terminal nos va a preguntar por el archivo de configuración, elegimo la opción 0 y continuamos.
 
 [Oh My ZSH](https://ohmyz.sh/) es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH.
 
-Para instalarlo: `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+Para instalarlo: 
+
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 OhMyZsh tiene muchos plugins, los que mas uso son:
 
