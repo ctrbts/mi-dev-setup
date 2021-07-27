@@ -24,7 +24,7 @@ Como vamos a pasar bastante tiempo en la terminal le vamos a dar un toque de col
 
 Descargamos e instalamos desde [Google Fonts](https://fonts.google.com/?query=fira) las fuentes Fira Code, Fira Mono y Fira Sans.
 
-*Columnas 120 > Filas 35 > Fira Mono 11 > Esquema de color OneDark*
+*Columnas 110 > Filas 35 > Fira Mono 11 > Esquema de color OneDark*
 
 ### Gestores de paquetes
 
