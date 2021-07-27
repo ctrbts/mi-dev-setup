@@ -90,15 +90,19 @@ Para activarlos hay que modificar el fichero de configuración *~/.zshrc*:
 
 ## Node.js
 
-La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](https://github.com/creationix/nvm) (Node Version Manager) que nos permite administrar multiples versiones de Node.js en la misma máquina.
+La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](https://github.com/creationix/nvm) (Node Version Manager) que nos permite administrar multiples versiones de Node.js instaladas en el sistema.
 
 Para instalar `nvm` copiamos y pegamos el [install script command](https://github.com/creationix/nvm#install--update-script) en la terminal.
 
-Reiniciamos la terminal y comprobamos se ejecute correctamente con `command -v nvm`
+Ahora verificamos las versiones dispinibles de Node 
+    
+    nvm ls-remote --lts
 
-Ahora verificamos las versiones dispinibles de Node `nvm ls-remote --lts`
+Instalamos la última LTS 
 
-Instalamos la última LTS `nvm install --lts` o alguna versión específica `nvm install 11.15.0`
+    nvm install --lts
+
+o alguna versión específica con `nvm install 12.15.0`
 
 El resto de los comandos estan disponibles desde el repositorio de NVM
 
