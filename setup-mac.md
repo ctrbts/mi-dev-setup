@@ -88,7 +88,7 @@ Para activarlos hay que modificar el fichero de configuración *~/.zshrc*:
       zsh-syntax-highlighting
     )
 
-## Node.js
+## Node
 
 La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](https://github.com/creationix/nvm) (Node Version Manager) que nos permite administrar multiples versiones de Node.js instaladas en el sistema.
 
