@@ -32,25 +32,25 @@ Descargamos e instalamos desde [Google Fonts](https://fonts.google.com/?query=fi
 
 ### Git
   
-  brew install curl git
+    brew install curl git
 
 Para configurar un archivo *gitignore* de forma global:
 
-  cd ~
-  curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/dotfiles/.gitignore
-  git config --global core.excludesfile ~/.gitignore
+    cd ~
+    curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/dotfiles/.gitignore
+    git config --global core.excludesfile ~/.gitignore
 
 ### Zsh
 
-  brew install zsh
+    brew install zsh
 
 Editar el archivo /etc/shells y añadir la ruta /usr/local/bin/zsh al final de la lista: 
 
-  sudo nano /etc/shells
+    sudo nano /etc/shells
 
 Cambiamos la shell por defecto:
 
-  chsh -s /usr/local/bin/zsh
+    chsh -s /usr/local/bin/zsh
 
 Luego cerrar sesión y volver a entrar. Cuando iniciemps por primera vez la terminal nos va a preguntar por el archivo de configuración, elegimo la opción 0 y continuamos.
 
@@ -58,7 +58,7 @@ Luego cerrar sesión y volver a entrar. Cuando iniciemps por primera vez la term
 
 Para instalarlo: 
 
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 OhMyZsh tiene muchos plugins, los que mas uso son:
 
@@ -70,24 +70,23 @@ OhMyZsh tiene muchos plugins, los que mas uso son:
 
 **zsh-autosuggestions** este plugin busca en el historial tus últimos comandos y te va autocompletando los mismos.
 
-Para instalarlo: `git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions`
-
 **zsh-syntax-highlighting** este plugin colorea los comandos en verde o en rojo dependiendo de si son correctos o no.
 
-Para instalarlo: `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting`
+Para instalarlos: 
+    
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions && 
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 Para activarlos hay que modificar el fichero de configuración *~/.zshrc*:
 
-```
-plugins=(
-  git
-  common-aliases
-  extract
-  colored-man-pages
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
-```
+    plugins=(
+      git
+      common-aliases
+      extract
+      colored-man-pages
+      zsh-autosuggestions
+      zsh-syntax-highlighting
+    )
 
 ## Node.js
 
