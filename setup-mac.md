@@ -22,13 +22,15 @@ Lo primero que debemos hacer en cualquier sistema operativo, ¡es actualizar!
 
 Como vamos a pasar bastante tiempo en la terminal le vamos a dar un toque de color y productividad.
 
-Descargamos e instalamos desde [Google Fonts](https://fonts.google.com/?query=fira) las fuentes Fira Code, Fira Mono y Fira Sans.
+Tanto para la consola como para los editores de texto que utilizaremos es importante que la lectura sea amena, a mi parecer [Fira Mono](https://fonts.google.com/specimen/Fira+Mono?query=fira+mono) y [Fira Code](https://fonts.google.com/specimen/Fira+Code?query=fira+code) o las fuentes [Cascadia Code](https://github.com/microsoft/cascadia-code/releases) son la mejor elección.
 
 *Columnas 110 > Filas 35 > Fira Mono 11 > Esquema de color OneDark*
 
 ### Gestores de paquetes
 
-[Homebrew](http://brew.sh/) `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
+[Homebrew](http://brew.sh/)
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 ### Git
   
