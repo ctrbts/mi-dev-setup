@@ -2,7 +2,7 @@
 
 - [Actualización](#actualización)
 - [Terminal](#terminal)
-- [Gestores de paquetes](#gestores-de-paquetes)
+- [Homebrew](#homebrew)
 - [Git](#git)
 - [Zsh](#zsh)
 - [Node.js](#node)
@@ -26,7 +26,7 @@ Tanto para la consola como para los editores de texto que utilizaremos es import
 
 *Columnas 110 > Filas 35 > Fira Mono 11 > Esquema de color OneDark*
 
-### Gestores de paquetes
+### Homebrew
 
 [Homebrew](http://brew.sh/)
 
