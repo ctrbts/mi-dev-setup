@@ -110,21 +110,21 @@ El resto de los comandos estan disponibles desde el repositorio de NVM
 
 ### Mobile Frameworks
 
-`npm i -g cordova framework7-cli @ionic/cli`
+    npm i -g cordova framework7-cli @ionic/cli
 
 ## OpenJDK
 
-`brew cask install adoptopenjdk/openjdk/adoptopenjdk8`
+    brew cask install adoptopenjdk/openjdk/adoptopenjdk11
 
 ## Gradle
 
-`brew install watchman gradle`
+    brew install watchman gradle
 
 - Add the following lines to your ~/.zshrc) config file:
-```
-export GRADLE_HOME=/usr/local/Cellar/gradle/6.6.1
-export PATH=$PATH:$GRADLE_HOME/bin
-```
+
+        export GRADLE_HOME=/usr/local/Cellar/gradle/6.6.1
+        export PATH=$PATH:$GRADLE_HOME/bin
+
 ## Netbeans IDE
 
 Development Environment, Tooling Platform and Application Framework.
