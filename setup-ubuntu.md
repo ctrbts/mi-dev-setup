@@ -7,23 +7,27 @@
 - [Git](#git)
 - [Node.js](#node)
 - [Mobile Frameworks](#mobile-frameworks)
-- [Yii Framework](#yii-framework)
 - [OpenJDK](#openjdk)
 - [Gradle](#gradle)
 - [Netbeans IDE](#netbeans-ide)
 - [Android Studio](#android-studio)
+- [LAMPP](#lampp)
+- [Yii Framework](#yii-framework)
 
 
 ## Primeros pasos
 
-Actualizamos el sistema, agregamos un gestor de paquetes, el soporte para flatpak y las herramientas necesarias (algunas las configuraremos mas adelante)
+Actualizamos el sistema, agregamos un gestor de paquetes y las herramientas necesarias (algunas las configuraremos mas adelante)
 
     sudo apt update && sudo apt upgrade -y &&
-    sudo apt install gnome-software gnome-software-plugin-flatpak -y &&
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &&
     sudo apt install synaptic --install-suggests -y &&
     sudo apt install curl git zsh -y
- 
+
+Opcionalmente podemos agregar el soporte para flatpak
+
+    sudo apt install gnome-software gnome-software-plugin-flatpak -y &&
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &&
+
 Algunas otras configuraciones necesarias
 
 En **nautilus** vamos a las Preferencias > Comportamiento > Archivo de texto ejecutables y seleccionamos *Preguntar que hacer*. Esto evita que el sistema por defecto abra algunos archivos ejecutables como si fueran archivos de texto.
@@ -37,7 +41,7 @@ Como vamos a pasar bastante tiempo en la terminal le vamos a dar un toque de col
 
 Descargamos e instalamos desde [Google Fonts](https://fonts.google.com/?query=fira) las fuentes Fira Code, Fira Mono y Fira Sans.
 
-Instalamos un nuevo tema desde [Gogh Themes](http://mayccoll.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 120 > Filas 35 > Fira Mono 9*
+El esquema de color **Tango Oscuro** es uno de mis preferidos pero podemos instalar unos temas excelentes desde [Gogh Themes](http://mayccoll.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 120 > Filas 40 > Fira Mono 9*
 
 
 ## Zsh
@@ -46,7 +50,7 @@ Bash esta bien, pero ZSH esta mejor. Ya lo instalamos en los [Primeros pasos](#p
 
     chsh -s $(which zsh)
 
-una vez configurado *zsh* podemos eliminar los archivos *.bash* y *.profile*
+Una vez configurado *zsh* podemos eliminar los archivos *.bash* y *.profile*
 
 Necesitamps cerrar sesión y volver a entrar para que los cambios se apliquen, cuando iniciemos por primera vez la terminal nos va a preguntar por el archivo de configuración de zsh, elegimo la opción 0 y continuamos.
 
@@ -98,6 +102,9 @@ La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](h
 
 Para instalar `nvm` copiamos y pegamos el [install script command](https://github.com/creationix/nvm#install--update-script) en la terminal.
 
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | sh
+
+
 Ahora verificamos las versiones dispinibles de Node 
     
     nvm ls-remote --lts
@@ -117,46 +124,19 @@ Con node instalado agregamos los frameworks de desarrollo hibrido mas utilizados
 
     npm i -g cordova framework7-cli @ionic/cli express-generator
 
-## Yii Framework
-
-Yii is a fast, secure, and efficient PHP framework. Flexible yet pragmatic. Works right out of the box. Has reasonable defaults.
-
-Instalando via Composer:
-
-    curl -sS https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer
-
-Si ya tienes composer instalado, asegúrate de tener una versión actualizada. Puedes actualizar Composer ejecutando el comando `composer self-update`
-
-Instalamos las dependencias necesarias
-
-    sudo apt install php-mbstring php-xml
-
-Instalar Yii ejecutando los siguientes comandos en un directorio accesible vía Web:
-
-    composer require phpunit/phpunit
-    composer create-project --prefer-dist yiisoft/yii2-app-basic basic
-
 
 ## OpenJDK
 
-Importamos la clave GPG oficial del repositorio de AdoptOpenJDK y luego agregamos el repositorio 
+La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados
 
-    wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add - &&
-    sudo apt-get install -y software-properties-common &&
-    sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
-
-Actualizamos la lista de paquetes e instalamos el paquete AdoptOpenJDK elejido. Por ejemplo, para instalar OpenJDK 11 con HotSpot VM, ponemos lo siguiente:
-
-    sudo apt-get update &&
-    sudo apt-get install adoptopenjdk-11-hotspot -y
+    sudo apt update && sudo apt install openjdk-11-jdk -y 
 
 
 ## Gradle
 
 Descargamos el binario desde https://gradle.org/next-steps/?version=7.1.1&format=bin > creamos el directorio con y descomprimimos el archivo
 
-    sudo mkdir /opt/gradle &&
-    sudo unzip -d /opt/gradle ~/Descargas/gradle-7.1.1-bin.zip
+    sudo mkdir /opt/gradle && sudo unzip -d /opt/gradle ~/Descargas/gradle-7.1.1-bin.zip
 
 Necesitamos agregar las siguientes lineas al archivo ~/.zshrc:
 
@@ -192,5 +172,23 @@ Agregue las siguientes líneas a su archivo de configuración ~/.zshrc:
     export PATH=$PATH:$ANDROID_HOME/tools/bin
     export PATH=$PATH:$ANDROID_HOME/platform-tools
 
----
-Continuara ...
+## LAMPP
+
+## Yii Framework
+
+Yii es un framework PHP rápido, seguro y eficiente. Flexible pero pragmático. Funciona de inmediato. Y un conjunto de valores predeterminados razonables.
+
+Instalando via Composer:
+
+    curl -sS https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer
+
+Si ya tienes composer instalado, asegúrate de tener una versión actualizada. Puedes actualizar Composer ejecutando el comando `composer self-update`
+
+Instalamos las dependencias necesarias
+
+    sudo apt install php-mbstring php-xml
+
+Instalar Yii ejecutando los siguientes comandos en un directorio accesible vía Web:
+
+    composer require phpunit/phpunit
+    composer create-project --prefer-dist yiisoft/yii2-app-basic basic
