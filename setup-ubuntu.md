@@ -2,7 +2,6 @@
 
 - [Primeros pasos](#primeros-pasos)
 - [Terminal](#terminal)
-- [Gestores de paquetes](#gestores-de-paquetes)
 - [Zsh](#zsh)
 - [Git](#git)
 - [Node.js](#node)
