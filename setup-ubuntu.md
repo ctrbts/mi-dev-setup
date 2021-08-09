@@ -25,7 +25,7 @@ Actualizamos el sistema, agregamos un gestor de paquetes y las herramientas nece
 Opcionalmente podemos agregar el soporte para flatpak
 
     sudo apt install gnome-software gnome-software-plugin-flatpak -y &&
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &&
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 Algunas otras configuraciones necesarias
 
