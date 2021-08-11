@@ -173,6 +173,8 @@ Agregue las siguientes líneas a su archivo de configuración ~/.zshrc:
 
 ## LAMPP
 
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04
+
 ## Yii Framework
 
 Yii es un framework PHP rápido, seguro y eficiente. Flexible pero pragmático. Funciona de inmediato. Y un conjunto de valores predeterminados razonables.
