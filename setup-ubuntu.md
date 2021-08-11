@@ -117,11 +117,11 @@ o alguna versión específica con `nvm install 12.15.0`
 El resto de los comandos estan disponibles desde el repositorio de NVM
 
 
-## Mobile Frameworks
+## Node modules
 
-Con node instalado agregamos los frameworks de desarrollo hibrido mas utilizados
+Con node instalado agregamos los frameworks y modulos mas utilizados
 
-    npm i -g cordova framework7-cli @ionic/cli express-generator
+    npm i -g cordova framework7-cli @ionic/cli express-generator yarn
 
 
 ## OpenJDK
