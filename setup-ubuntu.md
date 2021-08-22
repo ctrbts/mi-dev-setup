@@ -175,9 +175,7 @@ Agregue las siguientes líneas a su archivo de configuración ~/.zshrc:
 
 https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04
 
-## Yii Framework
-
-[First steps in Yii](https://www.yiiframework.com/doc/guide/2.0/es/start-installation)
+## [Yii Framework](https://www.yiiframework.com/doc/guide/2.0/es/start-installation)
 
 Yii es un framework PHP rápido, seguro y eficiente. Flexible pero pragmático. Funciona de inmediato. Y un conjunto de valores predeterminados razonables.
 
@@ -197,4 +195,12 @@ Instalamos las dependencias necesarias
 Instalar Yii ejecutando los siguientes comandos en un directorio accesible vía Web:
 
     composer require phpunit/phpunit
-    composer create-project --prefer-dist yiisoft/yii2-app-basic basic
+    composer create-project --prefer-dist yiisoft/yii2-app-basic el_nombre_de_mi_aplicacion
+    
+Verificamos la instalación ejecutando el siguiente comando
+    
+    cd el_nombre_de_mi_aplicacion && php yii serve
+
+Y accedemos a la aplicación instalada de Yii en la siguiente URL:
+
+http://localhost:8080/.
