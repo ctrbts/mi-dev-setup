@@ -177,11 +177,14 @@ https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mys
 
 ## Yii Framework
 
+[First steps in Yii](https://www.yiiframework.com/doc/guide/2.0/es/start-installation)
+
 Yii es un framework PHP rápido, seguro y eficiente. Flexible pero pragmático. Funciona de inmediato. Y un conjunto de valores predeterminados razonables.
 
 Instalando via Composer:
 
-    curl -sS https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer
+    curl -sS https://getcomposer.org/installer | php
+    sudo mv composer.phar /usr/local/bin/composer
 
 Si ya tienes composer instalado, asegúrate de tener una versión actualizada. Puedes actualizar Composer ejecutando el comando `composer self-update`
 
