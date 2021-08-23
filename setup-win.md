@@ -1,9 +1,8 @@
 # Mi Windows Development Setup
 (en construcción)
 
-- [Gestores de paquetes](#gestores-de-paquetes)
+- [Laragon](#laragon)
 - [Git](#git)
-- [Zsh](#zsh)
 - [Node.js](#node.js)
 - [Mobile Frameworks](#mobile-frameworks)
 - [OpenJDK](#openjdk)
@@ -11,9 +10,15 @@
 - [Netbeans IDE](#netbeans-ide)
 - [Android Studio](#android-studio)
 
-### Gestores de paquetes
+### Laragon
+Laragon es un entorno de desarrollo universal portátil, aislado, rápido y potente para PHP, Node.js, Python, Java, Go, Ruby. Es rápido, liviano, fácil de usar y fácil de extender. Es ideal para crear y administrar aplicaciones web modernas. Se centra en el rendimiento, diseñado en torno a la estabilidad, la simplicidad, la flexibilidad y la libertad. 
 
-[Chocolatey](https://chocolatey.org/)
+Laragon es muy ligero, el binario central en sí tiene menos de 2 MB y utiliza menos de 4 MB de RAM cuando se ejecuta.
+
+Laragon no usa los servicios de Windows. Tiene su propio service orchestration que administra los servicios de forma asincrónica y sin bloqueo, por lo que encontrará que las cosas funcionan rápido y sin problemas.
+
+Para descargar el paquete completo [click aqui](https://github.com/leokhoa/laragon/releases/download/5.0.0/laragon-wamp.exe) o la versión portable desde [
+aqui](https://github.com/leokhoa/laragon/releases/download/5.0.0/laragon-portable.zip)
 
 ### Git
 
@@ -26,51 +31,6 @@ Para configurar un archivo *gitignore* de forma global:
   curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/dotfiles/.gitignore
   git config --global core.excludesfile ~/.gitignore
   ```
-
-### Zsh
-
-Ahora vamos a agregar ZSH y OhMyZsh siguiendo [esta guía][instalar zsh]:
-
-- macOS `brew install zsh`
-
-  Editar el archivo /etc/shells y añadir la ruta /usr/local/bin/zsh al final de la lista: `sudo nano /etc/shells`
-
-  Cambiamos la shell por defecto:`chsh -s /usr/local/bin/zsh`
-
-Luego cerrar sesión y volver a entrar. Cuando iniciemps por primera vez la terminal nos va a preguntar por el archivo de configuración, elegimo la opción 0 y continuamos.
-
-[Oh My ZSH][omz] es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH.
-
-Para instalarlo: `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
-
-OhMyZsh tiene muchos plugins, los que mas uso son:
-
-**git** que viene instalado por defecto y añade un montón de alias de git **common-aliases** Añade ciertos alias interesantes, entre ellos: G para añadir | grep al final de un comando
-
-**colored-man** colorea las páginas del manual.
-
-**extract** permite descomprimir cualquier tipo de archivo comprimido de una forma común: `x nombre-fichero-comprimido`
-
-**zsh-autosuggestions** este plugin busca en el historial tus últimos comandos y te va autocompletando los mismos.
-
-Para instalarlo: `git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions`
-
-**zsh-syntax-highlighting** este plugin colorea los comandos en verde o en rojo dependiendo de si son correctos o no.
-
-Para instalarlo: `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting`
-
-Para activarlos hay que modificar el fichero de configuración *~/.zshrc*:
-
-```
-plugins=(
-  git
-  common-aliases
-  extract
-  colored-man-pages
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
-```
 
 ## Node.js
 
@@ -113,8 +73,3 @@ Select the "SDK Platforms" tab from within the SDK Manager, then check the box n
 Next, select the "SDK Tools" tab and check the box next to "Show Package Details" here as well. Look for and expand the **Android SDK Build-Tools** entry, then make sure that **29.0.2** is selected.
 
 Finally, click "Apply" to download and install the Android SDK and related build tools.
-
-## Referencias
-
-[instalar zsh]: https://www.asanzdiego.com/2018/04/instalar-y-configurar-zsh-y-ohmyzsh-en-ubuntu.html
-[omz]: https://ohmyz.sh/
