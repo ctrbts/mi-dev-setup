@@ -194,12 +194,11 @@ Instalamos las dependencias necesarias
 
 Instalar Yii ejecutando los siguientes comandos en un directorio accesible vía Web:
 
-    composer require phpunit/phpunit
-    composer create-project --prefer-dist yiisoft/yii2-app-basic el_nombre_de_mi_aplicacion
+    composer create-project --prefer-dist yiisoft/yii2-app-basic mi_aplicacion
     
 Verificamos la instalación ejecutando el siguiente comando
     
-    cd el_nombre_de_mi_aplicacion && php yii serve
+    cd mi_aplicacion && php yii serve
 
 Y accedemos a la aplicación instalada de Yii en la siguiente URL:
 
