@@ -1,4 +1,5 @@
-# Mi Windows Development Setup
+Mi Windows Development Setup
+----------------------------
 
 - [Optimizar el sistema](#optimizar-el-sistema)
 - [Laragon](#laragon)
