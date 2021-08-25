@@ -1,5 +1,4 @@
-Mi Windows Development Setup
-----------------------------
+# Mi Windows Development Setup
 
 - [Optimizar el sistema](#optimizar-el-sistema)
 - [Laragon](#laragon)
@@ -11,7 +10,7 @@ Mi Windows Development Setup
 - [Netbeans IDE](#netbeans-ide)
 - [Android Studio](#android-studio)
 
-
+  
 ## Optimizar el sistema
 
 [win10script](https://github.com/ChrisTitusTech/win10script) Es un script powershell de Windows 10 creado a partir de múltiples scripts de debloat y gists de github. Es una navaja suiza para máquinas nuevas o modificar existentes, ahorrando tiempo de configuración y fundamentalmente recursos del sistema operativo.
