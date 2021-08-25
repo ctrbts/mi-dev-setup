@@ -2,11 +2,8 @@
 
 - [Optimizar el sistema](#optimizar-el-sistema)
 - [Laragon](#laragon)
-- [Git](#git)
-- [Node.js](#node.js)
 - [Mobile Frameworks](#mobile-frameworks)
 - [OpenJDK](#openjdk)
-- [Gradle](#gradle)
 - [Netbeans IDE](#netbeans-ide)
 - [Android Studio](#android-studio)
 
@@ -55,32 +52,6 @@ Laragon no usa los servicios de Windows. Tiene su propio service orchestration q
 Para descargar el paquete completo [click aqui](https://github.com/leokhoa/laragon/releases/download/5.0.0/laragon-wamp.exe) o la versión portable desde [
 aqui](https://github.com/leokhoa/laragon/releases/download/5.0.0/laragon-portable.zip)
 
-### Git
-
-[Git](https://git-scm.com/)
-
-Para configurar un archivo *gitignore* de forma global:
-
-  ```
-  cd ~
-  curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/dotfiles/.gitignore
-  git config --global core.excludesfile ~/.gitignore
-  ```
-
-## Node.js
-
-La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](https://github.com/creationix/nvm) (Node Version Manager) que nos permite administrar multiples versiones de Node.js en la misma máquina.
-
-Para instalar `nvm` copiamos y pegamos el [install script command](https://github.com/creationix/nvm#install--update-script) en la terminal.
-
-Reiniciamos la terminal y comprobamos se ejecute correctamente con `command -v nvm`
-
-Ahora verificamos las versiones dispinibles de Node `nvm ls-remote --lts`
-
-Instalamos la última LTS `nvm install --lts` o alguna versión específica `nvm install 11.15.0`
-
-El resto de los comandos estan disponibles desde el repositorio de NVM
-
 
 ## Mobile Frameworks
 
@@ -91,7 +62,6 @@ El resto de los comandos estan disponibles desde el repositorio de NVM
 
 Instalamos el ***JDK*** desde https://adoptopenjdk.net/installation.html#installers
 
-## Gradle
 
 ## Netbeans IDE
 
