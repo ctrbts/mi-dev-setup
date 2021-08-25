@@ -1,6 +1,6 @@
 # Mi Windows Development Setup
-(en construcción)
 
+- [Optimizar el sistema](#optimizar-el-sistema)
 - [Laragon](#laragon)
 - [Git](#git)
 - [Node.js](#node.js)
@@ -9,6 +9,41 @@
 - [Gradle](#gradle)
 - [Netbeans IDE](#netbeans-ide)
 - [Android Studio](#android-studio)
+
+
+### Optimizar el sistema
+
+[win10script](https://github.com/ChrisTitusTech/win10script) Es un script powershell de Windows 10 creado a partir de múltiples scripts de debloat y gists de github. Es una navaja suiza para máquinas nuevas o modificar existentes, ahorrando tiempo de configuración y fundamentalmente recursos del sistema operativo.
+
+Que hace este script:
+- Instala programas de uso habitual
+- Elimina la telemetría
+- Desactiva Cortana
+- Elimina varias tareas programadas que ralentizan el sistema
+
+Para ejecutarlo alcanza con copiar y pegar el siguiente script en una sesión de administrador de PowerShell
+
+    iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JJ8R4'))
+
+Y si se necesita restaurar las acciones anteriores con el siguiente
+
+    iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JTbKD'))
+
+Esta basado en estos dos proyectos muy interesantes
+- https://github.com/Sycnex/Windows10Debloater
+- https://github.com/farag2/Windows-10-Setup-Script
+
+La manera óptima de utilizar esta herramienta es en las siguientes condiciones:
+- Antes de que se cree el perfil de usuario (puede ejecutar el script y después agregar un nuevo perfil)
+- Con elscritorio vacío y descargas vacías (algunas configs han eliminado archivos del escritorio y descargas)
+- Después de instalar las actualizaciones de nuevas funciones en Windows Update
+
+Mi recomendación es:
+- Deshabilitar Cortana
+- Desinstalar OneDrive
+- Ejecutar ajustes esenciales
+- Siempre habilito el modo oscuro e instalo 3.5 .NET.
+
 
 ### Laragon
 Laragon es un entorno de desarrollo universal portátil, aislado, rápido y potente para PHP, Node.js, Python, Java, Go, Ruby. Es rápido, liviano, fácil de usar y fácil de extender. Es ideal para crear y administrar aplicaciones web modernas. Se centra en el rendimiento, diseñado en torno a la estabilidad, la simplicidad, la flexibilidad y la libertad. 
