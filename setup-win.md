@@ -11,7 +11,7 @@
 - [Android Studio](#android-studio)
 
 
-### Optimizar el sistema
+## Optimizar el sistema
 
 [win10script](https://github.com/ChrisTitusTech/win10script) Es un script powershell de Windows 10 creado a partir de múltiples scripts de debloat y gists de github. Es una navaja suiza para máquinas nuevas o modificar existentes, ahorrando tiempo de configuración y fundamentalmente recursos del sistema operativo.
 
@@ -45,7 +45,7 @@ Mi recomendación es:
 - Siempre habilito el modo oscuro e instalo 3.5 .NET.
 
 
-### Laragon
+## Laragon
 Laragon es un entorno de desarrollo universal portátil, aislado, rápido y potente para PHP, Node.js, Python, Java, Go, Ruby. Es rápido, liviano, fácil de usar y fácil de extender. Es ideal para crear y administrar aplicaciones web modernas. Se centra en el rendimiento, diseñado en torno a la estabilidad, la simplicidad, la flexibilidad y la libertad. 
 
 Laragon es muy ligero, el binario central en sí tiene menos de 2 MB y utiliza menos de 4 MB de RAM cuando se ejecuta.
