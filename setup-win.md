@@ -10,9 +10,13 @@
   
 ## Optimizar el sistema
 
+Optimizar el sistema no siempre significa desactivar todo, hay funciones como la indizacion de archivos que si bien consume recursos, suele ser enormemente util cuando manejamos muchos archivos y proyectos a la vez. Otras funciones como la telemetría o las actualizaciones sin control que reinician el sistema sin nuestro permiso sin son necesarias desactivarlas para mejorar nuestra productividad en Windows y acelerar un poco el sistema.
+
+Que deshabilitaremos entonces?
 [win10script](https://github.com/ChrisTitusTech/win10script) Es un script powershell de Windows 10 creado a partir de múltiples scripts de debloat y gists de github. Es una navaja suiza para máquinas nuevas o modificar existentes, ahorrando tiempo de configuración y fundamentalmente recursos del sistema operativo.
 
 Que hace este script:
+- [WinSecurityOnly](https://gist.github.com/ctrbts/1e5061da8370bca85e3fca93dec3164c) Posterga por 365 dia las actualizaciones de características
 - Instala programas de uso habitual
 - Elimina la telemetría
 - Desactiva Cortana
