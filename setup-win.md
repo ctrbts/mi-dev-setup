@@ -15,19 +15,9 @@ Optimizar el sistema no siempre significa desactivar todo, hay funciones como la
 Que deshabilitaremos entonces?
 - Postergamos por 365 dia las actualizaciones del S.O. [WinSecurityOnly](https://gist.github.com/ctrbts/1e5061da8370bca85e3fca93dec3164c#file-win_security_only-reg) 
 - Limitamos el uso de RAM de algunos procesos y tareas del sistema. [RAM Reducer](https://gist.github.com/ctrbts/0652898bf1eeb7b535f3d0bcecefa6b0#file-ram_reducer-reg) 
-
-
-La manera óptima de utilizar esta herramienta es en las siguientes condiciones:
-- Antes de que se cree el perfil de usuario (puede ejecutar el script y después agregar un nuevo perfil)
-- Con elscritorio vacío y descargas vacías (algunas configs han eliminado archivos del escritorio y descargas)
-- Después de instalar las actualizaciones de nuevas funciones en Windows Update
-
-Mi recomendación es:
+...
 - Deshabilitar Cortana
 - Desinstalar OneDrive
-- Ejecutar ajustes esenciales
-- Siempre habilito el modo oscuro e instalo 3.5 .NET.
-
 
 ## Laragon
 Laragon es un entorno de desarrollo universal portátil, aislado, rápido y potente para PHP, Node.js, Python, Java, Go, Ruby. Es rápido, liviano, fácil de usar y fácil de extender. Es ideal para crear y administrar aplicaciones web modernas. Se centra en el rendimiento, diseñado en torno a la estabilidad, la simplicidad, la flexibilidad y la libertad. 
