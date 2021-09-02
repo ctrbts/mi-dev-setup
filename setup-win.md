@@ -13,26 +13,9 @@
 Optimizar el sistema no siempre significa desactivar todo, hay funciones como la indizacion de archivos que si bien consume recursos, suele ser enormemente util cuando manejamos muchos archivos y proyectos a la vez. Otras funciones como la telemetría o las actualizaciones sin control que reinician el sistema sin nuestro permiso sin son necesarias desactivarlas para mejorar nuestra productividad en Windows y acelerar un poco el sistema.
 
 Que deshabilitaremos entonces?
-[win10script](https://github.com/ChrisTitusTech/win10script) Es un script powershell de Windows 10 creado a partir de múltiples scripts de debloat y gists de github. Es una navaja suiza para máquinas nuevas o modificar existentes, ahorrando tiempo de configuración y fundamentalmente recursos del sistema operativo.
+- Postergamos por 365 dia las actualizaciones del S.O. [WinSecurityOnly](https://gist.github.com/ctrbts/1e5061da8370bca85e3fca93dec3164c#file-win_security_only-reg) 
+- Limitamos el uso de RAM de algunos procesos y tareas del sistema. [RAM Reducer](https://gist.github.com/ctrbts/0652898bf1eeb7b535f3d0bcecefa6b0#file-ram_reducer-reg) 
 
-Que hace este script:
-- [WinSecurityOnly](https://gist.github.com/ctrbts/1e5061da8370bca85e3fca93dec3164c#file-win_security_only-reg) Posterga por 365 dia las actualizaciones de características
-- Instala programas de uso habitual
-- Elimina la telemetría
-- Desactiva Cortana
-- Elimina varias tareas programadas que ralentizan el sistema
-
-Para ejecutarlo alcanza con copiar y pegar el siguiente script en una sesión de administrador de PowerShell
-
-    iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JJ8R4'))
-
-Y si se necesita restaurar las acciones anteriores con el siguiente
-
-    iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JTbKD'))
-
-Esta basado en estos dos proyectos muy interesantes
-- https://github.com/Sycnex/Windows10Debloater
-- https://github.com/farag2/Windows-10-Setup-Script
 
 La manera óptima de utilizar esta herramienta es en las siguientes condiciones:
 - Antes de que se cree el perfil de usuario (puede ejecutar el script y después agregar un nuevo perfil)
