@@ -16,7 +16,7 @@ Que deshabilitaremos entonces?
 [win10script](https://github.com/ChrisTitusTech/win10script) Es un script powershell de Windows 10 creado a partir de múltiples scripts de debloat y gists de github. Es una navaja suiza para máquinas nuevas o modificar existentes, ahorrando tiempo de configuración y fundamentalmente recursos del sistema operativo.
 
 Que hace este script:
-- [WinSecurityOnly](https://gist.github.com/ctrbts/1e5061da8370bca85e3fca93dec3164c) Posterga por 365 dia las actualizaciones de características
+- [WinSecurityOnly](https://gist.github.com/ctrbts/1e5061da8370bca85e3fca93dec3164c#file-win_security_only-reg) Posterga por 365 dia las actualizaciones de características
 - Instala programas de uso habitual
 - Elimina la telemetría
 - Desactiva Cortana
