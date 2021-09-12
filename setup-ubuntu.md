@@ -1,9 +1,11 @@
 # Mi Ubuntu Development Setup
 
-- [Primeros pasos](#primeros-pasos)
-- [Terminal](#terminal)
-- [Zsh](#zsh)
-- [Git](#git)
+- [Configuración inicial](#configuracion-inicial)
+    - [Gestores de paquetes y utilidades](gestores-de-paquetes-y-utilidades)
+    - [Personalización](personalizacion)
+    - [Terminal](#terminal)
+    - [Zsh](#zsh)
+    - [Git](#git)
 - [Node.js](#node)
 - [Mobile Frameworks](#mobile-frameworks)
 - [OpenJDK](#openjdk)
@@ -13,19 +15,19 @@
 - [LAMPP](#lampp)
 - [Yii Framework](#yii-framework)
 
+## Configuración inicial
 
-## Primeros pasos
+### Gestores de paquetes y utilidades
 
 Actualizamos el sistema, agregamos un gestor de paquetes y las herramientas necesarias (algunas las configuraremos mas adelante)
 
     sudo apt update && sudo apt upgrade -y &&
+    sudo apt install curl git zsh -y &&
     sudo apt install synaptic --install-suggests -y &&
-    sudo apt install curl git zsh -y
-
-Opcionalmente podemos agregar el soporte para flatpak y alguna utilidades
-
     sudo apt install gnome-tweaks gnome-software gnome-software-plugin-flatpak -y &&
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+### Personalización
 
 Algunas otras configuraciones necesarias
 
@@ -34,7 +36,7 @@ En **nautilus** vamos a las Preferencias > Comportamiento > Archivo de texto eje
 El tamaño de iconos yo lo dejo en 67% por comodidad visual y la tipografía en no mas de 10, dependiento el tamaño de pantalla.
 
 
-## Terminal
+### Terminal
 
 Como vamos a pasar bastante tiempo en la terminal le vamos a dar un toque de color y productividad.
 
@@ -43,7 +45,7 @@ La tipografía de la terminal muy importante para mejorar la legilibilidad y evi
 El esquema de color **Tango Oscuro** es uno de mis preferidos pero podemos instalar unos temas excelentes desde [Gogh Themes](http://mayccoll.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 120 > Filas 40 > Fira Mono 9*
 
 
-## Zsh
+### Zsh
 
 Bash esta bien, pero ZSH esta mejor. Ya lo instalamos en los [Primeros pasos](#primeros-pasos) ahora necesitamos hacerlo nuestro shell por defecto, ejecutamos desde consola: 
 
@@ -86,7 +88,7 @@ Para activar los plugins anteriores hay que modificar el fichero de configuraci�
     )
 
 
-## Git
+### Git
 
 Ya tenemos git instalado, ahora vamos a configurar un archivo *gitignore* de forma global que nos va ha permitir exluir archivos de sistema comunes:
 
