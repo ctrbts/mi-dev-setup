@@ -131,7 +131,15 @@ La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos gar
     sudo apt update && sudo apt install default-jdk -y 
 
 
-## Gradle
+## Netbeans IDE
+
+IDE multiplataforma para desarrollo en Java, PHP y otros lenguajes de programación.
+Para descargarlo > https://netbeans.apache.org/download/index.html
+
+
+## Android Stack
+
+### Gradle
 
 Descargamos el binario desde https://gradle.org/next-steps/?version=7.1.1&format=bin > creamos el directorio con y descomprimimos el archivo
 
@@ -143,13 +151,7 @@ Necesitamos agregar las siguientes lineas al archivo ~/.zshrc:
     export PATH=$PATH:$GRADLE_HOME/bin
 
 
-## Netbeans IDE
-
-IDE multiplataforma para desarrollo en Java, PHP y otros lenguajes de programación.
-Para descargarlo > https://netbeans.apache.org/download/index.html
-
-
-## Android Studio
+### Android Studio
 
 Android Studio proporciona las herramientas más rápidas para crear aplicaciones en todo tipo de dispositivo Android.
 Descarga desde > https://developer.android.com/studio
