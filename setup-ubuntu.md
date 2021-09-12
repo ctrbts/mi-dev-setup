@@ -38,7 +38,7 @@ El tamaño de iconos yo lo dejo en 67% por comodidad visual y la tipografía en 
 
 Como vamos a pasar bastante tiempo en la terminal le vamos a dar un toque de color y productividad.
 
-Descargamos e instalamos desde [Google Fonts](https://fonts.google.com/?query=fira) las fuentes Fira Code, Fira Mono y Fira Sans.
+La tipografía de la terminal muy importante para mejorar la legilibilidad y evitar el cansancio visual. Las mejores fuentes para codificar son [Fira Code, Fira Mono](https://fonts.google.com/?query=fira) y [Cascadia Code](https://github.com/microsoft/cascadia-code/releases).
 
 El esquema de color **Tango Oscuro** es uno de mis preferidos pero podemos instalar unos temas excelentes desde [Gogh Themes](http://mayccoll.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 120 > Filas 40 > Fira Mono 9*
 
