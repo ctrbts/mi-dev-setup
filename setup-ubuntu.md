@@ -132,6 +132,10 @@ La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos gar
 
     sudo apt update && sudo apt install default-jdk -y 
 
+Agregamos las siguientes lineas al archivo ~/.zshrc:
+
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+    export PATH=$PATH:$JAVA_HOME/bin
 
 ## Netbeans IDE
 
