@@ -23,10 +23,10 @@
 
 Actualizamos el sistema, agregamos un gestor de paquetes y las herramientas necesarias (algunas las configuraremos mas adelante)
 
-    sudo apt update && sudo apt upgrade -y &&
-    sudo apt install curl git zsh -y &&
-    sudo apt install synaptic --install-suggests -y &&
-    sudo apt install gnome-tweaks gnome-software gnome-software-plugin-flatpak -y &&
+    sudo apt update && sudo apt upgrade -y
+    sudo apt install curl git zsh -y
+    sudo apt install synaptic --install-suggests -y
+    sudo apt install gnome-tweaks gnome-software gnome-software-plugin-flatpak -y
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 ### Personalización
