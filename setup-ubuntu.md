@@ -53,9 +53,7 @@ Bash esta bien, pero ZSH esta mejor. Ya lo instalamos en los [Primeros pasos](#p
 
     chsh -s $(which zsh)
 
-Una vez configurado *zsh* podemos eliminar los archivos *.bash* y *.profile*
-
-Necesitamps cerrar sesión y volver a entrar para que los cambios se apliquen, cuando iniciemos por primera vez la terminal nos va a preguntar por el archivo de configuración de zsh, elegimo la opción 0 y continuamos.
+Una vez configurado *zsh* podemos eliminar los archivos *.bash* y *.profile*. Luego cerramos sesión y volvemos a entrar para que los cambios se apliquen, cuando iniciemos por primera vez la terminal nos va a preguntar por el archivo de configuración de zsh, elegimo la opción 0 y continuamos.
 
 [Oh My ZSH](https://ohmyz.sh/) es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH, para instalarlo: 
 
