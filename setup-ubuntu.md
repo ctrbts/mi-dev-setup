@@ -1,6 +1,6 @@
 # Mi Ubuntu Development Setup
 
-- [Configuración inicial](#configuracion-inicial)
+- [Configuración inicial](#configuración-inicial)
     - [Gestores de paquetes y utilidades](gestores-de-paquetes-y-utilidades)
     - [Personalización](personalizacion)
     - [Terminal](#terminal)
