@@ -132,7 +132,7 @@ Con node instalado agregamos los frameworks y modulos mas utilizados
 
 La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados
 
-    sudo apt update && sudo apt install default-jdk -y 
+    sudo apt update && sudo apt install openjdk-11-jdk -y 
 
 Agregamos las siguientes lineas al archivo ~/.zshrc:
 
