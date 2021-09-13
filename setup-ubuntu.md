@@ -13,6 +13,7 @@
 - [Netbeans IDE](#netbeans-ide)
 - [Android Studio](#android-studio)
 - [LAMPP](#lampp)
+    - [Apache](#apache)
 - [Yii Framework](#yii-framework)
 
 ## Configuración inicial
@@ -181,7 +182,61 @@ Agregue las siguientes líneas a su archivo de configuración ~/.zshrc:
 
 ## LAMPP
 
-https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04
+### Apache
+
+Instalamos Apache usando el administrador de paquetes de Ubuntu:
+
+    sudo apt update
+    sudo apt install apache2
+ 
+Una vez que la instalación se complete, deberá ajustar la configuración de su firewall para permitir tráfico HTTP y HTTPS. 
+Si UFW no esta habilitado pude hacerlo con 
+
+    sudo ufw enable
+    
+Para enumerar todos los perfiles de aplicaciones de UFW disponibles, puede ejecutar lo siguiente:
+
+    sudo ufw app list
+ 
+Verá un resultado como este:
+
+    Output
+    Available applications:
+      Apache
+      Apache Full
+      Apache Secure
+      OpenSSH
+
+Para permitir tráfico únicamente en el puerto 80 utilice el perfil Apache:
+
+    sudo ufw allow in "Apache"
+ 
+Puede verificar el cambio con lo siguiente:
+
+    sudo ufw status
+ 
+Ahora, se permite tráfico en el puerto 80 a través del firewall.
+
+Puede realizar una verificación rápida para comprobar que todo se haya realizado según lo previsto dirigiéndose a la dirección IP pública de su servidor en su navegador web (consulte la nota de la siguiente sección para saber cuál es su dirección IP pública si no dispone de esta información):
+
+http://your_server_ip
+
+Si puede ver la página web predeterminada de Apache para Ubuntu 20.04, su servidor web estará correctamente instalado y el acceso a él será posible a través de su firewall.
+
+Si no conoce la dirección IP pública de su servidor, hay varias formas de encontrarla. Por lo general, es la dirección que utiliza para establecer conexión con su servidor a través de SSH.
+
+Existen varias formas de hacerlo desde la línea de comandos. Primero, podría usar las herramientas de iproute2 para obtener su dirección IP escribiendo esto:
+
+    ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
+ 
+Esto nos brindará dos o tres líneas. Todas estas direcciones son correctas, pero su computadora puede usar una de ellas. No dude en probarlas todas.
+
+Un método alternativo consiste en usar la utilidad curl para contactar a una parte externa a fin de que le indique su evaluación del servidor. Esto se hace solicitando a un servidor específico su dirección IP:
+
+    curl http://icanhazip.com
+ 
+Independientemente del método que utilice para obtener su dirección IP, escríbala en la barra de direcciones de su navegador web para ver la página predeterminada de Apache.
+
 
 ## [Yii Framework](https://www.yiiframework.com/doc/guide/2.0/es/start-installation)
 
