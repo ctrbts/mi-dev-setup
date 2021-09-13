@@ -317,6 +317,112 @@ Recibirá un resultado que es similar al siguiente:
 
 Si MariaDB no funciona, puede iniciarla con el comando `sudo systemctl start mariadb`
 
+### PHP 
+
+Instalamos PHP con los adds mas comunes
+
+    sudo apt install php libapache2-mod-php php-mysql php-curl php-imap php-mbstring php-intl
+
+Para confirmar que todo esta instalado ok ejecutamos `php -v`
+
+#### Crear un host virtual para alojar su web
+
+Ubuntu 20.04 tiene habilitado un bloque de servidor por defecto, que está configurado para proporcionar documentos del directorio /var/www/html. Si bien esto funciona bien para un solo sitio, puede ser difícil de manejar si alojamo varios. En lugar de modificar /var/www/html, crearemos una estructura de directorio dentro de /var/www para el sitio your_domain y dejaremos /var/www/html establecido como directorio predeterminado que se presentará si una solicitud de cliente no coincide con ningún otro sitio.
+
+Cree el directorio para your_domain de la siguiente manera:
+
+    sudo mkdir /var/www/your_domain
+ 
+A continuación, asigne la propiedad del directorio con la variable de entorno $USER, que hará referencia a su usuario de sistema actual:
+
+    sudo chown -R $USER:$USER /var/www/your_domain
+ 
+Luego, abra un nuevo archivo de configuración en el directorio sites-available de Apache usando el editor de línea de comandos que prefiera. En este caso, utilizaremos nano:
+
+    sudo nano /etc/apache2/sites-available/your_domain.conf
+ 
+De esta manera, se creará un nuevo archivo en blanco. Pegue la siguiente configuración básica:
+
+    /etc/apache2/sites-available/your_domain.conf
+    <VirtualHost *:80>
+        ServerName your_domain
+        ServerAlias www.your_domain
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/your_domain
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+    </VirtualHost>
+ 
+Con esta configuración de VirtualHost, le indicamos a Apache que proporcione your_domain usando /var/www/your_domain como directorio root web. Si desea probar Apache sin un nombre de dominio, puede eliminar o convertir en comentario las opciones ServerName y ServerAlias añadiendo un carácter # al principio de las líneas de cada opción.
+
+Ahora, puede usar a2ensite para habilitar el nuevo host virtual:
+
+    sudo a2ensite your_domain
+ 
+Puede ser conveniente deshabilitar el sitio web predeterminado que viene instalado con Apache. Es necesario hacerlo si no se utiliza un nombre de dominio personalizado, dado que, en este caso, la configuración predeterminada de Apache sobrescribirá su host virtual. Para deshabilitar el sitio web predeterminado de Apache, escriba lo siguiente:
+
+    sudo a2dissite 000-default
+ 
+Para asegurarse de que su archivo de configuración no contenga errores de sintaxis, ejecute lo siguiente:
+
+    sudo apache2ctl configtest
+ 
+Por último, vuelva a cargar Apache para que estos cambios surtan efecto:
+
+    sudo systemctl reload apache2
+ 
+Ahora, su nuevo sitio web está activo, pero el directorio root web /var/www/your_domain todavía está vacío. Cree un archivo index.html en esa ubicación para poder probar que el host virtual funcione según lo previsto:
+
+    nano /var/www/your_domain/index.html
+ 
+Incluya el siguiente contenido en este archivo:
+
+    <h1>Funciona!</h1>
+    <p>Esta es la página de inicio de <strong>your_domain</strong></p>
+ 
+Ahora, diríjase a su navegador y acceda al nombre de dominio o la dirección IP de su servidor una vez más:
+
+http://server_domain_or_IP
+
+*Nota sobre DirectoryIndex en Apache
+Con la configuración predeterminada de DirectoryIndex en Apache, un archivo denominado index.html siempre tendrá prioridad sobre un archivo index.php. Esto es útil para establecer páginas de mantenimiento en aplicaciones PHP, dado que se puede crear un archivo index.html temporal que contenga un mensaje informativo para los visitantes. Como esta página tendrá precedencia sobre la página index.php, se convertirá en la página de destino de la aplicación. Una vez que el mantenimiento se completa, el archivo index.html se elimina del root de documentos, o se le cambia el nombre, para volver mostrar la página habitual de la aplicación.*
+
+Si desea cambiar este comportamiento, deberá editar el archivo /etc/apache2/mods-enabled/dir.conf y modificar el orden en el que el archivo index.php se enumera en la directiva DirectoryIndex:
+
+sudo nano /etc/apache2/mods-enabled/dir.conf
+ 
+/etc/apache2/mods-enabled/dir.conf
+<IfModule mod_dir.c>
+        DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+</IfModule>
+ 
+Después de guardar y cerrar el archivo, deberá volver a cargar Apache para que los cambios surtan efecto:
+
+    sudo systemctl reload apache2
+ 
+En el siguiente paso, crearemos una secuencia de comandos PHP para probar que PHP esté correctamente instalado y configurado en su servidor.
+
+Paso 4: Probar el procesamiento de PHP en su servidor web
+Ahora que dispone de una ubicación personalizada para alojar los archivos y las carpetas de su sitio web, crearemos una secuencia de comandos PHP de prueba para verificar que Apache pueda gestionar solicitudes y procesar solicitudes de archivos PHP.
+
+Cree un archivo nuevo llamado info.php dentro de su carpeta root web personalizada:
+
+    nano /var/www/your_domain/info.php
+ 
+Con esto se abrirá un archivo vacío. Añada el siguiente texto, que es el código PHP válido, dentro del archivo:
+
+    <?php
+        phpinfo();
+    >
+
+Para probar esta secuencia de comandos, diríjase a su navegador web y acceda al nombre de dominio o la dirección IP de su servidor, seguido del nombre de la secuencia de comandos, que en este caso es info.php:
+
+http://server_domain_or_IP/info.php
+
+
+
+
+
 
 ## [Yii Framework](https://www.yiiframework.com/doc/guide/2.0/es/start-installation)
 
