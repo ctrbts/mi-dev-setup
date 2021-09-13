@@ -242,8 +242,8 @@ Independientemente del método que utilice para obtener su dirección IP, escrí
 
 Actualizamos el índice de paquetes, instalamos el paquete de mariadb-server, ejecutamos `mysql_secure_installation` para restringir el acceso al servidor
 
-    sudo apt update
-    sudo apt install mariadb-server
+    sudo apt update &&
+    sudo apt install mariadb-server -y &&
     sudo mysql_secure_installation
  
 Luego verá una serie de solicitudes mediante las cuales podrá realizar cambios en las opciones de seguridad de su instalación de MariaDB. En la primera solicitud se pedirá que introduzca la contraseña root de la base de datos actual. Debido a que no configuramos una aún, pulse ENTER para indicar “none” (ninguna).
