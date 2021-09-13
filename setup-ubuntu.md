@@ -14,6 +14,7 @@
 - [Android Studio](#android-studio)
 - [LAMPP](#lampp)
     - [Apache](#apache)
+    - [MariaDB](#mariadb)
 - [Yii Framework](#yii-framework)
 
 ## Configuración inicial
@@ -236,6 +237,85 @@ Un método alternativo consiste en usar la utilidad curl para contactar a una pa
     curl http://icanhazip.com
  
 Independientemente del método que utilice para obtener su dirección IP, escríbala en la barra de direcciones de su navegador web para ver la página predeterminada de Apache.
+
+### MariaDB
+
+Actualizamos el índice de paquetes, instalamos el paquete de mariadb-server, ejecutamos `mysql_secure_installation` para restringir el acceso al servidor
+
+    sudo apt update
+    sudo apt install mariadb-server
+    sudo mysql_secure_installation
+ 
+Luego verá una serie de solicitudes mediante las cuales podrá realizar cambios en las opciones de seguridad de su instalación de MariaDB. En la primera solicitud se pedirá que introduzca la contraseña root de la base de datos actual. Debido a que no configuramos una aún, pulse ENTER para indicar “none” (ninguna).
+
+    Output
+    NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+          SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+    In order to log into MariaDB to secure it, we'll need the current
+    password for the root user.  If you've just installed MariaDB, and
+    you haven't set the root password yet, the password will be blank,
+    so you should just press enter here.
+
+    Enter current password for root (enter for none):
+
+En la siguiente solicitud se pregunta si desea configurar una contraseña root de base de datos. En Ubuntu, la cuenta root para MariaDB está estrechamente vinculada al mantenimiento del sistema automatizado. Por lo tanto, no deberíamos cambiar los métodos de autenticación configurados para esa cuenta. Hacer esto permitiría que una actualización de paquetes dañara el sistema de bases de datos eliminando el acceso a la cuenta administrativa. Escriba N y pulse ENTER.
+
+    Output
+    . . .
+    OK, successfully used password, moving on...
+
+    Setting the root password ensures that nobody can log into the MariaDB
+    root user without the proper authorisation.
+
+    Set root password? [Y/n] N
+
+A partir de allí, puede pulsar Y y luego ENTER para aceptar los valores predeterminados para todas las preguntas siguientes. Con esto, se eliminarán algunos usuarios anónimos y la base de datos de prueba, se deshabilitarán las credenciales de inicio de sesión remoto de root y se cargarán estas nuevas reglas para que MariaDB aplique de inmediato los cambios que realizó.
+
+Con eso, ha terminado de realizar la configuración de seguridad inicial de MariaDB. El siguiente paso es autenticar su servidor de MariaDB con una contraseña.
+
+En los sistemas Ubuntu con MariaDB 10.03, el root user de MariaDB se configura para autenticar usando el complemento unix_socket por defecto en vez de con una contraseña. Esto proporciona una mayor seguridad y utilidad en muchos casos, pero también puede generar complicaciones cuando necesita otorgar derechos administrativos a un programa externo (por ejemplo, phpMyAdmin).
+
+Debido a que el servidor utiliza la cuenta root para tareas como la rotación de registros y el inicio y la deteneción del servidor, es mejor no cambiar los detalles de autenticación root de la cuenta. La modificación de las credenciales del archivo de configuración en /etc/mysql/debian.cnf puede funcionar al principio, pero las actualizaciones de paquetes pueden sobrescribir esos cambios. En vez de modificar la cuenta root, los mantenedores de paquetes recomiendan crear una cuenta administrativa independiente para el acceso basado en contraseña.
+
+Para hacerlo, crearemos una nueva cuenta llamada admin con las mismas capacidades que la cuenta root, pero configurada para la autenticación por contraseña. Abra la línea de comandos de MariaDB desde su terminal:
+
+    sudo mariadb
+ 
+A continuación, cree un nuevo usuario con privilegios root y acceso basado en contraseña. Asegúrese de cambiar el nombre de usuario y la contraseña para que se adapten a sus preferencias:
+
+    GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+ 
+Vacíe los privilegios para garantizar que se guarden y estén disponibles en la sesión actual:
+
+    FLUSH PRIVILEGES;
+ 
+Después de esto, cierre el shell de MariaDB:
+
+    exit
+ 
+
+Cuando se instale desde los repositorios predeterminados, MariaDB se ejecutará automáticamente. Para probar esto, compruebe su estado.
+
+    sudo systemctl status mariadb
+ 
+Recibirá un resultado que es similar al siguiente:
+
+    Output
+    ● mariadb.service - MariaDB 10.3.22 database server
+         Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; vendor preset: enabled)
+         Active: active (running) since Tue 2020-05-12 13:38:18 UTC; 3min 55s ago
+           Docs: man:mysqld(8)
+                 https://mariadb.com/kb/en/library/systemd/
+       Main PID: 25914 (mysqld)
+         Status: "Taking your SQL requests now..."
+          Tasks: 31 (limit: 2345)
+         Memory: 65.6M
+         CGroup: /system.slice/mariadb.service
+                 └─25914 /usr/sbin/mysqld
+    . . .
+
+Si MariaDB no funciona, puede iniciarla con el comando `sudo systemctl start mariadb`
 
 
 ## [Yii Framework](https://www.yiiframework.com/doc/guide/2.0/es/start-installation)
