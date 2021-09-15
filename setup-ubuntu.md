@@ -15,6 +15,7 @@
 - [LAMPP](#lampp)
     - [Apache](#apache)
     - [MariaDB](#mariadb)
+    - [PHP]()#php
 - [Yii Framework](#yii-framework)
 
 ## Configuración inicial
@@ -320,8 +321,8 @@ Si MariaDB no funciona, puede iniciarla con el comando `sudo systemctl start mar
 ### PHP 
 
 Instalamos PHP con los adds mas comunes
-
-    sudo apt install php libapache2-mod-php php-mysql php-curl php-imap php-mbstring php-intl
+    
+    sudo apt install php libapache2-mod-php php-common php-mbstring php-imap php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-cli php-zip php-curl
 
 Para confirmar que todo esta instalado ok ejecutamos `php -v`
 
