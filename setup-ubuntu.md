@@ -250,9 +250,7 @@ Actualizamos el índice de paquetes, instalamos el paquete de mariadb-server, ej
 Luego verá una serie de solicitudes mediante las cuales podrá realizar cambios en las opciones de seguridad de su instalación de MariaDB. En la primera solicitud se pedirá que introduzca la contraseña root de la base de datos actual. Debido a que no configuramos una aún, pulse ENTER para indicar “none” (ninguna). Para las siguientes puede seguir la guía a continuación:
 
     Enter current password for root (enter for none): Just press the Enter
-    Set root password? [Y/n]: Y
-    New password: Enter password
-    Re-enter new password: Repeat password
+    Set root password? [Y/n]: n
     Remove anonymous users? [Y/n]: Y
     Disallow root login remotely? [Y/n]: Y
     Remove test database and access to it? [Y/n]:  Y
