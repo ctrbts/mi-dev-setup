@@ -15,7 +15,7 @@
 - [LAMPP](#lampp)
     - [Apache](#apache)
     - [MariaDB](#mariadb)
-    - [PHP]()#php
+    - [PHP](#php)
 - [Yii Framework](#yii-framework)
 
 ## Configuración inicial
