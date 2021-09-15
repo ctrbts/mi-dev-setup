@@ -247,31 +247,16 @@ Actualizamos el índice de paquetes, instalamos el paquete de mariadb-server, ej
     sudo apt install mariadb-server -y &&
     sudo mysql_secure_installation
  
-Luego verá una serie de solicitudes mediante las cuales podrá realizar cambios en las opciones de seguridad de su instalación de MariaDB. En la primera solicitud se pedirá que introduzca la contraseña root de la base de datos actual. Debido a que no configuramos una aún, pulse ENTER para indicar “none” (ninguna).
+Luego verá una serie de solicitudes mediante las cuales podrá realizar cambios en las opciones de seguridad de su instalación de MariaDB. En la primera solicitud se pedirá que introduzca la contraseña root de la base de datos actual. Debido a que no configuramos una aún, pulse ENTER para indicar “none” (ninguna). Para las siguientes puede seguir la guía a continuación:
 
-    Output
-    NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
-          SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
-
-    In order to log into MariaDB to secure it, we'll need the current
-    password for the root user.  If you've just installed MariaDB, and
-    you haven't set the root password yet, the password will be blank,
-    so you should just press enter here.
-
-    Enter current password for root (enter for none):
-
-En la siguiente solicitud se pregunta si desea configurar una contraseña root de base de datos. En Ubuntu, la cuenta root para MariaDB está estrechamente vinculada al mantenimiento del sistema automatizado. Por lo tanto, no deberíamos cambiar los métodos de autenticación configurados para esa cuenta. Hacer esto permitiría que una actualización de paquetes dañara el sistema de bases de datos eliminando el acceso a la cuenta administrativa. Escriba N y pulse ENTER.
-
-    Output
-    . . .
-    OK, successfully used password, moving on...
-
-    Setting the root password ensures that nobody can log into the MariaDB
-    root user without the proper authorisation.
-
-    Set root password? [Y/n] N
-
-A partir de allí, puede pulsar Y y luego ENTER para aceptar los valores predeterminados para todas las preguntas siguientes. Con esto, se eliminarán algunos usuarios anónimos y la base de datos de prueba, se deshabilitarán las credenciales de inicio de sesión remoto de root y se cargarán estas nuevas reglas para que MariaDB aplique de inmediato los cambios que realizó.
+    Enter current password for root (enter for none): Just press the Enter
+    Set root password? [Y/n]: Y
+    New password: Enter password
+    Re-enter new password: Repeat password
+    Remove anonymous users? [Y/n]: Y
+    Disallow root login remotely? [Y/n]: Y
+    Remove test database and access to it? [Y/n]:  Y
+    Reload privilege tables now? [Y/n]:  Y
 
 Con eso, ha terminado de realizar la configuración de seguridad inicial de MariaDB. El siguiente paso es autenticar su servidor de MariaDB con una contraseña.
 
