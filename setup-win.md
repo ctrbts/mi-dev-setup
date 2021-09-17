@@ -10,14 +10,19 @@
   
 ## Optimizar el sistema
 
-Optimizar el sistema no siempre significa desactivar todo, hay funciones como la indizacion de archivos que si bien consume recursos, suele ser enormemente util cuando manejamos muchos archivos y proyectos a la vez. Otras funciones como la telemetría o las actualizaciones sin control que reinician el sistema sin nuestro permiso sin son necesarias desactivarlas para mejorar nuestra productividad en Windows y acelerar un poco el sistema.
+Funciones como la telemetría o las actualizaciones sin control que reinician el sistema sin nuestro permiso sin son necesarias desactivarlas para mejorar nuestra productividad en Windows y acelerar un poco el sistema.
 
-Que deshabilitaremos entonces?
-- Postergamos por 365 dia las actualizaciones del S.O. [WinSecurityOnly](https://gist.github.com/ctrbts/1e5061da8370bca85e3fca93dec3164c#file-win_security_only-reg) 
-- Limitamos el uso de RAM de algunos procesos y tareas del sistema. [RAM Reducer](https://gist.github.com/ctrbts/0652898bf1eeb7b535f3d0bcecefa6b0#file-ram_reducer-reg) 
-...
-- Deshabilitar Cortana
-- Desinstalar OneDrive
+Copiar y pegar la siguiente línea en una ventana de poweshell
+
+    iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JJ8R4'))
+
+Que puede hacer este script
+- Instala cualquier programa de la lista en el que haga clic con WinGet
+- Telemetría eliminada
+- Desactiva Cortana
+- Elimina varias tareas programadas que reflotan el sistema
+- Soluciona problemas causados ​​por otros scripts (bloqueo de pantalla y opciones de personalización restringidas)
+
 
 ## Laragon
 Laragon es un entorno de desarrollo universal portátil, aislado, rápido y potente para PHP, Node.js, Python, Java, Go, Ruby. Es rápido, liviano, fácil de usar y fácil de extender. Es ideal para crear y administrar aplicaciones web modernas. Se centra en el rendimiento, diseñado en torno a la estabilidad, la simplicidad, la flexibilidad y la libertad. 
