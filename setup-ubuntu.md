@@ -22,10 +22,13 @@
 
 ### Gestores de paquetes y utilidades
 
-Actualizamos el sistema, agregamos un gestor de paquetes y las herramientas necesarias (algunas las configuraremos mas adelante)
+Actualizamos el sistema y agregamos algunas herramientas necesarias (las configuraremos mas adelante)
 
     sudo apt update && sudo apt upgrade -y &&
-    sudo apt install curl git zsh -y &&
+    sudo apt install curl git zsh ssh mc -y
+    
+Agregamos gestores de paquetes (esto es opcional pero puede ser útil)
+
     sudo apt install synaptic --install-suggests -y &&
     sudo apt install gnome-tweaks gnome-software gnome-software-plugin-flatpak -y &&
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -209,31 +212,28 @@ Verá un resultado como este:
       Apache Secure
       OpenSSH
 
-Para permitir tráfico únicamente en el puerto 80 utilice el perfil Apache:
+Abrimos los puertos necesarios para permitir el tráfico en el servidor:
 
-    sudo ufw allow in "Apache"
+    sudo ufw allow in "Apache Full" &&
+    sudo ufw allow in "OpenSSH"
  
 Puede verificar el cambio con lo siguiente:
 
     sudo ufw status
  
-Ahora, se permite tráfico en el puerto 80 a través del firewall.
-
-Puede realizar una verificación rápida para comprobar que todo se haya realizado según lo previsto dirigiéndose a la dirección IP pública de su servidor en su navegador web (consulte la nota de la siguiente sección para saber cuál es su dirección IP pública si no dispone de esta información):
+Para realizar una verificación rápida y comprobar que todo se haya realizado correctamente pruebe escribiendo la dirección IP pública de su servidor en su navegador web:
 
 http://your_server_ip
 
-Si puede ver la página web predeterminada de Apache para Ubuntu 20.04, su servidor web estará correctamente instalado y el acceso a él será posible a través de su firewall.
+Si puede ver la página predeterminada de Apache para Ubuntu 20.04, su servidor web estará correctamente instalado y el acceso a él será viable a través de su firewall.
 
-Si no conoce la dirección IP pública de su servidor, hay varias formas de encontrarla. Por lo general, es la dirección que utiliza para establecer conexión con su servidor a través de SSH.
-
-Existen varias formas de hacerlo desde la línea de comandos. Primero, podría usar las herramientas de iproute2 para obtener su dirección IP escribiendo esto:
+Si no conoce la dirección IP pública de su servidor, hay varias formas de encontrarla. Podría usar las herramientas de iproute2 para obtener su dirección IP escribiendo esto:
 
     ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
  
 Esto nos brindará dos o tres líneas. Todas estas direcciones son correctas, pero su computadora puede usar una de ellas. No dude en probarlas todas.
 
-Un método alternativo consiste en usar la utilidad curl para contactar a una parte externa a fin de que le indique su evaluación del servidor. Esto se hace solicitando a un servidor específico su dirección IP:
+Un método alternativo consiste en usar la utilidad curl para contactar a una webe externa con el fin de que le indique su evaluación del servidor. Esto se hace solicitando a un servidor específico su dirección IP:
 
     curl http://icanhazip.com
  
@@ -249,7 +249,7 @@ Actualizamos el índice de paquetes, instalamos el paquete de mariadb-server, ej
  
 Luego verá una serie de solicitudes mediante las cuales podrá realizar cambios en las opciones de seguridad de su instalación de MariaDB. En la primera solicitud se pedirá que introduzca la contraseña root de la base de datos actual. Debido a que no configuramos una aún, pulse ENTER para indicar “none” (ninguna). Para las siguientes puede seguir la guía a continuación:
 
-    Enter current password for root (enter for none): Just press the Enter
+    Enter current password for root (enter for none): Solo presione Enter
     Set root password? [Y/n]: n
     Remove anonymous users? [Y/n]: Y
     Disallow root login remotely? [Y/n]: Y
@@ -268,7 +268,7 @@ Para hacerlo, crearemos una nueva cuenta llamada admin con las mismas capacidade
  
 A continuación, cree un nuevo usuario con privilegios root y acceso basado en contraseña. Asegúrese de cambiar el nombre de usuario y la contraseña para que se adapten a sus preferencias:
 
-    GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+    GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'su_password' WITH GRANT OPTION;
  
 Vacíe los privilegios para garantizar que se guarden y estén disponibles en la sesión actual:
 
@@ -305,13 +305,13 @@ Si MariaDB no funciona, puede iniciarla con el comando `sudo systemctl start mar
 
 Instalamos PHP con los adds mas comunes
     
-    sudo apt install php libapache2-mod-php php-common php-mbstring php-imap php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-cli php-zip php-curl
+    sudo apt install libapache2-mod-php php php-fpm php-common php-mbstring php-imap php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-fpdf php-cli php-zip php-curl
 
 Para confirmar que todo esta instalado ok ejecutamos `php -v`
 
 #### Crear un host virtual para alojar su web
 
-Ubuntu 20.04 tiene habilitado un bloque de servidor por defecto, que está configurado para proporcionar documentos del directorio /var/www/html. Si bien esto funciona bien para un solo sitio, puede ser difícil de manejar si alojamo varios. En lugar de modificar /var/www/html, crearemos una estructura de directorio dentro de /var/www para el sitio your_domain y dejaremos /var/www/html establecido como directorio predeterminado que se presentará si una solicitud de cliente no coincide con ningún otro sitio.
+Ubuntu 20.04 tiene habilitado un bloque de servidor por defecto, que está configurado para proporcionar documentos del directorio /var/www/html. Si bien esto funciona bien para un solo sitio, puede ser difícil de manejar si alojamos varios. En lugar de modificar /var/www/html, crearemos una estructura de directorio dentro de /var/www para el sitio your_domain y dejaremos /var/www/html establecido como directorio predeterminado que se presentará si una solicitud de cliente no coincide con ningún otro sitio.
 
 Cree el directorio para your_domain de la siguiente manera:
 
