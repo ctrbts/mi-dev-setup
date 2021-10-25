@@ -258,17 +258,17 @@ Luego verá una serie de solicitudes mediante las cuales podrá realizar cambios
 
 Con eso, ha terminado de realizar la configuración de seguridad inicial de MariaDB. El siguiente paso es autenticar su servidor de MariaDB con una contraseña.
 
-En los sistemas Ubuntu con MariaDB 10.03, el root user de MariaDB se configura para autenticar usando el complemento unix_socket por defecto en vez de con una contraseña. Esto proporciona una mayor seguridad y utilidad en muchos casos, pero también puede generar complicaciones cuando necesita otorgar derechos administrativos a un programa externo (por ejemplo, phpMyAdmin).
+En los sistemas Ubuntu con MariaDB, el root user de MariaDB se configura para autenticar usando el complemento unix_socket por defecto en vez de con una contraseña. Esto proporciona una mayor seguridad y utilidad en muchos casos, pero también puede generar complicaciones cuando necesita otorgar derechos administrativos a un programa externo (por ejemplo, phpMyAdmin).
 
-Debido a que el servidor utiliza la cuenta root para tareas como la rotación de registros y el inicio y la deteneción del servidor, es mejor no cambiar los detalles de autenticación root de la cuenta. La modificación de las credenciales del archivo de configuración en /etc/mysql/debian.cnf puede funcionar al principio, pero las actualizaciones de paquetes pueden sobrescribir esos cambios. En vez de modificar la cuenta root, los mantenedores de paquetes recomiendan crear una cuenta administrativa independiente para el acceso basado en contraseña.
+Debido a que el servidor utiliza la cuenta root para tareas como la rotación de registros y el inicio y la detención del servidor, es preferible no cambiar la autenticación root de la cuenta. La modificación de las credenciales del archivo de configuración en /etc/mysql/debian.cnf pueden funcionar al principio, pero las actualizaciones posteriores de paquetes pueden sobrescribir esos cambios. En vez de modificar la cuenta root, los mantenedores de paquetes recomiendan crear una cuenta administrativa independiente para el acceso basado en contraseña.
 
-Para hacerlo, crearemos una nueva cuenta llamada admin con las mismas capacidades que la cuenta root, pero configurada para la autenticación por contraseña. Abra la línea de comandos de MariaDB desde su terminal:
+Para hacerlo, crearemos una nueva cuenta con las mismas capacidades que la cuenta root, pero configurada para la autenticación por contraseña. Abra la línea de comandos de MariaDB desde su terminal:
 
     sudo mariadb
  
-A continuación, cree un nuevo usuario con privilegios root y acceso basado en contraseña. Asegúrese de cambiar el nombre de usuario y la contraseña para que se adapten a sus preferencias:
+A continuación, cree un nuevo usuario con privilegios root y acceso basado en contraseña. Asegúrese de cambiar el nombre de usuario y la contraseña para que se adapten a sus necesidades (puede cambiar 'localhost' por el comodin '%' para acceso remoto):
 
-    GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'su_password' WITH GRANT OPTION;
+    GRANT ALL ON *.* TO 'su_usuario'@'localhost' IDENTIFIED BY 'su_password' WITH GRANT OPTION;
  
 Vacíe los privilegios para garantizar que se guarden y estén disponibles en la sesión actual:
 
