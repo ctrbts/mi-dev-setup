@@ -305,7 +305,7 @@ Si MariaDB no funciona, puede iniciarla con el comando `sudo systemctl start mar
 
 Instalamos PHP con los adds mas comunes
     
-    sudo apt install libapache2-mod-php php php-fpm php-common php-mbstring php-imap php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-fpdf php-cli php-zip php-curl
+    sudo apt install libapache2-mod-php php php-fpm php-common php-mbstring php-imap php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-fpdf php-cli php-zip php-curl -y
 
 Para confirmar que todo esta instalado ok ejecutamos `php -v`
 
