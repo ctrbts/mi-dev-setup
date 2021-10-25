@@ -25,7 +25,7 @@
 Actualizamos el sistema y agregamos algunas herramientas necesarias (las configuraremos mas adelante)
 
     sudo apt update && sudo apt upgrade -y &&
-    sudo apt install curl git zsh ssh mc -y
+    sudo apt install curl git zsh ssh mc nmap -y
     
 Agregamos gestores de paquetes (esto es opcional pero puede ser útil)
 
