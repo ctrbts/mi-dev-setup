@@ -16,6 +16,7 @@
     - [Apache](#apache)
     - [MariaDB](#mariadb)
     - [PHP](#php)
+    - [Crear un host virtual](#crear-un-host-virtual)
 
 ## Configuración inicial
 
@@ -331,7 +332,7 @@ Se puede verificar el estado de OPcache con:
 
     php -i | grep opcache
 
-#### Crear un host virtual para alojar su web
+#### Crear un host virtual
 
 Ubuntu 20.04 tiene habilitado un bloque de servidor por defecto, que está configurado para proporcionar documentos del directorio /var/www/html. Si bien esto funciona bien para un solo sitio, puede ser difícil de manejar si alojamos varios. En lugar de modificar /var/www/html, crearemos una estructura de directorio dentro de /var/www para el sitio your_domain y dejaremos /var/www/html establecido como directorio predeterminado que se presentará si una solicitud de cliente no coincide con ningún otro sitio.
 
