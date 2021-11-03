@@ -349,7 +349,6 @@ Luego, abra un nuevo archivo de configuración en el directorio sites-available 
  
 De esta manera, se creará un nuevo archivo en blanco. Pegue la siguiente configuración básica:
 
-    /etc/apache2/sites-available/your_domain.conf
     <VirtualHost *:80>
         ServerName your_domain
         ServerAlias www.your_domain
