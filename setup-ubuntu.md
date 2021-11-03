@@ -191,7 +191,7 @@ Agregue las siguientes líneas a su archivo de configuración ~/.zshrc:
 Instalamos Apache usando el administrador de paquetes de Ubuntu:
 
     sudo apt update &&
-    sudo apt install apache2
+    sudo apt install apache2 -y
  
 Una vez que la instalación se complete, deberá ajustar la configuración de su firewall para permitir tráfico HTTP y HTTPS. 
 Si UFW no esta habilitado pude hacerlo con 
@@ -297,6 +297,10 @@ Recibirá un resultado que es similar al siguiente:
          CGroup: /system.slice/mariadb.service
                  └─25914 /usr/sbin/mysqld
     . . .
+
+Abrimos el puerto necesario para permitir el tráfico desde el servidor:
+
+    sudo ufw allow 3306/tcp"
 
 Si MariaDB no funciona, puede iniciarla con el comando `sudo systemctl start mariadb`
 
