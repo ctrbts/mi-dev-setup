@@ -16,7 +16,6 @@
     - [Apache](#apache)
     - [MariaDB](#mariadb)
     - [PHP](#php)
-- [Yii Framework](#yii-framework)
 
 ## Configuración inicial
 
@@ -191,7 +190,7 @@ Agregue las siguientes líneas a su archivo de configuración ~/.zshrc:
 
 Instalamos Apache usando el administrador de paquetes de Ubuntu:
 
-    sudo apt update
+    sudo apt update &&
     sudo apt install apache2
  
 Una vez que la instalación se complete, deberá ajustar la configuración de su firewall para permitir tráfico HTTP y HTTPS. 
@@ -402,37 +401,3 @@ Con esto se abrirá un archivo vacío. Añada el siguiente texto, que es el cód
 Para probar esta secuencia de comandos, diríjase a su navegador web y acceda al nombre de dominio o la dirección IP de su servidor, seguido del nombre de la secuencia de comandos, que en este caso es info.php:
 
 http://server_domain_or_IP/info.php
-
-
-
-
-
-
-## [Yii Framework](https://www.yiiframework.com/doc/guide/2.0/es/start-installation)
-
-Yii es un framework PHP rápido, seguro y eficiente. Flexible pero pragmático. Funciona de inmediato. Y un conjunto de valores predeterminados razonables.
-
-Instalando via Composer:
-
-    curl -sS https://getcomposer.org/installer | php
-    sudo mv composer.phar /usr/local/bin/composer
-
-Si ya tienes composer instalado, asegúrate de tener una versión actualizada. Puedes actualizar Composer ejecutando el comando 
-
-    composer self-update
-
-Instalamos las dependencias necesarias
-
-    sudo apt install php-mbstring php-xml
-
-Instalar Yii ejecutando los siguientes comandos en un directorio accesible vía Web:
-
-    composer create-project --prefer-dist yiisoft/yii2-app-basic mi_aplicacion
-    
-Verificamos la instalación ejecutando el siguiente comando
-    
-    cd mi_aplicacion && php yii serve
-
-Y accedemos a la aplicación instalada de Yii en la siguiente URL:
-
-http://localhost:8080/.
