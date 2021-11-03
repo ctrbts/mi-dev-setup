@@ -312,6 +312,25 @@ Instalamos PHP con los adds mas comunes
 
 Para confirmar que todo esta instalado ok ejecutamos `php -v`
 
+Abrimos el archivo de configuración de PHP para configurar OPCahe con el siguiente comando:
+
+    sudo nano /etc/php/7.4/apache2/php.ini
+
+Descomentamos las siguientes líneas:
+
+    opcache.enable=1
+    opcache.memory_consumption=128
+    opcache.max_accelerated_files=10000
+    opcache.revalidate_freq=200
+
+Guardar y reiniciaar Apache:
+
+    systemctl restart apache2
+
+Se puede verificar el estado de OPcache con:
+
+    php -i | grep opcache
+
 #### Crear un host virtual para alojar su web
 
 Ubuntu 20.04 tiene habilitado un bloque de servidor por defecto, que está configurado para proporcionar documentos del directorio /var/www/html. Si bien esto funciona bien para un solo sitio, puede ser difícil de manejar si alojamos varios. En lugar de modificar /var/www/html, crearemos una estructura de directorio dentro de /var/www para el sitio your_domain y dejaremos /var/www/html establecido como directorio predeterminado que se presentará si una solicitud de cliente no coincide con ningún otro sitio.
