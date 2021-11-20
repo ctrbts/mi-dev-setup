@@ -364,7 +364,11 @@ Con esta configuración de VirtualHost, le indicamos a Apache que proporcione yo
 Ahora, puede usar a2ensite para habilitar el nuevo host virtual:
 
     sudo a2ensite your_domain
- 
+
+Luego deberá reiniciar apache con:
+
+    systemctl reload apache2
+    
 Puede ser conveniente deshabilitar el sitio web predeterminado que viene instalado con Apache. Es necesario hacerlo si no se utiliza un nombre de dominio personalizado, dado que, en este caso, la configuración predeterminada de Apache sobrescribirá su host virtual. Para deshabilitar el sitio web predeterminado de Apache, escriba lo siguiente:
 
     sudo a2dissite 000-default
