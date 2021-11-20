@@ -322,7 +322,7 @@ Descomentamos las siguientes líneas:
     opcache.enable=1
     opcache.memory_consumption=128
     opcache.max_accelerated_files=10000
-    opcache.revalidate_freq=200
+    opcache.revalidate_freq=2
 
 Guardar y reiniciaar Apache:
 
