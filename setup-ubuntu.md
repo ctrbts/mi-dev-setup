@@ -30,10 +30,13 @@ Actualizamos el sistema y agregamos algunas herramientas necesarias (las configu
 Agregamos gestores de paquetes (esto es opcional pero puede ser útil)
 
     sudo apt install synaptic --install-suggests -y &&
-    sudo apt install gnome-tweaks gnome-software gnome-software-plugin-flatpak -y &&
+    
+    sudo apt install flatpak gnome-software-plugin-flatpak -y &&
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 ### Personalización
+    
+    sudo apt install gnome-tweaks
 
 Algunas otras configuraciones necesarias
 
