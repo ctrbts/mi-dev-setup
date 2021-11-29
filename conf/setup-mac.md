@@ -39,7 +39,7 @@ Tanto para la consola como para los editores de texto que utilizaremos es import
 Para configurar un archivo *gitignore* de forma global:
 
     cd ~
-    curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/dotfiles/.gitignore
+    curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/conf/dotfiles/.gitignore
     git config --global core.excludesfile ~/.gitignore
 
 ### Zsh
