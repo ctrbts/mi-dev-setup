@@ -139,9 +139,9 @@ Con node instalado agregamos los frameworks y modulos mas utilizados
 
 ## OpenJDK
 
-La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados
+La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados (para Ubuntu 22.04_LTS la version por defecto de java es la 11)
 
-    sudo apt update && sudo apt install openjdk-11-jdk -y 
+    sudo apt update && sudo apt install default-jdk -y 
 
 Agregamos las siguientes lineas al archivo ~/.zshrc:
 
