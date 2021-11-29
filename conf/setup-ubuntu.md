@@ -306,7 +306,7 @@ Recibirá un resultado que es similar al siguiente:
 
 Abrimos el puerto necesario para permitir el tráfico desde el servidor:
 
-    sudo ufw allow 3306/tcp"
+    sudo ufw allow 3306/tcp
 
 Si MariaDB no funciona, puede iniciarla con el comando `sudo systemctl start mariadb`
 
