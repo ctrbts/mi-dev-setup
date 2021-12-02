@@ -428,7 +428,7 @@ Con esto se abrirá un archivo vacío. Añada el siguiente texto, que es el cód
 
     <?php
         phpinfo();
-    >
+    ?>
 
 Para probar esta secuencia de comandos, diríjase a su navegador web y acceda al nombre de dominio o la dirección IP de su servidor, seguido del nombre de la secuencia de comandos, que en este caso es info.php:
 
