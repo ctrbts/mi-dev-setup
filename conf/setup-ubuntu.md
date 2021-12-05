@@ -354,14 +354,23 @@ Luego, abra un nuevo archivo de configuración en el directorio sites-available 
     sudo nano /etc/apache2/sites-available/su_dominio.conf
  
 De esta manera, se creará un nuevo archivo en blanco. Pegue la siguiente configuración básica:
-
+    
     <VirtualHost *:80>
+
         ServerName su_dominio
         ServerAlias www.su_dominio
         ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/su_dominio
+        DocumentRoot "/var/www/su_dominio"
+
+        <Directory "/var/www/su_dominio">
+            Options Indexes FollowSymLinks
+            AllowOverride All
+            Require all granted
+        </Directory>
+
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
+
     </VirtualHost>
  
 Con esta configuración de VirtualHost, le indicamos a Apache que proporcione su_dominio usando /var/www/su_dominio como directorio root web. Si desea probar Apache sin un nombre de dominio, puede eliminar o convertir en comentario las opciones ServerName y ServerAlias añadiendo un carácter # al principio de las líneas de cada opción.
