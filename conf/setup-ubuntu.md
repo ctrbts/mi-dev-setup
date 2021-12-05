@@ -331,7 +331,7 @@ Descomentamos las siguientes líneas:
 
 Guardar y reiniciaar Apache:
 
-    systemctl restart apache2
+    sudo systemctl restart apache2
 
 Se puede verificar el estado de OPcache con:
 
@@ -372,7 +372,7 @@ Ahora, puede usar a2ensite para habilitar el nuevo host virtual:
 
 Luego deberá reiniciar apache con:
 
-    systemctl reload apache2
+    sudo systemctl reload apache2
     
 Puede ser conveniente deshabilitar el sitio web predeterminado que viene instalado con Apache. Es necesario hacerlo si no se utiliza un nombre de dominio personalizado, dado que, en este caso, la configuración predeterminada de Apache sobrescribirá su host virtual. Para deshabilitar el sitio web predeterminado de Apache, escriba lo siguiente:
 
