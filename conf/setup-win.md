@@ -2,7 +2,7 @@
 
 - [Optimizar el sistema](#optimizar-el-sistema)
 - [Laragon](#laragon)
-- [Mobile Frameworks](#mobile-frameworks)
+  - [Node modules](#node-modules)
 - [Netbeans IDE](#netbeans-ide)
 - [Android Studio](#android-studio)
 
@@ -34,10 +34,9 @@ Para descargar el paquete completo [click aqui](https://github.com/leokhoa/larag
 aqui](https://github.com/leokhoa/laragon/releases/download/5.0.0/laragon-portable.zip)
 
 
-## Mobile Frameworks
+## Node modules
 
-`npm i -g cordova framework7-cli @ionic/cli`
-
+    npm i -g cordova framework7-cli @ionic/cli express-generator yarn
 
 ## Netbeans IDE
 
