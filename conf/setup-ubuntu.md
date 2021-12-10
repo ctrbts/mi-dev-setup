@@ -7,7 +7,7 @@
     - [Zsh](#zsh)
     - [Git](#git)
 - [Node.js](#node)
-- [Mobile Frameworks](#mobile-frameworks)
+    - [Node modules](#Node-modules)
 - [OpenJDK](#openjdk)
 - [Gradle](#gradle)
 - [Netbeans IDE](#netbeans-ide)
