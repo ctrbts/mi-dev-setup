@@ -3,7 +3,6 @@
 - [Optimizar el sistema](#optimizar-el-sistema)
 - [Laragon](#laragon)
 - [Mobile Frameworks](#mobile-frameworks)
-- [OpenJDK](#openjdk)
 - [Netbeans IDE](#netbeans-ide)
 - [Android Studio](#android-studio)
 
@@ -38,11 +37,6 @@ aqui](https://github.com/leokhoa/laragon/releases/download/5.0.0/laragon-portabl
 ## Mobile Frameworks
 
 `npm i -g cordova framework7-cli @ionic/cli`
-
-
-## OpenJDK
-
-Instalamos el ***JDK*** desde https://adoptopenjdk.net/installation.html#installers
 
 
 ## Netbeans IDE
