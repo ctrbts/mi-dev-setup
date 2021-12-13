@@ -30,9 +30,7 @@ Laragon es muy ligero, el binario central en sí tiene menos de 2 MB y utiliza m
 
 Laragon no usa los servicios de Windows. Tiene su propio service orchestration que administra los servicios de forma asincrónica y sin bloqueo, por lo que encontrará que las cosas funcionan rápido y sin problemas.
 
-Para descargar el paquete completo [click aqui](https://github.com/leokhoa/laragon/releases/download/5.0.0/laragon-wamp.exe) o la versión portable desde [
-aqui](https://github.com/leokhoa/laragon/releases/download/5.0.0/laragon-portable.zip)
-
+Para descargar el paquete [click aqui](https://github.com/leokhoa/laragon/releases)
 
 ## Node modules
 
