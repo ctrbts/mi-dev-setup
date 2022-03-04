@@ -127,10 +127,6 @@ o alguna versión específica con `nvm install 12.15.0`
 
 Para setear por defecto una version de node necesitamos hacer `nvm alias default node`
 
-Podemos actualizar o reinstalar y traernos los node modules de la isntalación anterior
-    
-    nvm install 'lts/*' --reinstall-packages-from=current
-
 El resto de los comandos estan disponibles desde el repositorio de NVM
 
 
@@ -140,6 +136,9 @@ Con node instalado agregamos los frameworks y modulos mas utilizados
 
     npm i -g cordova framework7-cli @ionic/cli express-generator yarn
 
+Podemos actualizar o reinstalar y traernos los node modules de la instalación anterior
+    
+    nvm install 'lts/*' --reinstall-packages-from=current
 
 ## OpenJDK
 
