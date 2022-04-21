@@ -112,8 +112,7 @@ La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](h
 
 Para instalar `nvm` copiamos y pegamos el [install script command](https://github.com/creationix/nvm#install--update-script) en la terminal.
 
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | sh
-
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
 
 Ahora verificamos las versiones dispinibles de Node 
     
