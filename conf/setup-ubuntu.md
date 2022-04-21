@@ -322,7 +322,7 @@ Para confirmar que todo esta instalado ok ejecutamos `php -v`
 
 Abrimos el archivo de configuración de PHP para configurar OPCahe con el siguiente comando:
 
-    sudo nano /etc/php/7.4/apache2/php.ini
+    sudo nano /etc/php/8.1/apache2/php.ini
 
 Descomentamos las siguientes líneas:
 
