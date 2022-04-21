@@ -122,7 +122,7 @@ Instalamos la última LTS
 
     nvm install --lts
 
-o alguna versión específica con `nvm install 12.15.0`
+o alguna versión específica con `nvm install 14.19.1`
 
 Para setear por defecto una version de node necesitamos hacer `nvm alias default node`
 
