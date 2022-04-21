@@ -160,13 +160,13 @@ Para descargarlo > https://netbeans.apache.org/download/index.html
 
 ### Gradle
 
-Descargamos el binario desde https://gradle.org/next-steps/?version=7.1.1&format=bin > creamos el directorio con y descomprimimos el archivo
+Descargamos el binario desde https://gradle.org/next-steps/?version=7.4.2&format=bin > creamos el directorio con y descomprimimos el archivo
 
-    sudo mkdir /opt/gradle && sudo unzip -d /opt/gradle ~/Descargas/gradle-7.1.1-bin.zip
+    sudo mkdir /opt/gradle && sudo unzip -d /opt/gradle ~/Descargas/gradle-7.4.2-bin.zip
 
 Necesitamos agregar las siguientes lineas al archivo ~/.zshrc:
 
-    export GRADLE_HOME=/opt/gradle/gradle-7.1.1
+    export GRADLE_HOME=/opt/gradle/gradle-7.4.2
     export PATH=$PATH:$GRADLE_HOME/bin
 
 
