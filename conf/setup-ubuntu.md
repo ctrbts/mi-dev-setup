@@ -38,7 +38,7 @@ Agregamos el soporte para flatpak
 
 ### Personalización
     
-    sudo apt install gnome-tweaks
+    sudo apt install gnome-tweaks -y
 
 Algunas otras configuraciones necesarias
 
