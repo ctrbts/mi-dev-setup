@@ -9,8 +9,6 @@
   
 ## Optimizar el sistema
 
-Funciones como la telemetría o las actualizaciones sin control que reinician el sistema sin nuestro permiso sin son necesarias desactivarlas para mejorar nuestra productividad en Windows y acelerar un poco el sistema.
-
 Copiar y pegar la siguiente línea en una ventana de poweshell con privilegios de administrador
 
     iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JJ8R4'))
