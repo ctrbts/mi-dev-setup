@@ -110,7 +110,7 @@ El resto de los comandos estan disponibles desde el repositorio de NVM
 
 ### Mobile Frameworks
 
-    npm i -g cordova framework7-cli @ionic/cli express-generator
+    npm i -g cordova framework7-cli @ionic/cli express-generator yarn
 
 ## OpenJDK
 
