@@ -11,7 +11,7 @@
 
 Copiar y pegar la siguiente línea en una ventana de poweshell con privilegios de administrador
 
-iwr -useb https://christitus.com/win | iex
+    iwr -useb https://christitus.com/win | iex
 
 Que puede hacer este script
 - Instala cualquier programa de la lista en el que haga clic con WinGet
