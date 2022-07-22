@@ -112,6 +112,8 @@ Ubuntu Make proporciona un conjunto de funcionalidades para configurar, mantener
 
     snap install ubuntu-make --classic
 
+Hay una lista completa de todas las funcionalidades en `umake --list` 
+
 
 ## Node
 
@@ -150,7 +152,7 @@ Podemos actualizar o reinstalar y traernos los node modules de la instalación a
 
 La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados (para Ubuntu 20.04_LTS la version por defecto de java es la 11)
 
-    sudo apt update && sudo apt install default-jdk -y 
+    sudo apt install default-jdk -y 
 
 Agregamos las siguientes lineas al archivo ~/.zshrc:
 
