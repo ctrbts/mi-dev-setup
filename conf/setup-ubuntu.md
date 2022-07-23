@@ -292,7 +292,6 @@ Después de esto, cierre el shell de MariaDB:
 
     exit
  
-
 Cuando se instale desde los repositorios predeterminados, MariaDB se ejecutará automáticamente. Para probar esto, compruebe su estado.
 
     sudo systemctl status mariadb
@@ -337,6 +336,13 @@ Descomentamos las siguientes líneas:
     opcache.memory_consumption=128
     opcache.max_accelerated_files=10000
     opcache.revalidate_freq=2
+
+Ya que tenemos el php.ini abierto agregamos las opciones de depuración (muy útil para VSCode) las siguientes líneas al final:
+
+    [XDebug]
+    xdebug.mode = debug
+    xdebug.start_with_request = yes
+    zend_extension = xdebug
 
 Guardar y reiniciaar Apache:
 
