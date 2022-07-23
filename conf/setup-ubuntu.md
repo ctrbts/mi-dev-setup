@@ -207,7 +207,6 @@ Agregue las siguientes líneas a su archivo de configuración ~/.zshrc:
 
 Instalamos Apache usando el administrador de paquetes de Ubuntu:
 
-    sudo apt update &&
     sudo apt install apache2 -y
  
 Una vez que la instalación se complete, deberá ajustar la configuración de su firewall para permitir tráfico HTTP y HTTPS. 
@@ -259,7 +258,6 @@ Independientemente del método que utilice para obtener su dirección IP, escrí
 
 Actualizamos el índice de paquetes, instalamos el paquete de mariadb-server, ejecutamos `mysql_secure_installation` para restringir el acceso al servidor
 
-    sudo apt update &&
     sudo apt install mariadb-server -y &&
     sudo mysql_secure_installation
  
