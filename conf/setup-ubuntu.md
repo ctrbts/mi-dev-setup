@@ -363,7 +363,11 @@ Cree el directorio para su_dominio de la siguiente manera:
 A continuación, asigne la propiedad del directorio con la variable de entorno $USER, que hará referencia a su usuario de sistema actual:
 
     sudo chown -R $USER:$USER /var/www/su_dominio
- 
+    
+Para facilitar la administración del sitio web, añadimos nuestro usuario al grupo www-data.
+
+    usermod -a -G www-data $USER
+
 Luego, abra un nuevo archivo de configuración en el directorio sites-available de Apache usando el editor de línea de comandos que prefiera. En este caso, utilizaremos nano:
 
     sudo nano /etc/apache2/sites-available/su_dominio.conf
