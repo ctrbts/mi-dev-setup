@@ -238,7 +238,7 @@ Puede verificar el cambio con lo siguiente:
  
 Para realizar una verificación rápida y comprobar que todo se haya realizado correctamente pruebe escribiendo la dirección IP pública de su servidor en su navegador web:
 
-http://your_server_ip
+http://public_server_ip
 
 Si puede ver la página predeterminada de Apache para Ubuntu 20.04, su servidor web estará correctamente instalado y el acceso a él será viable a través de su firewall.
 
@@ -246,7 +246,7 @@ Si no conoce la dirección IP pública de su servidor, hay varias formas de enco
 
     ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
  
-Esto nos brindará dos o tres líneas. Todas estas direcciones son correctas, pero su computadora puede usar una de ellas. No dude en probarlas todas.
+Esto le brindará dos o tres líneas. Todas estas direcciones son correctas, pero su computadora solo puede usar una de ellas. No dude en probarlas todas.
 
 Un método alternativo consiste en usar la utilidad curl para contactar a una webe externa con el fin de que le indique su evaluación del servidor. Esto se hace solicitando a un servidor específico su dirección IP:
 
@@ -264,6 +264,7 @@ Actualizamos el índice de paquetes, instalamos el paquete de mariadb-server, ej
 Luego verá una serie de solicitudes mediante las cuales podrá realizar cambios en las opciones de seguridad de su instalación de MariaDB. En la primera solicitud se pedirá que introduzca la contraseña root de la base de datos actual. Debido a que no configuramos una aún, pulse ENTER para indicar “none” (ninguna). Para las siguientes puede seguir la guía a continuación:
 
     Enter current password for root (enter for none): Solo presione Enter
+    Switch to unix_socket authentication [Y/n]: n
     Set root password? [Y/n]: n
     Remove anonymous users? [Y/n]: Y
     Disallow root login remotely? [Y/n]: Y
@@ -282,7 +283,7 @@ Para hacerlo, crearemos una nueva cuenta con las mismas capacidades que la cuent
  
 A continuación, cree un nuevo usuario con privilegios root y acceso basado en contraseña. Asegúrese de cambiar el nombre de usuario y la contraseña para que se adapten a sus necesidades (puede cambiar 'localhost' por el comodin '%' para acceso remoto):
 
-    GRANT ALL ON *.* TO 'su_usuario'@'localhost' IDENTIFIED BY 'su_password' WITH GRANT OPTION;
+    GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
  
 Vacíe los privilegios para garantizar que se guarden y estén disponibles en la sesión actual:
 
@@ -328,7 +329,7 @@ Para confirmar que todo esta instalado ok ejecutamos `php -v`
 
 Abrimos el archivo de configuración de PHP para configurar OPCahe con el siguiente comando:
 
-    sudo nano /etc/php/7.4/apache2/php.ini
+    sudo nano /etc/php/8.1/apache2/php.ini
 
 Descomentamos las siguientes líneas:
 
@@ -354,7 +355,7 @@ Se puede verificar el estado de OPcache con:
 
 #### Crear un host virtual
 
-Ubuntu 20.04 tiene habilitado un bloque de servidor por defecto, que está configurado para proporcionar documentos del directorio /var/www/html. Si bien esto funciona bien para un solo sitio, puede ser difícil de manejar si alojamos varios. En lugar de modificar /var/www/html, crearemos una estructura de directorio dentro de /var/www para el sitio su_dominio y dejaremos /var/www/html establecido como directorio predeterminado que se presentará si una solicitud de cliente no coincide con ningún otro sitio.
+Ubuntu tiene habilitado un bloque de servidor por defecto, que está configurado para proporcionar documentos del directorio /var/www/html. Si bien esto funciona bien para un solo sitio, puede ser difícil de manejar si alojamos varios. En lugar de modificar /var/www/html, crearemos una estructura de directorio dentro de /var/www para el sitio su_dominio y dejaremos /var/www/html establecido como directorio predeterminado que se presentará si una solicitud de cliente no coincide con ningún otro sitio.
 
 Cree el directorio para su_dominio de la siguiente manera:
 
@@ -379,9 +380,9 @@ De esta manera, se creará un nuevo archivo en blanco. Pegue la siguiente config
         ServerName su_dominio
         ServerAlias www.su_dominio
         ServerAdmin webmaster@localhost
-        DocumentRoot "/var/www/su_dominio"
+        DocumentRoot /var/www/su_dominio
 
-        <Directory "/var/www/su_dominio">
+        <Directory /var/www/su_dominio>
             Options Indexes FollowSymLinks
             AllowOverride All
             Require all granted
@@ -420,12 +421,19 @@ Ahora, su nuevo sitio web está activo, pero el directorio root web /var/www/su_
  
 Incluya el siguiente contenido en este archivo:
 
-    <h1>Bienvenido</h1>
-    <p>el servidor para <strong>su_dominio</strong> esta online!</p>
+    <html>
+        <head>
+            <title>su_dominio</title>
+        </head>
+        <body>
+            <h1>Bienvenido</h1>
+            <p>el servidor para <strong>su_dominio</strong> esta online!</p>
+        </body>
+    </html>
  
 Ahora, diríjase a su navegador y acceda al nombre de dominio o la dirección IP de su servidor una vez más:
 
-http://server_domain_or_IP
+http://public_server_ip
 
 *Nota sobre DirectoryIndex en Apache
 Con la configuración predeterminada de DirectoryIndex en Apache, un archivo denominado index.html siempre tendrá prioridad sobre un archivo index.php. Esto es útil para establecer páginas de mantenimiento en aplicaciones PHP, dado que se puede crear un archivo index.html temporal que contenga un mensaje informativo para los visitantes. Como esta página tendrá precedencia sobre la página index.php, se convertirá en la página de destino de la aplicación. Una vez que el mantenimiento se completa, el archivo index.html se puede eliminar del root (o cambierle el nombre) para volver mostrar la página habitual de la aplicación.*
