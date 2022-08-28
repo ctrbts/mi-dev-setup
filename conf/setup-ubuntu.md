@@ -54,7 +54,7 @@ Como vamos a pasar bastante tiempo en la terminal le vamos a dar un toque de col
 
 La tipografía de la terminal muy importante para mejorar la legilibilidad y evitar el cansancio visual. Las mejores fuentes para codificar son [Fira Code, Fira Mono](https://fonts.google.com/?query=fira) y [Cascadia Code](https://github.com/microsoft/cascadia-code/releases).
 
-El esquema de color **Tango Oscuro** es uno de mis preferidos pero podemos instalar unos temas excelentes desde [Gogh Themes](http://mayccoll.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 120 > Filas 40 > Fira Mono 9*
+El esquema de color **Gnome Oscuro** es uno de mis preferidos pero podemos instalar unos temas excelentes desde [Gogh Themes](https://gogh-co.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 120 > Filas 40*
 
 
 ### Zsh
