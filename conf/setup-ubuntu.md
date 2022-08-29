@@ -30,9 +30,9 @@ Actualizamos el sistema y agregamos algunas herramientas necesarias (las configu
     
 Agregamos gestores de paquetes (esto es opcional pero puede ser útil)
 
-    sudo apt install synaptic --install-suggests -y
+    sudo apt install synaptic -y
 
-Agregamos el soporte para flatpak
+Agregamos el soporte para flatpak (opcional)
 
     sudo apt install flatpak -y &&
     sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
