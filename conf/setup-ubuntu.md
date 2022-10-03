@@ -26,8 +26,8 @@
 Actualizamos el sistema y agregamos algunas herramientas necesarias (las configuraremos mas adelante)
 
     sudo apt update && sudo apt upgrade -y &&
-    sudo apt install curl git zsh ssh mc nmap -y
-    
+    sudo apt install curl git zsh ssh mc nmap htop -y
+
 Agregamos gestores de paquetes (esto es opcional pero puede ser útil)
 
     sudo apt install synaptic -y
@@ -38,7 +38,7 @@ Agregamos el soporte para flatpak (opcional)
     sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 ### Personalización
-    
+
     sudo apt install gnome-tweaks -y
 
 Algunas otras configuraciones necesarias
@@ -59,13 +59,13 @@ El esquema de color **Gnome Oscuro** es uno de mis preferidos pero podemos insta
 
 ### Zsh
 
-Bash esta bien, pero ZSH esta mejor. Ya lo instalamos en los [Primeros pasos](#primeros-pasos) ahora necesitamos hacerlo nuestro shell por defecto, ejecutamos desde consola: 
+Bash esta bien, pero ZSH esta mejor. Ya lo instalamos en los [Primeros pasos](#primeros-pasos) ahora necesitamos hacerlo nuestro shell por defecto, ejecutamos desde consola:
 
     chsh -s $(which zsh)
 
 Una vez configurado *zsh* podemos eliminar los archivos *.bash* y *.profile*. Luego cerramos sesión y volvemos a entrar para que los cambios se apliquen, cuando iniciemos por primera vez la terminal nos va a preguntar por el archivo de configuración de zsh, elegimo la opción 0 y continuamos.
 
-[Oh My ZSH](https://ohmyz.sh/) es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH, para instalarlo: 
+[Oh My ZSH](https://ohmyz.sh/) es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH, para instalarlo:
 
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -81,9 +81,9 @@ OhMyZsh tiene muchos plugins, los que mas uso son:
 
 **zsh-syntax-highlighting** este plugin colorea los comandos en verde o en rojo dependiendo de si son correctos o no.
 
-Para instalar estos ultimos debemos descargarlo al directorio de plugins con: 
+Para instalar estos ultimos debemos descargarlo al directorio de plugins con:
 
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions && 
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions &&
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 Para activar los plugins anteriores hay que modificar el fichero de configuración *~/.zshrc*:
@@ -112,7 +112,7 @@ Ubuntu Make proporciona un conjunto de funcionalidades para configurar, mantener
 
     snap install ubuntu-make --classic
 
-Hay una lista completa de todas las funcionalidades en `umake --list` 
+Hay una lista completa de todas las funcionalidades en `umake --list`
 
 
 ## Node
@@ -123,11 +123,11 @@ Para instalar `nvm` copiamos y pegamos el [install script command](https://githu
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
 
-Ahora verificamos las versiones dispinibles de Node 
-    
+Ahora verificamos las versiones dispinibles de Node
+
     nvm ls-remote --lts
 
-Instalamos la última LTS 
+Instalamos la última LTS
 
     nvm install --lts
 
@@ -145,14 +145,14 @@ Con node instalado agregamos los frameworks y modulos mas utilizados
     npm i -g cordova framework7-cli @ionic/cli express express-generator yarn
 
 Podemos actualizar o reinstalar y traernos los node modules de la instalación anterior
-    
+
     nvm install 'lts/*' --reinstall-packages-from=current
 
 ## OpenJDK
 
 La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados (para Ubuntu 20.04_LTS la version por defecto de java es la 11)
 
-    sudo apt install default-jdk -y 
+    sudo apt install default-jdk -y
 
 Agregamos las siguientes lineas al archivo ~/.zshrc:
 
@@ -208,16 +208,16 @@ Agregue las siguientes líneas a su archivo de configuración ~/.zshrc:
 Instalamos Apache usando el administrador de paquetes de Ubuntu:
 
     sudo apt install apache2 -y
- 
-Una vez que la instalación se complete, deberá ajustar la configuración de su firewall para permitir tráfico HTTP y HTTPS. 
-Si UFW no esta habilitado pude hacerlo con 
+
+Una vez que la instalación se complete, deberá ajustar la configuración de su firewall para permitir tráfico HTTP y HTTPS.
+Si UFW no esta habilitado pude hacerlo con
 
     sudo ufw enable
-    
+
 Para enumerar todos los perfiles de aplicaciones de UFW disponibles, puede ejecutar lo siguiente:
 
     sudo ufw app list
- 
+
 Verá un resultado como este:
 
     Output
@@ -231,11 +231,11 @@ Abrimos los puertos necesarios para permitir el tráfico en el servidor:
 
     sudo ufw allow in "Apache Full" &&
     sudo ufw allow in "OpenSSH"
- 
+
 Puede verificar el cambio con lo siguiente:
 
     sudo ufw status
- 
+
 Para realizar una verificación rápida y comprobar que todo se haya realizado correctamente pruebe escribiendo la dirección IP pública de su servidor en su navegador web:
 
 http://public_server_ip
@@ -245,13 +245,13 @@ Si puede ver la página predeterminada de Apache para Ubuntu 20.04, su servidor 
 Si no conoce la dirección IP pública de su servidor, hay varias formas de encontrarla. Podría usar las herramientas de iproute2 para obtener su dirección IP escribiendo esto:
 
     ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
- 
+
 Esto le brindará dos o tres líneas. Todas estas direcciones son correctas, pero su computadora solo puede usar una de ellas. No dude en probarlas todas.
 
 Un método alternativo consiste en usar la utilidad curl para contactar a una webe externa con el fin de que le indique su evaluación del servidor. Esto se hace solicitando a un servidor específico su dirección IP:
 
     curl http://icanhazip.com
- 
+
 Independientemente del método que utilice para obtener su dirección IP, escríbala en la barra de direcciones de su navegador web para ver la página predeterminada de Apache.
 
 ### MariaDB
@@ -260,7 +260,7 @@ Actualizamos el índice de paquetes, instalamos el paquete de mariadb-server, ej
 
     sudo apt install mariadb-server -y &&
     sudo mysql_secure_installation
- 
+
 Luego verá una serie de solicitudes mediante las cuales podrá realizar cambios en las opciones de seguridad de su instalación de MariaDB. En la primera solicitud se pedirá que introduzca la contraseña root de la base de datos actual. Debido a que no configuramos una aún, pulse ENTER para indicar “none” (ninguna). Para las siguientes puede seguir la guía a continuación:
 
     Enter current password for root (enter for none): Solo presione Enter
@@ -280,23 +280,23 @@ Debido a que el servidor utiliza la cuenta root para tareas como la rotación de
 Para hacerlo, crearemos una nueva cuenta con las mismas capacidades que la cuenta root, pero configurada para la autenticación por contraseña. Abra la línea de comandos de MariaDB desde su terminal:
 
     sudo mariadb
- 
+
 A continuación, cree un nuevo usuario con privilegios root y acceso basado en contraseña. Asegúrese de cambiar el nombre de usuario y la contraseña para que se adapten a sus necesidades (puede cambiar 'localhost' por el comodin '%' para acceso remoto):
 
     GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
- 
+
 Vacíe los privilegios para garantizar que se guarden y estén disponibles en la sesión actual:
 
     FLUSH PRIVILEGES;
- 
+
 Después de esto, cierre el shell de MariaDB:
 
     exit
- 
+
 Cuando se instale desde los repositorios predeterminados, MariaDB se ejecutará automáticamente. Para probar esto, compruebe su estado.
 
     sudo systemctl status mariadb
- 
+
 Recibirá un resultado que es similar al siguiente:
 
     Output
@@ -319,10 +319,10 @@ Abrimos el puerto necesario para permitir el tráfico desde el servidor:
 
 Si MariaDB no funciona, puede iniciarla con el comando `sudo systemctl start mariadb`
 
-### PHP 
+### PHP
 
 Instalamos PHP con los adds mas comunes
-    
+
     sudo apt install libapache2-mod-php php php-common php-mbstring php-imap php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-fpdf php-cli php-zip php-curl php-opcache -y
 
 Para confirmar que todo esta instalado ok ejecutamos `php -v`
@@ -360,11 +360,11 @@ Ubuntu tiene habilitado un bloque de servidor por defecto, que está configurado
 Cree el directorio para su_dominio de la siguiente manera:
 
     sudo mkdir /var/www/su_dominio
- 
+
 A continuación, asigne la propiedad del directorio con la variable de entorno $USER, que hará referencia a su usuario de sistema actual:
 
     sudo chown -R $USER:$USER /var/www/su_dominio
-    
+
 Para facilitar la administración del sitio web, añadimos nuestro usuario al grupo www-data.
 
     usermod -a -G www-data $USER
@@ -372,9 +372,9 @@ Para facilitar la administración del sitio web, añadimos nuestro usuario al gr
 Luego, abra un nuevo archivo de configuración en el directorio sites-available de Apache usando el editor de línea de comandos que prefiera. En este caso, utilizaremos nano:
 
     sudo nano /etc/apache2/sites-available/su_dominio.conf
- 
+
 De esta manera, se creará un nuevo archivo en blanco. Pegue la siguiente configuración básica:
-    
+
     <VirtualHost *:80>
 
         ServerName su_dominio
@@ -392,7 +392,7 @@ De esta manera, se creará un nuevo archivo en blanco. Pegue la siguiente config
         CustomLog ${APACHE_LOG_DIR}/access.log combined
 
     </VirtualHost>
- 
+
 Con esta configuración de VirtualHost, le indicamos a Apache que proporcione su_dominio usando /var/www/su_dominio como directorio root web. Si desea probar Apache sin un nombre de dominio, puede eliminar o convertir en comentario las opciones ServerName y ServerAlias añadiendo un carácter # al principio de las líneas de cada opción.
 
 Ahora, puede usar a2ensite para habilitar el nuevo host virtual:
@@ -402,23 +402,23 @@ Ahora, puede usar a2ensite para habilitar el nuevo host virtual:
 Luego deberá reiniciar apache con:
 
     sudo systemctl reload apache2
-    
+
 Puede ser conveniente deshabilitar el sitio web predeterminado que viene instalado con Apache. Es necesario hacerlo si no se utiliza un nombre de dominio personalizado, dado que, en este caso, la configuración predeterminada de Apache sobrescribirá su host virtual. Para deshabilitar el sitio web predeterminado de Apache, escriba lo siguiente:
 
     sudo a2dissite 000-default
- 
+
 Para asegurarse de que su archivo de configuración no contenga errores de sintaxis, ejecute lo siguiente:
 
     sudo apache2ctl configtest
- 
+
 Por último, vuelva a cargar Apache para que estos cambios surtan efecto:
 
     sudo systemctl reload apache2
- 
+
 Ahora, su nuevo sitio web está activo, pero el directorio root web /var/www/su_dominio todavía está vacío. Cree un archivo index.html en esa ubicación para poder probar que el host virtual funcione según lo previsto:
 
     nano /var/www/su_dominio/index.html
- 
+
 Incluya el siguiente contenido en este archivo:
 
     <html>
@@ -430,7 +430,7 @@ Incluya el siguiente contenido en este archivo:
             <p>el servidor para <strong>su_dominio</strong> esta online!</p>
         </body>
     </html>
- 
+
 Ahora, diríjase a su navegador y acceda al nombre de dominio o la dirección IP de su servidor una vez más:
 
 http://public_server_ip
@@ -441,12 +441,12 @@ Con la configuración predeterminada de DirectoryIndex en Apache, un archivo den
 Si desea cambiar este comportamiento, deberá editar el archivo /etc/apache2/mods-enabled/dir.conf y modificar el orden en el que el archivo index.php se enumera en la directiva DirectoryIndex:
 
 sudo nano /etc/apache2/mods-enabled/dir.conf
- 
+
 /etc/apache2/mods-enabled/dir.conf
 <IfModule mod_dir.c>
         DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
 </IfModule>
- 
+
 Después de guardar y cerrar el archivo, deberá volver a cargar Apache para que los cambios surtan efecto:
 
     sudo systemctl reload apache2
@@ -464,7 +464,7 @@ Ahora que dispone de una ubicación personalizada para alojar los archivos y las
 Cree un archivo nuevo llamado info.php dentro de su carpeta root web personalizada:
 
     nano /var/www/su_dominio/info.php
- 
+
 Con esto se abrirá un archivo vacío. Añada el siguiente texto, que es el código PHP válido, dentro del archivo:
 
     <?php phpinfo();
