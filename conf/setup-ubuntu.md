@@ -329,7 +329,7 @@ Para confirmar que todo esta instalado ok ejecutamos `php -v`
 
 Abrimos el archivo de configuración de PHP para configurar OPCahe con el siguiente comando:
 
-    sudo nano /etc/php/8.1/apache2/php.ini
+    sudo nano /etc/php/su_version_de_php/apache2/php.ini
 
 Descomentamos las siguientes líneas:
 
@@ -367,7 +367,7 @@ A continuación, asigne la propiedad del directorio con la variable de entorno $
 
 Para facilitar la administración del sitio web, añadimos nuestro usuario al grupo www-data.
 
-    usermod -a -G www-data $USER
+    sudo usermod -a -G www-data $USER
 
 Luego, abra un nuevo archivo de configuración en el directorio sites-available de Apache usando el editor de línea de comandos que prefiera. En este caso, utilizaremos nano:
 
