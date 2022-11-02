@@ -171,7 +171,7 @@ Para descargarlo > https://netbeans.apache.org/download/index.html
 
 Descargamos el binario desde https://gradle.org/next-steps/?version=7.5.1&format=bin > creamos el directorio con y descomprimimos el archivo
 
-    sudo mkdir /opt/gradle && sudo unzip -d /opt/gradle ~/Descargas/gradle-7.4.2-bin.zip
+    sudo mkdir /opt/gradle && sudo unzip -d /opt/gradle ~/Descargas/gradle-7.5.1-bin.zip
 
 Necesitamos agregar las siguientes lineas al archivo ~/.zshrc:
 
