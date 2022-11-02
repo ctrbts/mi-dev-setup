@@ -175,7 +175,7 @@ Descargamos el binario desde https://gradle.org/next-steps/?version=7.4.2&format
 
 Necesitamos agregar las siguientes lineas al archivo ~/.zshrc:
 
-    export GRADLE_HOME=/opt/gradle/gradle-7.4.2
+    export GRADLE_HOME=/opt/gradle/gradle-7.5.1
     export PATH=$PATH:$GRADLE_HOME/bin
 
 
