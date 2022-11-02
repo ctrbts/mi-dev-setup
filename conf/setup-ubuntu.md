@@ -150,7 +150,7 @@ Podemos actualizar o reinstalar y traernos los node modules de la instalación a
 
 ## OpenJDK
 
-La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados (para Ubuntu 20.04_LTS la version por defecto de java es la 11)
+La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados (para Ubuntu 22.04_LTS la version por defecto de java es la 11)
 
     sudo apt install default-jdk -y
 
