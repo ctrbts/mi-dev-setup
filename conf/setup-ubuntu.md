@@ -112,7 +112,7 @@ Ubuntu Make proporciona un conjunto de funcionalidades para configurar, mantener
 
     snap install ubuntu-make --classic
 
-Hay una lista completa de todas las funcionalidades en `umake --list`
+Hay una lista completa de todas las funcionalidades en `umake --list`. Por ejemplo para instalar Firefox Developer deberíamos ejecutar po consola `umake web firefox-dev`
 
 
 ## Node
