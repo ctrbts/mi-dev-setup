@@ -30,7 +30,7 @@ Actualizamos el sistema y agregamos algunas herramientas necesarias (las configu
 
 Agregamos gestores de paquetes (esto es opcional pero puede ser útil)
 
-    sudo apt install synaptic -y
+    sudo apt install synaptic menu deborphan apt-xapian-index tasksel -y
 
 Agregamos el soporte para flatpak (opcional)
 
