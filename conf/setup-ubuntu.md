@@ -9,15 +9,19 @@
 - [Ubuntu Make](#ubuntu-make)
 - [Node.js](#node)
     - [Node modules](#Node-modules)
-- [OpenJDK](#openjdk)
-- [Gradle](#gradle)
-- [Netbeans IDE](#netbeans-ide)
-- [Android Studio](#android-studio)
+- [Java Stack](#java-stack)
+    - [OpenJDK](#openjdk)
+    - [Netbeans IDE](#netbeans-ide)
+- [Android Stack](#android-stack)
+    - [Gradle](#gradle)
+    - [Android Studio](#android-studio)
 - [LAMPP](#lampp)
     - [Apache](#apache)
     - [MariaDB](#mariadb)
     - [PHP](#php)
     - [Crear un host virtual](#crear-un-host-virtual)
+- [DevOps](#devops)
+    - [Docker](#docker)
 
 ## Configuración inicial
 
@@ -30,7 +34,7 @@ Actualizamos el sistema y agregamos algunas herramientas necesarias (las configu
 
 Agregamos gestores de paquetes (esto es opcional pero puede ser útil)
 
-    sudo apt install synaptic -y
+    sudo apt install synaptic menu deborphan apt-xapian-index tasksel -y
 
 Agregamos el soporte para flatpak (opcional)
 
@@ -116,7 +120,7 @@ Ubuntu Make proporciona un conjunto de funcionalidades para configurar, mantener
 
     snap install ubuntu-make --classic
 
-Hay una lista completa de todas las funcionalidades en `umake --list`
+Hay una lista completa de todas las funcionalidades en `umake --list`. Por ejemplo para instalar Firefox Developer deberíamos ejecutar po consola `umake web firefox-dev`
 
 
 ## Node
@@ -152,9 +156,11 @@ Podemos actualizar o reinstalar y traernos los node modules de la instalación a
 
     nvm install 'lts/*' --reinstall-packages-from=current
 
-## OpenJDK
+## Java Stack
 
-La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados (para Ubuntu 20.04_LTS la version por defecto de java es la 11)
+### OpenJDK
+
+La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados (para Ubuntu 22.04_LTS la version por defecto de java es la 11)
 
     sudo apt install default-jdk -y
 
@@ -163,7 +169,7 @@ Agregamos las siguientes lineas al archivo ~/.zshrc:
     export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
     export PATH=$PATH:$JAVA_HOME/bin
 
-## Netbeans IDE
+### Netbeans IDE
 
 IDE multiplataforma para desarrollo en Java, PHP y otros lenguajes de programación.
 Para descargarlo > https://netbeans.apache.org/download/index.html
@@ -173,13 +179,13 @@ Para descargarlo > https://netbeans.apache.org/download/index.html
 
 ### Gradle
 
-Descargamos el binario desde https://gradle.org/next-steps/?version=7.4.2&format=bin > creamos el directorio con y descomprimimos el archivo
+Descargamos el binario desde https://gradle.org/next-steps/?version=7.5.1&format=bin > creamos el directorio con y descomprimimos el archivo
 
-    sudo mkdir /opt/gradle && sudo unzip -d /opt/gradle ~/Descargas/gradle-7.4.2-bin.zip
+    sudo mkdir /opt/gradle && sudo unzip -d /opt/gradle ~/Descargas/gradle-7.5.1-bin.zip
 
 Necesitamos agregar las siguientes lineas al archivo ~/.zshrc:
 
-    export GRADLE_HOME=/opt/gradle/gradle-7.4.2
+    export GRADLE_HOME=/opt/gradle/gradle-7.5.1
     export PATH=$PATH:$GRADLE_HOME/bin
 
 
@@ -476,3 +482,84 @@ Con esto se abrirá un archivo vacío. Añada el siguiente texto, que es el cód
 Para probar esta secuencia de comandos, diríjase a su navegador web y acceda al nombre de dominio o la dirección IP de su servidor, seguido del nombre de la secuencia de comandos, que en este caso es info.php:
 
 http://su_dominio_o_IP/info.php
+
+## DevOps
+
+### Docker
+
+Primero, actualice su lista existente de paquetes:
+
+    sudo apt update -y
+
+A continuación, instale algunos paquetes de requisitos previos que permitan aptusar paquetes a través de HTTPS:
+
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+
+Luego agregue la clave GPG para el repositorio oficial de Docker a su sistema:
+
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+Agregue el repositorio Docker a las fuentes APT:
+
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+Actualice su lista existente de paquetes nuevamente para que se reconozca la adición:
+
+    sudo apt update
+
+Asegúrese de que está a punto de instalar desde el repositorio de Docker en lugar del repositorio predeterminado de Ubuntu:
+
+    apt-cache policy docker-ce
+
+Verá un resultado como este, aunque el número de versión de Docker puede ser diferente:
+
+`docker-ce:
+Installed: (none)
+Candidate: 5:20.10.14~3-0~ubuntu-jammy
+Version table:
+    5:20.10.14~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+    5:20.10.13~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages`
+
+Finalmente, instala Docker:
+
+    sudo apt install docker-ce -y
+
+Docker ahora debería estar instalado, el demonio iniciado y el proceso habilitado para iniciarse en el arranque. Comprueba que se está ejecutando:
+
+    sudo systemctl status docker
+
+De forma predeterminada, el comando docker solo puede ejecutarlo el usuario root o un usuario del grupo docker, que se crea automáticamente durante el proceso de instalación de Docker. Si intenta ejecutar el comando docker sin privilegios sudo o sin estar en el grupo docker, obtendrá un error. Para evitar escribir sudo cada vez que ejecuta comando, agregue su nombre de usuario al dockergrup:
+
+    sudo usermod -aG docker ${USER}
+
+Para aplicar la nueva pertenencia al grupo, cierre sesión en el servidor y vuelva a iniciarla, o escriba lo siguiente:
+
+    su - ${USER}
+
+Confirme que su usuario ahora está agregado al grupo docker escribiendo:
+
+    groups
+
+#### Instalar Docker Compose
+
+Primero, confirme la última versión disponible en su [página de github](https://github.com/docker/compose/releases). En el momento de escribir esto, la versión estable más actual es 2.12.2
+
+Use el siguiente comando para descargar:
+
+    mkdir -p ~/.docker/cli-plugins/
+    curl -SL https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+
+A continuación, establezca los permisos correctos para que docker compose sea ejecutable:
+
+    chmod +x ~/.docker/cli-plugins/docker-compose
+
+Para verificar que la instalación fue exitosa, puede ejecutar:
+
+    docker compose version
+
+Verá un resultado similar a este:
+
+`Output
+Docker Compose version v2.12.2`
