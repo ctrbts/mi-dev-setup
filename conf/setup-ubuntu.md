@@ -107,6 +107,10 @@ Ya tenemos git instalado, ahora vamos a configurar un archivo *gitignore* de for
     git config --global core.excludesfile ~/.gitignore
 
 
+### Crear un usuario y agregarlo al grupo sudo
+
+    adduser NOMBRE_DE_USUARIO && usermod -aG sudo NOMBRE_DE_USUARIO
+
 ## Ubuntu Make
 Ubuntu Make proporciona un conjunto de funcionalidades para configurar, mantener y personalizar fácilmente su entorno de desarrollador. Manejará todas las dependencias, incluso aquellas que no están en Ubuntu, e instalará las últimas versiones de las herramientas deseadas y recomendadas. Este es el último master de ubuntu-make, recién construido desde https://github.com/ubuntu/ubuntu-make.
 
