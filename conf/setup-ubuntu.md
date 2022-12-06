@@ -6,6 +6,7 @@
     - [Terminal](#terminal)
     - [Zsh](#zsh)
     - [Git](#git)
+    - [Crear un usuario y agragarlo al grupo sudo](#crear-un-usuario-y-agregarlo-al-grupo-sudo)
 - [Ubuntu Make](#ubuntu-make)
 - [Node.js](#node)
     - [Node modules](#Node-modules)
