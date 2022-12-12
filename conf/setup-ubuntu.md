@@ -569,12 +569,11 @@ Docker Compose version v2.12.2`
 ### LXC
 (en construcción)
 
-Agregando un usuario con permisos root al contenedor
+Agregamos un usuario mediante la consola interactiva
 
-    useradd nombre_de_usuario
-    passwd nombre_de_usuario
+    adduser nombre_de_usuario
     
-Lo asignamos al grupo sudoers
+Lo agregamos al grupo sudoers
 
     usermod -aG sudo nombre_de_usuario
     
