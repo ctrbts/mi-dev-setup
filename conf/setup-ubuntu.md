@@ -6,7 +6,6 @@
     - [Terminal](#terminal)
     - [Zsh](#zsh)
     - [Git](#git)
-    - [Crear un usuario y agragarlo al grupo sudo](#crear-un-usuario-y-agregarlo-al-grupo-sudo)
 - [Ubuntu Make](#ubuntu-make)
 - [Node.js](#node)
     - [Node modules](#Node-modules)
@@ -112,10 +111,6 @@ Ya tenemos git instalado, ahora vamos a configurar un archivo *gitignore* de for
     curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/dotfiles/.gitignore
     git config --global core.excludesfile ~/.gitignore
 
-
-### Crear un usuario y agregarlo al grupo sudo
-
-    adduser NOMBRE_DE_USUARIO && usermod -aG sudo NOMBRE_DE_USUARIO
 
 ## Ubuntu Make
 Ubuntu Make proporciona un conjunto de funcionalidades para configurar, mantener y personalizar fácilmente su entorno de desarrollador. Manejará todas las dependencias, incluso aquellas que no están en Ubuntu, e instalará las últimas versiones de las herramientas deseadas y recomendadas. Este es el último master de ubuntu-make, recién construido desde https://github.com/ubuntu/ubuntu-make.
@@ -569,12 +564,6 @@ Docker Compose version v2.12.2`
 ### LXC
 (en construcción)
 
-Agregamos un usuario mediante la consola interactiva
+Crear un usuario y agregarlo al grupo sudo
 
-    adduser nombre_de_usuario
-    
-Lo agregamos al grupo sudoers
-
-    usermod -aG sudo nombre_de_usuario
-    
-    
+    adduser NOMBRE_DE_USUARIO && usermod -aG sudo NOMBRE_DE_USUARIO
