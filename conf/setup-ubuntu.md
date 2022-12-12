@@ -23,6 +23,7 @@
     - [Crear un host virtual](#crear-un-host-virtual)
 - [DevOps](#devops)
     - [Docker](#docker)
+    - [LXC](#lxc)
 
 ## Configuración inicial
 
@@ -564,3 +565,17 @@ Verá un resultado similar a este:
 
 `Output
 Docker Compose version v2.12.2`
+
+### LXC
+(en construcción)
+
+Agregando un usuario con permisos root al contenedor
+
+    useradd nombre_de_usuario
+    passwd nombre_de_usuario
+    
+Lo asignamos al grupo sudoers
+
+    usermod -aG sudo nombre_de_usuario
+    
+    
