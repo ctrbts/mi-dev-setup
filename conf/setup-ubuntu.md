@@ -19,6 +19,7 @@
     - [Apache](#apache)
     - [MariaDB](#mariadb)
     - [PHP](#php)
+    - [PHPMyAdmin](#phpmyadmin)
     - [Crear un host virtual](#crear-un-host-virtual)
 - [DevOps](#devops)
     - [Docker](#docker)
@@ -359,6 +360,28 @@ Guardar y reiniciaar Apache:
 Se puede verificar el estado de OPcache con:
 
     php -i | grep opcache
+
+#### PHPMyAdmin
+
+Ya instalado php y mariadb podemos instalar una herramienta para manejar la administración de la base de datos.
+
+    sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl
+    
+- Para la selección del servidor, elija apache2 <$>[warning] Advertencia: Cuando la línea de comandos aparece, “apache2” está resaltado, pero no está seleccionado. Si no pulsa SPACE para seleccionar Apache, el instalador no moverá los archivos necesarios durante la instalación. Pulse ESPACIO, TAB y luego ENTER para seleccionar Apache. <$>
+- Cuando se le pregunte si utiliza dbconfig-common para configurar la base de datos, seleccione Yes.
+- Luego, se le solicitará elegir y confirmar una contraseña para la aplicación de MySQL para phpMyAdmin.
+
+El proceso de instalación añade el archivo de configuración de phpMyAdmin de Apache al directorio /etc/apache2/conhable/, donde se lee de forma automática. Para terminar de configurar Apache y PHP a fin de que funcionen con phpMyAdmin, la única tarea que queda a continuación en esta sección del tutorial es habilitar explícitamente la extensión PHP mbstring. Esto se puede hacer escribiendo lo siguiente:
+
+    sudo phpenmod mbstring
+
+A continuación, reinicie Apache para que sus cambios surtan efecto:
+
+    sudo systemctl restart apache2
+
+phpMyAdmin ahora está instalado y configurado para funcionar con Apache. Puede acceder a la interfaz web visitando el nombre de dominio o la dirección IP pública de su servidor:
+
+https://su_servidor/phpmyadmin
 
 #### Crear un host virtual
 
