@@ -21,9 +21,6 @@
     - [PHP](#php)
     - [PHPMyAdmin](#phpmyadmin)
     - [Crear un host virtual](#crear-un-host-virtual)
-- [DevOps](#devops)
-    - [Docker](#docker)
-    - [LXC](#lxc)
 
 ## Configuración inicial
 
@@ -366,7 +363,7 @@ Se puede verificar el estado de OPcache con:
 Ya instalado php y mariadb podemos instalar una herramienta para manejar la administración de la base de datos.
 
     sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl
-    
+
 - Para la selección del servidor, elija apache2 <$>[warning] Advertencia: Cuando la línea de comandos aparece, “apache2” está resaltado, pero no está seleccionado. Si no pulsa SPACE para seleccionar Apache, el instalador no moverá los archivos necesarios durante la instalación. Pulse ESPACIO, TAB y luego ENTER para seleccionar Apache. <$>
 - Cuando se le pregunte si utiliza dbconfig-common para configurar la base de datos, seleccione Yes.
 - Luego, se le solicitará elegir y confirmar una contraseña para la aplicación de MySQL para phpMyAdmin.
@@ -502,91 +499,3 @@ Con esto se abrirá un archivo vacío. Añada el siguiente texto, que es el cód
 Para probar esta secuencia de comandos, diríjase a su navegador web y acceda al nombre de dominio o la dirección IP de su servidor, seguido del nombre de la secuencia de comandos, que en este caso es info.php:
 
 http://su_dominio_o_IP/info.php
-
-## DevOps
-
-### Docker
-
-Primero, actualice su lista existente de paquetes:
-
-    sudo apt update -y
-
-A continuación, instale algunos paquetes de requisitos previos que permitan aptusar paquetes a través de HTTPS:
-
-    sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
-
-Luego agregue la clave GPG para el repositorio oficial de Docker a su sistema:
-
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-Agregue el repositorio Docker a las fuentes APT:
-
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-Actualice su lista existente de paquetes nuevamente para que se reconozca la adición:
-
-    sudo apt update
-
-Asegúrese de que está a punto de instalar desde el repositorio de Docker en lugar del repositorio predeterminado de Ubuntu:
-
-    apt-cache policy docker-ce
-
-Verá un resultado como este, aunque el número de versión de Docker puede ser diferente:
-
-`docker-ce:
-Installed: (none)
-Candidate: 5:20.10.14~3-0~ubuntu-jammy
-Version table:
-    5:20.10.14~3-0~ubuntu-jammy 500
-        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
-    5:20.10.13~3-0~ubuntu-jammy 500
-        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages`
-
-Finalmente, instala Docker:
-
-    sudo apt install docker-ce -y
-
-Docker ahora debería estar instalado, el demonio iniciado y el proceso habilitado para iniciarse en el arranque. Comprueba que se está ejecutando:
-
-    sudo systemctl status docker
-
-De forma predeterminada, el comando docker solo puede ejecutarlo el usuario root o un usuario del grupo docker, que se crea automáticamente durante el proceso de instalación de Docker. Si intenta ejecutar el comando docker sin privilegios sudo o sin estar en el grupo docker, obtendrá un error. Para evitar escribir sudo cada vez que ejecuta comando, agregue su nombre de usuario al dockergrup:
-
-    sudo usermod -aG docker ${USER}
-
-Para aplicar la nueva pertenencia al grupo, cierre sesión en el servidor y vuelva a iniciarla, o escriba lo siguiente:
-
-    su - ${USER}
-
-Confirme que su usuario ahora está agregado al grupo docker escribiendo:
-
-    groups
-
-#### Instalar Docker Compose
-
-Primero, confirme la última versión disponible en su [página de github](https://github.com/docker/compose/releases). En el momento de escribir esto, la versión estable más actual es 2.12.2
-
-Use el siguiente comando para descargar:
-
-    mkdir -p ~/.docker/cli-plugins/
-    curl -SL https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
-
-A continuación, establezca los permisos correctos para que docker compose sea ejecutable:
-
-    chmod +x ~/.docker/cli-plugins/docker-compose
-
-Para verificar que la instalación fue exitosa, puede ejecutar:
-
-    docker compose version
-
-Verá un resultado similar a este:
-
-`Output
-Docker Compose version v2.12.2`
-
-### LXC
-(en construcción)
-
-Crear un usuario y agregarlo al grupo sudo
-
-    adduser NOMBRE_DE_USUARIO && usermod -aG sudo NOMBRE_DE_USUARIO
