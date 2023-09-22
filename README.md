@@ -1,4 +1,4 @@
-# My Development Setup
+# Mi Development Setup
 
 Configuración de desarrollo para mis entornos de trabajo en distintas plataformas. Esta guía fue escrita como referencia personal y la actualizo a medida de mis necesidades (es probable que no incluya algunos stack de desarrollo).
 
