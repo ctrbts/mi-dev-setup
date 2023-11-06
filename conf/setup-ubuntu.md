@@ -18,6 +18,7 @@
 - [LAMPP](#lampp)
     - [Apache](#apache)
     - [MariaDB](#mariadb)
+    - [MySQL](#mysql)
     - [PHP](#php)
     - [PHPMyAdmin](#phpmyadmin)
     - [Crear un host virtual](#crear-un-host-virtual)
@@ -323,6 +324,42 @@ Abrimos el puerto necesario para permitir el tráfico desde el servidor:
     sudo ufw allow 3306/tcp
 
 Si MariaDB no funciona, puede iniciarla con el comando `sudo systemctl start mariadb`
+
+
+### MySQL
+Instalamos MySql con el comando
+
+    sudo apt install mysql-server -y
+
+Confirmamos qu eeste corriendo
+
+    sudo systemctl status mysql.service
+
+Iniciamos sesión en la consola
+
+    sudo mysql
+
+Establecemos la contraseña de root
+    
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+
+Aseguramos la instalación de MySQL ya que por defecto presenta algunas fallas de seguridad, para esto ejecutamos
+
+    sudo mysql_secure_installation
+
+Ingresamos la contraseña de root, en la parte inicial ingresamos la letra "n" para no cambiar la contraseña de root. Luego ingresamos en todos los campos la letra "y"
+
+Accedemos ahora a mysql
+
+    mysql -u root -p
+
+Y creamos un usuario con privilegios en todas las bases
+
+    CREATE USER 'usuario'@'localhost' IDENTIFIED BY 'contraseña';
+
+    GRANT ALL PRIVILEGES ON *.* TO 'usuario'@'localhost';
+
+
 
 ### PHP
 
