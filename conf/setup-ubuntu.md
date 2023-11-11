@@ -27,7 +27,7 @@
 
 Actualizamos el sistema y agregamos algunas herramientas necesarias para escritorio y servidor (las configuraremos mas adelante)
 
-    sudo apt update && sudo apt upgrade -y &&
+    sudo apt update && sudo apt upgrade -y
     sudo apt install curl git zsh ssh nmap -y
     sudo apt install mc nmap htop btop -y
 

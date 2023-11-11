@@ -8,7 +8,7 @@
 
 Primero, actualice su lista existente de paquetes:
 
-    sudo apt update -y
+    sudo apt update && sudo apt upgrade -y
 
 A continuación, instale algunos paquetes de requisitos previos que permitan aptusar paquetes a través de HTTPS:
 
@@ -85,7 +85,7 @@ Docker Compose version v2.12.2`
 
 ## LXC
 
-### Crear un linux containder con Ubuntu LTS
+### Crear un linux container con Ubuntu LTS
 
 Para crear un LXC con Ubuntu LTS, ejecute lo siguiente en una shell de Proxmox.
 
