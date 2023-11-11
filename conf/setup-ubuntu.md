@@ -2,7 +2,6 @@
 
 - [Configuración inicial](#configuración-inicial)
     - [Gestores de paquetes y utilidades](#gestores-de-paquetes-y-utilidades)
-    - [Personalización](#personalización)
     - [Terminal](#terminal)
     - [Zsh](#zsh)
     - [Git](#git)
@@ -20,46 +19,34 @@
     - [MariaDB](#mariadb)
     - [MySQL](#mysql)
     - [PHP](#php)
-    - [PHPMyAdmin](#phpmyadmin)
     - [Crear un host virtual](#crear-un-host-virtual)
 
 ## Configuración inicial
 
 ### Gestores de paquetes y utilidades
 
-Actualizamos el sistema y agregamos algunas herramientas necesarias (las configuraremos mas adelante)
+Actualizamos el sistema y agregamos algunas herramientas necesarias para escritorio y servidor (las configuraremos mas adelante)
 
     sudo apt update && sudo apt upgrade -y &&
-    sudo apt install curl git zsh ssh mc nmap htop -y
+    sudo apt install curl git zsh ssh nmap -y
+    sudo apt install mc nmap htop btop -y
 
-Agregamos gestores de paquetes (esto es opcional pero puede ser útil)
-
-    sudo apt install synaptic menu deborphan apt-xapian-index tasksel -y
-
-Agregamos el soporte para flatpak (opcional)
-
-    sudo apt install flatpak -y &&
-    sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-### Personalización
+Agregamos herramientas de personalización, un gestor de paquetes y soporte para Flatpak y  (solo escritorio)
 
     sudo apt install gnome-tweaks -y
+    sudo apt install synaptic menu deborphan apt-xapian-index tasksel -y
+    sudo apt install flatpak -y && sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
 
 Algunas otras configuraciones necesarias
-
-En **nautilus** vamos a las Preferencias > Comportamiento > Archivo de texto ejecutables y seleccionamos *Preguntar que hacer*. Esto evita que el sistema por defecto abra algunos archivos ejecutables como si fueran archivos de texto.
-
-El tamaño de iconos yo lo dejo en 67% por comodidad visual y la tipografía en no mas de 10, dependiento el tamaño de pantalla.
-
 
 ### Terminal
 
 Como vamos a pasar bastante tiempo en la terminal le vamos a dar un toque de color y productividad.
 
-La tipografía de la terminal muy importante para mejorar la legilibilidad y evitar el cansancio visual. Las mejores fuentes para codificar son [Fira Code, Fira Mono](https://fonts.google.com/?query=fira) y [Cascadia Code](https://github.com/microsoft/cascadia-code/releases).
+La tipografía de la terminal es muy importante para mejorar la legilibilidad y evitar el cansancio visual. Las mejores fuentes para codificar son [Fira Code, Fira Mono](https://fonts.google.com/?query=fira) y [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono?query=jetb).
 
 El esquema de color **Gnome Oscuro** es uno de mis preferidos pero podemos instalar unos temas excelentes desde [Gogh Themes](https://gogh-co.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 120 > Filas 40*
-
 
 ### Zsh
 
@@ -156,13 +143,13 @@ Podemos actualizar o reinstalar y traernos los node modules de la instalación a
 
 ### OpenJDK
 
-La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados (para Ubuntu 22.04_LTS la version por defecto de java es la 11)
+La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados (para Ubuntu 24.04_LTS la version por defecto de java es la 17)
 
     sudo apt install default-jdk -y
 
 Agregamos las siguientes lineas al archivo ~/.zshrc:
 
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
     export PATH=$PATH:$JAVA_HOME/bin
 
 ### Netbeans IDE
@@ -175,13 +162,13 @@ Para descargarlo > https://netbeans.apache.org/download/index.html
 
 ### Gradle
 
-Descargamos el binario desde https://gradle.org/next-steps/?version=7.5.1&format=bin > creamos el directorio con y descomprimimos el archivo
+Descargamos el binario desde https://gradle.org/next-steps/?version=8.4&format=bin > creamos el directorio con y descomprimimos el archivo
 
-    sudo mkdir /opt/gradle && sudo unzip -d /opt/gradle ~/Descargas/gradle-7.5.1-bin.zip
+    sudo mkdir /opt/gradle && sudo unzip -d /opt/gradle ~/Descargas/gradle-8.4-bin.zip
 
 Necesitamos agregar las siguientes lineas al archivo ~/.zshrc:
 
-    export GRADLE_HOME=/opt/gradle/gradle-7.5.1
+    export GRADLE_HOME=/opt/gradle/gradle-8.4
     export PATH=$PATH:$GRADLE_HOME/bin
 
 
@@ -206,6 +193,7 @@ Agregue las siguientes líneas a su archivo de configuración ~/.zshrc:
     export PATH=$PATH:$ANDROID_HOME/tools
     export PATH=$PATH:$ANDROID_HOME/tools/bin
     export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 
 ## LAMPP
 
@@ -264,8 +252,7 @@ Independientemente del método que utilice para obtener su dirección IP, escrí
 
 Actualizamos el índice de paquetes, instalamos el paquete de mariadb-server, ejecutamos `mysql_secure_installation` para restringir el acceso al servidor
 
-    sudo apt install mariadb-server -y &&
-    sudo mysql_secure_installation
+    sudo apt install mariadb-server -y && sudo mysql_secure_installation
 
 Luego verá una serie de solicitudes mediante las cuales podrá realizar cambios en las opciones de seguridad de su instalación de MariaDB. En la primera solicitud se pedirá que introduzca la contraseña root de la base de datos actual. Debido a que no configuramos una aún, pulse ENTER para indicar “none” (ninguna). Para las siguientes puede seguir la guía a continuación:
 
@@ -355,17 +342,15 @@ Accedemos ahora a mysql
 
 Y creamos un usuario con privilegios en todas las bases
 
-    CREATE USER 'usuario'@'localhost' IDENTIFIED BY 'contraseña';
-
-    GRANT ALL PRIVILEGES ON *.* TO 'usuario'@'localhost';
-
+    CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
+    GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
 
 
 ### PHP
 
 Instalamos PHP con los adds mas comunes
 
-    sudo apt install libapache2-mod-php php php-common php-mbstring php-imap php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-fpdf php-cli php-zip php-curl php-opcache -y
+    sudo apt install libapache2-mod-php php php-common php-mbstring php-imap php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-fpdf php-cli php-zip php-curl php-opcache php-xdebug composer -y
 
 Para confirmar que todo esta instalado ok ejecutamos `php -v`
 
@@ -395,27 +380,6 @@ Se puede verificar el estado de OPcache con:
 
     php -i | grep opcache
 
-#### PHPMyAdmin
-
-Ya instalado php y mariadb podemos instalar una herramienta para manejar la administración de la base de datos.
-
-    sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl
-
-- Para la selección del servidor, elija apache2 <$>[warning] Advertencia: Cuando la línea de comandos aparece, “apache2” está resaltado, pero no está seleccionado. Si no pulsa SPACE para seleccionar Apache, el instalador no moverá los archivos necesarios durante la instalación. Pulse ESPACIO, TAB y luego ENTER para seleccionar Apache. <$>
-- Cuando se le pregunte si utiliza dbconfig-common para configurar la base de datos, seleccione Yes.
-- Luego, se le solicitará elegir y confirmar una contraseña para la aplicación de MySQL para phpMyAdmin.
-
-El proceso de instalación añade el archivo de configuración de phpMyAdmin de Apache al directorio /etc/apache2/conhable/, donde se lee de forma automática. Para terminar de configurar Apache y PHP a fin de que funcionen con phpMyAdmin, la única tarea que queda a continuación en esta sección del tutorial es habilitar explícitamente la extensión PHP mbstring. Esto se puede hacer escribiendo lo siguiente:
-
-    sudo phpenmod mbstring
-
-A continuación, reinicie Apache para que sus cambios surtan efecto:
-
-    sudo systemctl restart apache2
-
-phpMyAdmin ahora está instalado y configurado para funcionar con Apache. Puede acceder a la interfaz web visitando el nombre de dominio o la dirección IP pública de su servidor:
-
-https://su_servidor/phpmyadmin
 
 #### Crear un host virtual
 
@@ -487,11 +451,29 @@ Incluya el siguiente contenido en este archivo:
 
     <html>
         <head>
-            <title>su_dominio</title>
+            <title>Lista de Archivos</title>
         </head>
         <body>
-            <h1>Bienvenido</h1>
-            <p>el servidor para <strong>su_dominio</strong> esta online!</p>
+            <h1>Servidor local</h1>
+            <ul id="filelist"></ul>
+            <br>
+            <a href="/info.php" target="_blank">PHP Info</a>
+            <script>
+                async function getFileList() {
+                    const response = await fetch('/listfiles.php');
+                    return await response.json();
+                }
+                async function renderFileList() {
+                    const files = await getFileList();
+                    let html = '';
+                    files.forEach(file => {
+                        html += `<li>${file}</li>`;
+                    });
+
+                    document.getElementById('filelist').innerHTML = html;
+                }
+                renderFileList();
+            </script>
         </body>
     </html>
 
