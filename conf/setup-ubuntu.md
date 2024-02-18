@@ -443,39 +443,133 @@ Por último, vuelva a cargar Apache para que estos cambios surtan efecto:
 
     sudo systemctl reload apache2
 
-Ahora, su nuevo sitio web está activo, pero el directorio root web /var/www/su_dominio todavía está vacío. Cree un archivo index.html en esa ubicación para poder probar que el host virtual funcione según lo previsto:
+Ahora, su nuevo sitio web está activo, pero el directorio root web /var/www/su_dominio todavía está vacío. Cree un archivo index.php en esa ubicación para poder probar que el host virtual funcione según lo previsto:
 
-    nano /var/www/su_dominio/index.html
+    nano /var/www/su_dominio/index.php
 
 Incluya el siguiente contenido en este archivo:
 
-    <html>
-        <head>
-            <title>Lista de Archivos</title>
-        </head>
-        <body>
-            <h1>Servidor local</h1>
-            <ul id="filelist"></ul>
-            <br>
-            <a href="/info.php" target="_blank">PHP Info</a>
-            <script>
-                async function getFileList() {
-                    const response = await fetch('/listfiles.php');
-                    return await response.json();
-                }
-                async function renderFileList() {
-                    const files = await getFileList();
-                    let html = '';
-                    files.forEach(file => {
-                        html += `<li>${file}</li>`;
-                    });
-
-                    document.getElementById('filelist').innerHTML = html;
-                }
-                renderFileList();
-            </script>
-        </body>
+    <?php
+    
+    // Función para obtener el contenido de un directorio
+    function obtenerContenido($directorio)
+    {
+      $archivos = array();
+      $carpetas = array();
+    
+      // Abrir el directorio
+      $dir = opendir($directorio);
+    
+      // Leer cada elemento del directorio
+      while ($elemento = readdir($dir)) {
+        // Si es un archivo
+        if (is_file($directorio . "/" . $elemento)) {
+          $archivos[] = $elemento;
+        }
+        // Si es una carpeta
+        elseif (is_dir($directorio . "/" . $elemento) && $elemento != "." && $elemento != "..") {
+          $carpetas[] = $elemento;
+        }
+      }
+    
+      // Cerrar el directorio
+      closedir($dir);
+    
+      // Ordenar alfabeticamente
+      sort($archivos);
+      sort($carpetas);
+    
+      return array($carpetas, $archivos);
+    }
+    
+    // Obtener el contenido del directorio actual
+    $contenido = obtenerContenido(".");
+    
+    ?>
+    
+    <!DOCTYPE html>
+    <html lang="es">
+    
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Servidor local</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+          text-align: center;
+        }
+    
+        .titulo {
+          font-size: 36px;
+          font-weight: 300;
+        }
+    
+        .subtitulo {
+          font-size: 24px;
+          font-weight: 300;
+        }
+    
+        .columnas {
+          display: flex;
+          justify-content: center;
+        }
+    
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0.75rem;
+          width: 15rem;
+        }
+    
+        li {
+          border: 1px solid #ddd;
+          padding: 8px;
+          margin-bottom: 8px;
+        }
+    
+        li:hover {
+          background-color: #f1f1f1;
+          font-weight: bold;
+        }
+    
+        a {
+          color: #000;
+          cursor: pointer;
+          text-decoration: none;
+        }
+      </style>
+    </head>
+    
+    <body>
+      <p class="titulo">Servidor local</p>
+      <div class="columnas">
+        <ul>
+          <p class="subtitulo">Carpetas</p>
+          <?php
+          // Mostrar las carpetas
+          foreach ($contenido[0] as $carpeta) {
+            echo "<li><a href=\"$carpeta\">$carpeta</a></li>";
+          }
+          ?>
+        </ul>
+        <ul>
+          <p class="subtitulo">Archivos</p>
+          <?php
+          // Mostrar los archivos
+          foreach ($contenido[1] as $archivo) {
+            if ($archivo !== 'index.php') {
+              echo "<li><a href=\"$archivo\">$archivo</a></li>";
+            }
+          }
+          ?>
+        </ul>
+      </div>
+    </body>
+    
     </html>
+
 
 Ahora, diríjase a su navegador y acceda al nombre de dominio o la dirección IP de su servidor una vez más:
 
