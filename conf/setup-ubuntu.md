@@ -383,15 +383,17 @@ Se puede verificar el estado de OPcache con:
 
 #### Crear un host virtual
 
-Ubuntu tiene habilitado un bloque de servidor por defecto, que está configurado para proporcionar documentos del directorio /var/www/html. Si bien esto funciona bien para un solo sitio, puede ser difícil de manejar si alojamos varios. En lugar de modificar /var/www/html, crearemos una estructura de directorio dentro de /var/www para el sitio su_dominio y dejaremos /var/www/html establecido como directorio predeterminado que se presentará si una solicitud de cliente no coincide con ningún otro sitio.
+Ubuntu tiene habilitado un bloque de servidor por defecto, que está configurado para proporcionar documentos del directorio /var/www/html. Si bien esto funciona bien para un solo sitio, puede ser difícil de manejar si alojamos varios. En lugar de modificar /var/www/html, crearemos una estructura de directorio dentro de /var/www para el host virtual y dejaremos /var/www/html establecido como directorio predeterminado que se presentará si una solicitud de cliente no coincide con ningún otro sitio.
 
-Cree el directorio para su_dominio de la siguiente manera:
+Cree el directorio de la siguiente manera:
 
-    sudo mkdir /var/www/su_dominio
+*reemplace **vhost** con el nombre de su dominio*
+
+    sudo mkdir /var/www/vhost
 
 A continuación, asigne la propiedad del directorio con la variable de entorno $USER, que hará referencia a su usuario de sistema actual:
 
-    sudo chown -R $USER:$USER /var/www/su_dominio
+    sudo chown -R $USER:$USER /var/www/vhost
 
 Para facilitar la administración del sitio web, añadimos nuestro usuario al grupo www-data.
 
@@ -399,18 +401,18 @@ Para facilitar la administración del sitio web, añadimos nuestro usuario al gr
 
 Luego, abra un nuevo archivo de configuración en el directorio sites-available de Apache usando el editor de línea de comandos que prefiera. En este caso, utilizaremos nano:
 
-    sudo nano /etc/apache2/sites-available/su_dominio.conf
+    sudo nano /etc/apache2/sites-available/vhost.conf
 
 De esta manera, se creará un nuevo archivo en blanco. Pegue la siguiente configuración básica:
 
     <VirtualHost *:80>
 
-        ServerName su_dominio
-        ServerAlias www.su_dominio
+        ServerName vhost
+        ServerAlias www.vhost
         ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/su_dominio
+        DocumentRoot /var/www/vhost
 
-        <Directory /var/www/su_dominio>
+        <Directory /var/www/vhost>
             Options Indexes FollowSymLinks
             AllowOverride All
             Require all granted
@@ -421,11 +423,11 @@ De esta manera, se creará un nuevo archivo en blanco. Pegue la siguiente config
 
     </VirtualHost>
 
-Con esta configuración de VirtualHost, le indicamos a Apache que proporcione su_dominio usando /var/www/su_dominio como directorio root web. Si desea probar Apache sin un nombre de dominio, puede eliminar o convertir en comentario las opciones ServerName y ServerAlias añadiendo un carácter # al principio de las líneas de cada opción.
+Con esta configuración de VirtualHost, le indicamos a Apache que proporcione vhost usando /var/www/vhost como directorio root web. Si desea probar Apache sin un nombre de dominio, puede eliminar o convertir en comentario las opciones ServerName y ServerAlias añadiendo un carácter # al principio de las líneas de cada opción.
 
 Ahora, puede usar a2ensite para habilitar el nuevo host virtual:
 
-    sudo a2ensite su_dominio
+    sudo a2ensite vhost
 
 Luego deberá reiniciar apache con:
 
@@ -443,9 +445,9 @@ Por último, vuelva a cargar Apache para que estos cambios surtan efecto:
 
     sudo systemctl reload apache2
 
-Ahora, su nuevo sitio web está activo, pero el directorio root web /var/www/su_dominio todavía está vacío. Cree un archivo index.php en esa ubicación para poder probar que el host virtual funcione según lo previsto:
+Ahora, su nuevo sitio web está activo, pero el directorio root web /var/www/vhost todavía está vacío. Cree un archivo index.php en esa ubicación para poder probar que el host virtual funcione según lo previsto:
 
-    nano /var/www/su_dominio/index.php
+    nano /var/www/vhost/index.php
 
 Incluya el siguiente contenido en este archivo:
 
@@ -603,7 +605,7 @@ Ahora que dispone de una ubicación personalizada para alojar los archivos y las
 
 Cree un archivo nuevo llamado info.php dentro de su carpeta root web personalizada:
 
-    nano /var/www/su_dominio/info.php
+    nano /var/www/vhost/info.php
 
 Con esto se abrirá un archivo vacío. Añada el siguiente texto, que es el código PHP válido, dentro del archivo:
 
@@ -611,4 +613,4 @@ Con esto se abrirá un archivo vacío. Añada el siguiente texto, que es el cód
 
 Para probar esta secuencia de comandos, diríjase a su navegador web y acceda al nombre de dominio o la dirección IP de su servidor, seguido del nombre de la secuencia de comandos, que en este caso es info.php:
 
-http://su_dominio_o_IP/info.php
+http://vhost_o_IP/info.php
