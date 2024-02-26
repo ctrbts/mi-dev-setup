@@ -350,7 +350,7 @@ Y creamos un usuario con privilegios en todas las bases
 
 Instalamos PHP con los adds mas comunes
 
-    sudo apt install libapache2-mod-php php php-common php-mbstring php-imap php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-fpdf php-cli php-bcmath php-zip php-curl php-opcache php-xdebug composer -y
+    sudo apt install libapache2-mod-php php php-common php-mbstring php-imap php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-fpdf php-cli php-bcmath php-zip php-curl php-xdebug composer -y
 
 Para confirmar que todo esta instalado ok ejecutamos `php -v`
 
