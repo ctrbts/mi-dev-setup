@@ -258,7 +258,7 @@ Luego verá una serie de solicitudes mediante las cuales podrá realizar cambios
 
     Enter current password for root (enter for none): Solo presione Enter
     Switch to unix_socket authentication [Y/n]: n
-    Set root password? [Y/n]: n
+    Change root password? [Y/n]: n
     Remove anonymous users? [Y/n]: Y
     Disallow root login remotely? [Y/n]: Y
     Remove test database and access to it? [Y/n]:  Y
@@ -356,7 +356,7 @@ Para confirmar que todo esta instalado ok ejecutamos `php -v`
 
 Abrimos el archivo de configuración de PHP para configurar OPCahe con el siguiente comando:
 
-    sudo nano /etc/php/su_version_de_php/apache2/php.ini
+    sudo nano /etc/php/8.2/apache2/php.ini
 
 Descomentamos las siguientes líneas:
 
