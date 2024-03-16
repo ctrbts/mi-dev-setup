@@ -4,7 +4,6 @@ i# Mi Ubuntu Development Setup
     - [Gestores de paquetes y utilidades](#gestores-de-paquetes-y-utilidades)
     - [Terminal](#terminal)
     - [Zsh](#zsh)
-- [Ubuntu Make](#ubuntu-make)
 - [Node.js](#node)
     - [Node modules](#Node-modules)
 - [Java Stack](#java-stack)
@@ -88,14 +87,6 @@ Para activar los plugins anteriores hay que modificar el fichero de configuraci�
       zsh-autosuggestions
       zsh-syntax-highlighting
     )
-
-
-## Ubuntu Make
-Ubuntu Make proporciona un conjunto de funcionalidades para configurar, mantener y personalizar fácilmente su entorno de desarrollador. Manejará todas las dependencias, incluso aquellas que no están en Ubuntu, e instalará las últimas versiones de las herramientas deseadas y recomendadas. Este es el último master de ubuntu-make, recién construido desde https://github.com/ubuntu/ubuntu-make.
-
-    snap install ubuntu-make --classic
-
-Hay una lista completa de todas las funcionalidades en `umake --list`. Por ejemplo para instalar Firefox Developer deberíamos ejecutar po consola `umake web firefox-dev`
 
 
 ## Node
