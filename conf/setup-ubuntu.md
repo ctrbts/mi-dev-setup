@@ -4,7 +4,6 @@ i# Mi Ubuntu Development Setup
     - [Gestores de paquetes y utilidades](#gestores-de-paquetes-y-utilidades)
     - [Terminal](#terminal)
     - [Zsh](#zsh)
-    - [Git](#git)
 - [Ubuntu Make](#ubuntu-make)
 - [Node.js](#node)
     - [Node modules](#Node-modules)
@@ -89,15 +88,6 @@ Para activar los plugins anteriores hay que modificar el fichero de configuraci√
       zsh-autosuggestions
       zsh-syntax-highlighting
     )
-
-
-### Git
-
-Ya tenemos git instalado, ahora vamos a configurar un archivo *gitignore* de forma global que nos va ha permitir exluir archivos de sistema comunes:
-
-    cd ~
-    curl -O https://raw.githubusercontent.com/ctrbts/my-dev-setup/master/dotfiles/.gitignore
-    git config --global core.excludesfile ~/.gitignore
 
 
 ## Ubuntu Make
