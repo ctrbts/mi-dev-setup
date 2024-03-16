@@ -1,4 +1,4 @@
-# Mi Ubuntu Development Setup
+i# Mi Ubuntu Development Setup
 
 - [Configuración inicial](#configuración-inicial)
     - [Gestores de paquetes y utilidades](#gestores-de-paquetes-y-utilidades)
@@ -25,6 +25,8 @@
 
 ### Gestores de paquetes y utilidades
 
+*Actualizado para Ubuntu 23.10*
+
 Actualizamos el sistema y agregamos algunas herramientas necesarias para escritorio y servidor (las configuraremos mas adelante)
 
     sudo apt update && sudo apt upgrade -y
@@ -33,7 +35,7 @@ Actualizamos el sistema y agregamos algunas herramientas necesarias para escrito
 
 Agregamos herramientas de personalización, un gestor de paquetes y soporte para Flatpak y  (solo escritorio)
 
-    sudo apt install gnome-tweaks -y
+    sudo apt install gnome-tweaks dconf-editor -y
     sudo apt install synaptic menu deborphan apt-xapian-index tasksel -y
     sudo apt install flatpak -y && sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
