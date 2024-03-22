@@ -594,6 +594,12 @@ Con esto se abrirá un archivo vacío. Añada el siguiente texto, que es el cód
 
     <?php phpinfo();
 
+Si el directorio de trabajo esta en `home` asegurarse que los directorios en la ruta de tu DocumentRoot y cualquier otro directorio relevante tengan los permisos adecuados.
+
+chmod +x /home
+chmod +x /home/tu_usuario
+chmod +x /home/tu_usuario/vhost
+
 Para probar esta secuencia de comandos, diríjase a su navegador web y acceda al nombre de dominio o la dirección IP de su servidor, seguido del nombre de la secuencia de comandos, que en este caso es info.php:
 
 http://vhost_o_IP/info.php
