@@ -333,13 +333,13 @@ Y creamos un usuario con privilegios en todas las bases
 
 Instalamos PHP con los adds mas comunes
 
-    sudo apt install libapache2-mod-php php php-common php-mbstring php-imap php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-fpdf php-cli php-bcmath php-zip php-curl php-xdebug composer -y
+    sudo apt install libapache2-mod-php php php-common php-mbstring php-imap php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-pgsql php-fpdf php-cli php-bcmath php-zip php-curl php-xdebug composer -y
 
 Para confirmar que todo esta instalado ok ejecutamos `php -v`
 
 Abrimos el archivo de configuración de PHP para configurar OPCahe con el siguiente comando:
 
-    sudo nano /etc/php/8.2/apache2/php.ini
+    sudo nano /etc/php/8.3/apache2/php.ini
 
 Descomentamos las siguientes líneas:
 
