@@ -105,7 +105,7 @@ Instalamos la última LTS
 
     nvm install --lts
 
-o alguna versión específica con `nvm install 14.19.1`
+o alguna versión específica con `nvm install 18.20.2`
 
 Para setear por defecto una version de node necesitamos hacer `nvm alias default node`
 
@@ -126,13 +126,13 @@ Podemos actualizar o reinstalar y traernos los node modules de la instalación a
 
 ### OpenJDK
 
-La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados (para Ubuntu 24.04_LTS la version por defecto de java es la 17)
+La mejor forma de instalar el jdk de java es desde los repos de ubuntu y nos garantizamos que siempre estarán actualizados (para Ubuntu 24.04_LTS la version por defecto de java es la 21)
 
     sudo apt install default-jdk -y
 
 Agregamos las siguientes lineas al archivo ~/.zshrc:
 
-    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
     export PATH=$PATH:$JAVA_HOME/bin
 
 ### Netbeans IDE
