@@ -1,4 +1,4 @@
-i# Mi Ubuntu Development Setup
+# Mi Ubuntu Development Setup
 
 - [Configuración inicial](#configuración-inicial)
     - [Gestores de paquetes y utilidades](#gestores-de-paquetes-y-utilidades)

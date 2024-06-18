@@ -8,3 +8,5 @@ Si encuentra algún error en los pasos descritos a continuación, o si alguno de
 - [macOS](https://github.com/ctrbts/my-dev-setup/blob/main/conf/setup-mac.md)
 - [Ubuntu](https://github.com/ctrbts/my-dev-setup/blob/main/conf/setup-ubuntu.md)
 - [DevOps](https://github.com/ctrbts/my-dev-setup/blob/main/conf/setup-devops.md)
+
+[Script de mantenimiento de Ubuntu](/conf/maintenance-ubuntu.md)
