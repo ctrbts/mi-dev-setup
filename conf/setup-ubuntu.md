@@ -1,7 +1,7 @@
 # Mi Ubuntu Development Setup
 
 - [Configuración inicial](#configuración-inicial)
-    - [Crear un usuaio administrador](#crear-un-usuario-administrador)
+    - [Crear un usuario administrador](#crear-un-usuario-administrador)
     - [Gestores de paquetes y utilidades](#gestores-de-paquetes-y-utilidades)
     - [Terminal](#terminal)
     - [Zsh](#zsh)
@@ -22,7 +22,7 @@
 
 ## Configuración inicial
 
-### Crear un usuaio administrador
+### Crear un usuario administrador
 
     adduser NOMBRE_DE_USUARIO && usermod -aG sudo NOMBRE_DE_USUARIO
 
