@@ -1,6 +1,7 @@
 # Mi Ubuntu Development Setup
 
 - [Configuración inicial](#configuración-inicial)
+    - [Crear un usuaio administrador](#crear-un-usuario-administrador)
     - [Gestores de paquetes y utilidades](#gestores-de-paquetes-y-utilidades)
     - [Terminal](#terminal)
     - [Zsh](#zsh)
@@ -20,6 +21,10 @@
     - [Crear un host virtual](#crear-un-host-virtual)
 
 ## Configuración inicial
+
+### Crear un usuaio administrador
+
+    adduser NOMBRE_DE_USUARIO && usermod -aG sudo NOMBRE_DE_USUARIO
 
 ### Gestores de paquetes y utilidades
 
