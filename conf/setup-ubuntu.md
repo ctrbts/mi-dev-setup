@@ -539,7 +539,7 @@ Incluya el siguiente contenido en este archivo:
           <?php
           // Mostrar las carpetas
           foreach ($contenido[0] as $carpeta) {
-            echo "<li><a href=\"$carpeta\">$carpeta</a></li>";
+            echo "<a href=\"$carpeta\"><li>$carpeta</li></a>";
           }
           ?>
         </ul>
@@ -549,7 +549,7 @@ Incluya el siguiente contenido en este archivo:
           // Mostrar los archivos
           foreach ($contenido[1] as $archivo) {
             if ($archivo !== 'index.php') {
-              echo "<li><a href=\"$archivo\">$archivo</a></li>";
+              echo "<a href=\"$archivo\"><li>$archivo</li></a>";
             }
           }
           ?>
