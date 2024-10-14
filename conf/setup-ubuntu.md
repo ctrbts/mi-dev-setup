@@ -32,7 +32,7 @@
 
 Actualizamos el sistema y agregamos algunas herramientas necesarias para escritorio y servidor (las configuraremos mas adelante)
 
-    sudo apt update && sudo apt upgrade -y
+    sudo apt update && sudo apt full-upgrade -y && sudo snap refresh && sudo apt autoclean && sudo apt clean
     sudo apt install curl git zsh mc nmap ssh htop -y
 
 Agregamos herramientas de personalización, un gestor de paquetes y soporte para Flatpak y  (solo escritorio)
