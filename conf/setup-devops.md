@@ -4,6 +4,8 @@
 - [LXC](#lxc)
 
 
+    sudo timedatectl set-timezone America/Argentina/Buenos_Aires
+
 ## Docker
 
 Primero, actualice su lista existente de paquetes:
