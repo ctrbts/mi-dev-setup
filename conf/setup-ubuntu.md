@@ -213,6 +213,10 @@ Abrimos los puertos necesarios para permitir el tráfico en el servidor:
     sudo ufw allow in "Apache Full" &&
     sudo ufw allow in "OpenSSH"
 
+Podemos restringir el acceso solo a nuestras ips de confianza
+
+    sudo ufw allow from 127.0.0.1/24 to any port 22
+
 Puede verificar el cambio con lo siguiente:
 
     sudo ufw status
