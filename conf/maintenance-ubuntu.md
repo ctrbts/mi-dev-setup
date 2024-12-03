@@ -3,12 +3,11 @@
 ### Actualizar el sistema y sus programas
 
 ```shell
-sudo apt update && sudo apt full-upgrade -y && sudo snap refresh && sudo apt autoremove && sudo apt autoclean && sudo apt clean
+sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove && sudo apt autoclean
 ```
 * **update:** actualiza la lista de paquetes para comprobar si hay nuevos.
-* **full-upgrade:** actualiza tanto los paquetes instalados como otros del sistema como el kernel.
-* **snap refresh:** actualiza los paquetes snap.
-* **autoclean y clean:** eliminan la caché local de paquetes.
+* **full-upgrade:** actualiza tanto los paquetes instalados como otros del sistema como el kernel y los paquetes snap.
+* **autoclean:** eliminan la caché local de paquetes.
 
 [Más información sobre clean y autoclean](https://askubuntu.com/a/3169)
 
