@@ -3,7 +3,7 @@
 ### Actualizar el sistema y sus programas
 
 ```shell
-sudo apt update && sudo apt full-upgrade -y && sudo snap refresh && sudo apt autoclean && sudo apt clean
+sudo apt update && sudo apt full-upgrade -y && sudo snap refresh && sudo apt autoremove && sudo apt autoclean && sudo apt clean
 ```
 * **update:** actualiza la lista de paquetes para comprobar si hay nuevos.
 * **full-upgrade:** actualiza tanto los paquetes instalados como otros del sistema como el kernel.
