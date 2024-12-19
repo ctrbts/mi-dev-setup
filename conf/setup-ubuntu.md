@@ -28,7 +28,7 @@
 
 ### Gestores de paquetes y utilidades
 
-*Actualizado para Ubuntu 23.10*
+*Actualizado para Ubuntu 24.10*
 
 Actualizamos el sistema y agregamos algunas herramientas necesarias para escritorio y servidor (las configuraremos mas adelante)
 
@@ -39,7 +39,7 @@ Agregamos herramientas de personalización, un gestor de paquetes y soporte para
 
     sudo apt install gnome-tweaks dconf-editor -y
     sudo apt install synaptic menu deborphan apt-xapian-index tasksel -y
-    sudo apt install flatpak -y && sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    sudo apt install flatpak gnome-software-plugin-flatpak -y && sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 
 Algunas otras configuraciones necesarias
