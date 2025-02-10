@@ -28,7 +28,7 @@
 
 ### Gestores de paquetes y utilidades
 
-*Actualizado para Ubuntu 24.10*
+*Actualizado para Ubuntu 24.04*
 
 Actualizamos el sistema y agregamos algunas herramientas necesarias para escritorio y servidor (las configuraremos mas adelante)
 
