@@ -304,39 +304,6 @@ Abrimos el puerto necesario para permitir el tráfico desde el servidor:
 Si MariaDB no funciona, puede iniciarla con el comando `sudo systemctl start mariadb`
 
 
-### MySQL
-Instalamos MySql con el comando
-
-    sudo apt install mysql-server -y
-
-Confirmamos qu eeste corriendo
-
-    sudo systemctl status mysql.service
-
-Iniciamos sesión en la consola
-
-    sudo mysql
-
-Establecemos la contraseña de root
-    
-    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
-
-Aseguramos la instalación de MySQL ya que por defecto presenta algunas fallas de seguridad, para esto ejecutamos
-
-    sudo mysql_secure_installation
-
-Ingresamos la contraseña de root, en la parte inicial ingresamos la letra "n" para no cambiar la contraseña de root. Luego ingresamos en todos los campos la letra "y"
-
-Accedemos ahora a mysql
-
-    mysql -u root -p
-
-Y creamos un usuario con privilegios en todas las bases
-
-    CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
-    GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
-
-
 ### PHP
 
 Instalamos PHP con los adds mas comunes
@@ -611,3 +578,64 @@ chmod +x /home/tu_usuario/vhost
 Para probar esta secuencia de comandos, diríjase a su navegador web y acceda al nombre de dominio o la dirección IP de su servidor, seguido del nombre de la secuencia de comandos, que en este caso es info.php:
 
 http://vhost_o_IP/info.php
+
+
+## Bases de datos
+
+### MySQL
+Instalamos MySql con el comando
+
+    sudo apt install mysql-server -y
+
+Confirmamos qu eeste corriendo
+
+    sudo systemctl status mysql.service
+
+Iniciamos sesión en la consola
+
+    sudo mysql
+
+Establecemos la contraseña de root
+    
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+
+Aseguramos la instalación de MySQL ya que por defecto presenta algunas fallas de seguridad, para esto ejecutamos
+
+    sudo mysql_secure_installation
+
+Ingresamos la contraseña de root, en la parte inicial ingresamos la letra "n" para no cambiar la contraseña de root. Luego ingresamos en todos los campos la letra "y"
+
+Accedemos ahora a mysql
+
+    mysql -u root -p
+
+Y creamos un usuario con privilegios en todas las bases
+
+    CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
+    GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
+
+
+### PostgreSQL
+Instalamos los paquetes necesarios
+
+    sudo apt install postgresql postgresql-contrib postgresql-client
+
+Vamos a manejar la seguridad a nivel de base de datos y de sistema.
+Restringimos el acceso a los archivos de configuración solo al propietario del archivo
+
+    sudo chmod 600 -R /etc/postgresql/16/main/pg_hba.conf
+    sudo chmod 600 -R /etc/postgresql/16/main/postgresql.conf
+
+Abribos el archivo `postgresql.conf`para editarlo
+
+Descomentamos la ínea: `listen_address = 'localhost'` para habilitar el acceso local al administrador. Y agregamo seguridad adicional habilitando el cifrado scram-256 desomentando `password_encryption=scram-sha-256`
+
+Ahora abrimos `pg_hba.conf` y reemplazamos el metodo de cifrado en la linea:   
+`local  all all peer`, reemplazamos *peer* por *scram-sha-256*`.
+
+En la línea siguiente podemos establecer una máscara de red específica para que acceda a la base de datos, solamente reemplazamos 127.0.0.1 por el mapa de red que queremos permitor (ej. 200.10.20.0/24)
+
+Además agregamos una linea para rechazar cualquier dirección IP que no este gestionada por este archivo 
+
+    host   all all all reject
+
