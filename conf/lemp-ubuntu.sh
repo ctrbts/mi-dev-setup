@@ -17,8 +17,9 @@ fi
 
 # Actualizar paquetes del sistema
 echo "Actualizando paquetes del sistema..."
-apt update && apt upgrade -y && apt dist-upgrade -y && apt autoremove -y && apt clean
-echo "Actualización de paquetes completada."
+apt update && apt full-upgrade -y && apt dist-upgrade -y && apt autoremove -y && apt clean
+apt install software-properties-common curl git zsh mc ssh htop -y
+echo "Actualización de paquetes y dependencias completada."
 echo # Salto de línea
 
 # Instalar Nginx desde el repositorio oficial
