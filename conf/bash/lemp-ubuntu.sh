@@ -19,6 +19,7 @@ fi
 echo "Actualizando paquetes del sistema..."
 apt update && apt upgrade -y && apt dist-upgrade -y && apt autoremove -y && apt clean
 echo "Actualización de paquetes completada."
+echo # Salto de línea
 
 # Instalar Nginx desde el repositorio oficial
 echo "Instalando Nginx..."
@@ -28,17 +29,20 @@ echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx
 echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n" | tee /etc/apt/preferences.d/99nginx
 apt update && apt install nginx -y
 echo "Instalación de Nginx completada."
+echo # Salto de línea
 
 # Instalar MariaDB
 echo "Instalando MariaDB..."
 apt install mariadb-server -y
 echo "Instalación de MariaDB completada."
+echo # Salto de línea
 
 # Instalar PHP 8.3 y extensiones necesarias para Laravel
 echo "Instalando PHP 8.3 y extensiones..."
 add-apt-repository ppa:ondrej/php -y
 apt update && apt install php8.3-fpm php8.3-cli php8.3-mysql php8.3-gd php8.3-curl php8.3-zip php8.3-xml php8.3-mbstring php8.3-bcmath php8.3-tokenizer php8.3-xml php8.3-common php8.3-opcache php8.3-intl -y
 echo "Instalación de PHP y extensiones completada."
+echo # Salto de línea
 
 # Configurar PHP-FPM para Laravel
 echo "Configurando PHP-FPM..."
@@ -48,11 +52,13 @@ sed -i 's/post_max_size = 8M/post_max_size = 128M/g' /etc/php/8.3/fpm/php.ini
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 128M/g' /etc/php/8.3/fpm/php.ini
 service php8.3-fpm restart
 echo "Configuración de PHP-FPM completada."
+echo # Salto de línea
 
 # Instalar Composer
 echo "Instalando Composer..."
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 echo "Instalación de Composer completada."
+echo # Salto de línea
 
 # Ajustar permisos para directorios web
 echo "Ajustando permisos de directorios web..."
@@ -61,6 +67,7 @@ chmod -R 755 /var/www/
 chown -R www-data:www-data /usr/share/nginx/
 chmod -R 755 /usr/share/nginx/
 echo "Permisos ajustados."
+echo # Salto de línea
 
 # Instalar Redis
 echo "Instalando Redis..."
@@ -71,6 +78,7 @@ systemctl enable redis-server.service
 systemctl start redis-server.service
 apt install php8.3-redis -y
 echo "Instalación de Redis completada."
+echo # Salto de línea
 
 # Preguntar si se desea instalar Certbot
 read -p "¿Desea instalar Certbot? (s/n): " install_certbot
@@ -99,6 +107,7 @@ if [[ "$install_certbot" == "s" ]]; then
     echo "Método de instalación de Certbot no válido."
   fi
 fi
+echo # Salto de línea
 
 # Restaurar desde copia de seguridad (si existe)
 if [[ -d "backup" ]]; then
@@ -136,6 +145,8 @@ fi
 echo "Reiniciando servicios..."
 systemctl restart nginx php8.3-fpm redis-server
 echo "Servicios reiniciados."
+echo # Salto de línea
 
 # Ejecutar mysql_secure_installation
 echo "Por favor, ejecuta 'mysql_secure_installation' para asegurar MariaDB."
+echo # Salto de línea
