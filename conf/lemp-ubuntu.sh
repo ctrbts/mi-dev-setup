@@ -18,7 +18,7 @@ fi
 # Actualizar paquetes del sistema
 echo "Actualizando paquetes del sistema..."
 apt update && apt full-upgrade -y && apt dist-upgrade -y && apt autoremove -y && apt clean
-apt install software-properties-common curl git zsh mc ssh htop -y
+apt install software-properties-common zsh mc ssh htop -y
 echo "Actualización de paquetes y dependencias completada."
 echo # Salto de línea
 
