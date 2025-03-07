@@ -26,6 +26,18 @@
 
     adduser NOMBRE_DE_USUARIO && usermod -aG sudo NOMBRE_DE_USUARIO
 
+#### Desactivar el inicio de sesión SSH para root:
+
+Abrimos una terminal y ejecutamos el siguiente comando para editar el archivo sshd_config con privilegios de superusuario:
+    
+    sudo nano /etc/ssh/sshd_config
+
+Buscamos la línea que dice `PermitRootLogin yes` o `#PermitRootLogin prohibit-password`. Cambiamos *yes* a *no* o descomentamos la linea y dejamos `PermitRootLogin prohibit-password`.
+Si no existe la linea, la agregamosa.
+Guarda los cambios y reiniciamos el servicio SSH:
+
+    sudo systemctl restart sshd
+
 ### Gestores de paquetes y utilidades
 
 *Actualizado para Ubuntu 24.04*
