@@ -15,12 +15,12 @@ if [[ "$EUID" -ne 0 ]]; then
   exit 1
 fi
 
-echo "Instalación de LEMP para Laravel en Ubuntu 24.04 LTS"
+echo # Salto de línea
+echo "=== INSTALACIÓN DE LEMP PARA LARAVEL EN UBUNTU 24.04 LTS ==="
+echo # Salto de línea
 echo "Este script puede instalar Nginx, MariaDB, PHP, Composer y Redis."
-echo "Cada componente es opcional y puede elegir instalarlo o no."
-echo "Opcionalmente, restaurará un servidor desde una copia de seguridad."
-echo "En entornos de desarrollo prefiera las versiones oficiales de los paquetes"
-echo "En entornos de producción prefiera las versiones de los paquetes del sistema."
+echo "Cada componente es opcional y puede elegir instalarlo o no. Opcionalmente, restaurará un servidor desde una copia de seguridad."
+echo "En entornos de desarrollo prefiera las versiones oficiales de los paquetes. En entornos de producción prefiera las versiones de los paquetes del sistema."
 echo # Salto de línea
 
 # Función para confirmar instalación
@@ -334,6 +334,163 @@ if [[ "$restart_services" == "s" ]]; then
   echo # Salto de línea
 fi
 
+# Instalar y configurar UFW
+if confirm_install "UFW (Uncomplicated Firewall)"; then
+  echo "Instalando UFW..."
+  apt install ufw -y
+  
+  # Configuración básica de UFW
+  echo "Configurando reglas básicas de UFW..."
+  
+  # Denegar todo el tráfico entrante por defecto
+  ufw default deny incoming
+  
+  # Permitir todo el tráfico saliente por defecto
+  ufw default allow outgoing
+  
+  # Permitir SSH (siempre recomendado para evitar bloqueos)
+  read -p "¿Desea permitir conexiones SSH? (s/n): " allow_ssh
+  if [[ "$allow_ssh" == "s" ]]; then
+    read -p "¿En qué puerto está configurado SSH? (por defecto: 22): " ssh_port
+    ssh_port=${ssh_port:-22}
+    ufw allow $ssh_port/tcp comment 'SSH'
+    echo "Acceso SSH permitido en el puerto $ssh_port."
+  fi
+  
+  # Reglas para Nginx
+  if command -v nginx >/dev/null 2>&1; then
+    read -p "¿Desea configurar reglas de firewall para Nginx? (s/n): " nginx_firewall
+    if [[ "$nginx_firewall" == "s" ]]; then
+      ufw allow 'Nginx HTTP' comment 'Nginx HTTP'
+      
+      read -p "¿Desea permitir el tráfico HTTPS? (s/n): " allow_https
+      if [[ "$allow_https" == "s" ]]; then
+        ufw allow 'Nginx HTTPS' comment 'Nginx HTTPS'
+        echo "Tráfico HTTP y HTTPS permitido para Nginx."
+      else
+        echo "Solo tráfico HTTP permitido para Nginx."
+      fi
+    fi
+  fi
+  
+  # Reglas para MariaDB
+  if command -v mysql >/dev/null 2>&1; then
+    read -p "¿Desea permitir conexiones remotas a MariaDB? (s/n): " mariadb_remote
+    if [[ "$mariadb_remote" == "s" ]]; then
+      read -p "¿Desde qué dirección IP se permitirán conexiones a MariaDB? (ej: 192.168.1.0/24): " mariadb_ip
+      if [[ -n "$mariadb_ip" ]]; then
+        ufw allow from $mariadb_ip to any port 3306 proto tcp comment 'MariaDB Remote'
+        echo "Conexiones remotas a MariaDB permitidas desde $mariadb_ip."
+      else
+        echo "No se ha especificado una dirección IP válida."
+      fi
+    else
+      # Si no permite conexiones remotas, asegurarse de que MariaDB solo escuche en localhost
+      if [[ -f "/etc/mysql/mariadb.conf.d/50-server.cnf" ]]; then
+        sed -i 's/^bind-address.*$/bind-address = 127.0.0.1/' /etc/mysql/mariadb.conf.d/50-server.cnf
+        echo "MariaDB configurado para escuchar solo en localhost."
+      fi
+    fi
+  fi
+  
+  # Reglas para FTP (opcional)
+  read -p "¿Desea permitir conexiones FTP? (s/n): " allow_ftp
+  if [[ "$allow_ftp" == "s" ]]; then
+    ufw allow 21/tcp comment 'FTP'
+    # Para FTP pasivo
+    read -p "¿Desea habilitar FTP pasivo (rango de puertos)? (s/n): " allow_passive_ftp
+    if [[ "$allow_passive_ftp" == "s" ]]; then
+      read -p "Ingrese el rango de puertos para FTP pasivo (ej: 10000:10100): " passive_range
+      if [[ -n "$passive_range" ]]; then
+        ufw allow $passive_range/tcp comment 'FTP passive'
+        echo "FTP pasivo habilitado en el rango de puertos $passive_range."
+      fi
+    fi
+    echo "Acceso FTP permitido."
+  fi
+  
+  # Reglas para Redis
+  if command -v redis-cli >/dev/null 2>&1; then
+    read -p "¿Desea permitir conexiones remotas a Redis? (s/n): " redis_remote
+    if [[ "$redis_remote" == "s" ]]; then
+      read -p "¿Desde qué dirección IP se permitirán conexiones a Redis? (ej: 192.168.1.0/24): " redis_ip
+      if [[ -n "$redis_ip" ]]; then
+        ufw allow from $redis_ip to any port 6379 proto tcp comment 'Redis Remote'
+        echo "Conexiones remotas a Redis permitidas desde $redis_ip."
+        
+        # Configurar Redis para aceptar conexiones remotas
+        if [[ -f "/etc/redis/redis.conf" ]]; then
+          # Comentar la línea bind 127.0.0.1 para permitir todas las interfaces o especificar IP
+          sed -i 's/^bind 127.0.0.1/# bind 127.0.0.1/' /etc/redis/redis.conf
+          # Cambiar protected-mode a no
+          sed -i 's/protected-mode yes/protected-mode no/' /etc/redis/redis.conf
+          # Recomendar configurar una contraseña
+          echo "IMPORTANTE: Se recomienda configurar una contraseña para Redis editando /etc/redis/redis.conf"
+          echo "y estableciendo 'requirepass tu_contraseña_segura'."
+        fi
+      fi
+    else
+      # Asegurarse de que Redis solo escuche en localhost
+      if [[ -f "/etc/redis/redis.conf" ]]; then
+        sed -i 's/^# bind 127.0.0.1/bind 127.0.0.1/' /etc/redis/redis.conf
+        sed -i 's/^bind 0.0.0.0/bind 127.0.0.1/' /etc/redis/redis.conf
+        sed -i 's/protected-mode no/protected-mode yes/' /etc/redis/redis.conf
+        echo "Redis configurado para escuchar solo en localhost."
+      fi
+    fi
+  fi
+  
+  # Configuración avanzada (opcional)
+  read -p "¿Desea configurar opciones avanzadas de UFW? (s/n): " advanced_ufw
+  if [[ "$advanced_ufw" == "s" ]]; then
+    # Habilitar registro de eventos
+    read -p "¿Desea habilitar el registro de eventos de UFW? (s/n): " enable_logging
+    if [[ "$enable_logging" == "s" ]]; then
+      read -p "Nivel de registro (low/medium/high): " log_level
+      log_level=${log_level:-low}
+      ufw logging $log_level
+      echo "Registro de eventos configurado en nivel '$log_level'."
+    fi
+    
+    # Configurar rate limiting para prevenir ataques de fuerza bruta
+    read -p "¿Desea configurar rate limiting para SSH (protección contra fuerza bruta)? (s/n): " rate_limit
+    if [[ "$rate_limit" == "s" ]]; then
+      ssh_port=${ssh_port:-22}
+      # Eliminar regla anterior si existe
+      ufw delete allow $ssh_port/tcp
+      # Agregar regla con rate limiting
+      ufw limit $ssh_port/tcp comment 'SSH rate limited'
+      echo "Rate limiting configurado para SSH en el puerto $ssh_port."
+    fi
+    
+    # Permitir ping
+    read -p "¿Desea permitir pings (ICMP)? (s/n): " allow_ping
+    if [[ "$allow_ping" == "s" ]]; then
+      # Configurar /etc/ufw/before.rules para permitir ping
+      sed -i '/^# ok icmp codes for INPUT/,/^# allow dhcp client to work/ s/-A ufw-before-input -p icmp --icmp-type echo-request -j DROP/-A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT/' /etc/ufw/before.rules
+      echo "Pings (ICMP) habilitados."
+    else
+      # Configurar /etc/ufw/before.rules para bloquear ping
+      sed -i '/^# ok icmp codes for INPUT/,/^# allow dhcp client to work/ s/-A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT/-A ufw-before-input -p icmp --icmp-type echo-request -j DROP/' /etc/ufw/before.rules
+      echo "Pings (ICMP) bloqueados."
+    fi
+  fi
+  
+  # Habilitar UFW
+  read -p "¿Desea habilitar UFW ahora? (s/n): " enable_ufw
+  if [[ "$enable_ufw" == "s" ]]; then
+    echo "y" | ufw enable
+    ufw status verbose
+    echo "UFW habilitado y configurado correctamente."
+  else
+    echo "IMPORTANTE: UFW ha sido configurado pero NO está habilitado."
+    echo "Para habilitarlo manualmente, ejecute: 'ufw enable'"
+  fi
+  
+  echo "Instalación y configuración de UFW completada."
+  echo # Salto de línea
+fi
+
 # Resumen de instalación
 echo "=== RESUMEN DE INSTALACIÓN ==="
 if command -v nginx >/dev/null 2>&1; then
@@ -370,6 +527,12 @@ if command -v certbot >/dev/null 2>&1; then
   echo "✓ Certbot instalado"
 else
   echo "✗ Certbot no instalado"
+fi
+
+if command -v ufw >/dev/null 2>&1; then
+  echo "✓ UFW instalado"
+else
+  echo "✗ UFW no instalado"
 fi
 echo # Salto de línea
 
