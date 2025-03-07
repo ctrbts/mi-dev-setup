@@ -89,28 +89,29 @@ if confirm_install "MariaDB"; then
   echo # Salto de línea
 fi
 
-# Instalar PHP
+# Instalar PHP 
 if confirm_install "PHP"; then
-  # Preguntar sobre la versión de PHP a instalar
-  echo "Versiones disponibles de PHP:"
-  echo "1) PHP 8.0"
-  echo "2) PHP 8.1" 
-  echo "3) PHP 8.2"
-  echo "4) PHP 8.3"
-  read -p "Seleccione la versión de PHP a instalar (1-4): " php_version
-
-  case $php_version in
-    1) php_ver="8.0" ;;
-    2) php_ver="8.1" ;;
-    3) php_ver="8.2" ;;
-    4) php_ver="8.3" ;;
-    *) php_ver="8.3" 
-       echo "Opción no válida, se instalará PHP 8.3 por defecto." ;;
-  esac
-
   # Preguntar sobre la instalación de PHP
   read -p "¿Desea instalar PHP desde el repositorio oficial (o) o local (l)? (o/l): " php_repo
+  
   if [[ "$php_repo" == "o" ]]; then
+    # Preguntar sobre la versión de PHP a instalar (solo para repo oficial)
+    echo "Versiones disponibles de PHP:"
+    echo "1) PHP 8.0"
+    echo "2) PHP 8.1" 
+    echo "3) PHP 8.2"
+    echo "4) PHP 8.3"
+    read -p "Seleccione la versión de PHP a instalar (1-4): " php_version
+    
+    case $php_version in
+      1) php_ver="8.0" ;;
+      2) php_ver="8.1" ;;
+      3) php_ver="8.2" ;;
+      4) php_ver="8.3" ;;
+      *) php_ver="8.3"
+          echo "Opción no válida, se instalará PHP 8.3 por defecto." ;;
+    esac
+    
     # Instalar PHP desde el repositorio oficial
     echo "Instalando PHP $php_ver y extensiones desde el repositorio oficial..."
     add-apt-repository ppa:ondrej/php -y
@@ -122,16 +123,17 @@ if confirm_install "PHP"; then
       apt install php$php_ver-gd php$php_ver-curl php$php_ver-zip php$php_ver-xml php$php_ver-mbstring php$php_ver-bcmath php$php_ver-tokenizer php$php_ver-xml php$php_ver-common php$php_ver-opcache php$php_ver-intl -y
     fi
   else
-    # Instalar PHP desde el repositorio local
-    echo "Instalando PHP $php_ver y extensiones desde el repositorio local..."
-    apt install php$php_ver-fpm php$php_ver-cli php$php_ver-mysql -y
+    # Instalar PHP desde el repositorio local (sin preguntar versión)
+    echo "Instalando PHP y extensiones desde el repositorio local..."
+    apt install php-fpm php-cli php-mysql -y
     
     # Preguntar por extensiones opcionales de PHP
     read -p "¿Desea instalar extensiones adicionales de PHP para Laravel? (s/n): " php_extensions
     if [[ "$php_extensions" == "s" ]]; then
-      apt install php$php_ver-gd php$php_ver-curl php$php_ver-zip php$php_ver-xml php$php_ver-mbstring php$php_ver-bcmath php$php_ver-common php$php_ver-opcache php$php_ver-intl -y
+      apt install php-gd php-curl php-zip php-xml php-mbstring php-bcmath php-common php-opcache php-intl -y
     fi
   fi
+  
   echo "Instalación de PHP y extensiones completada."
   echo # Salto de línea
 
