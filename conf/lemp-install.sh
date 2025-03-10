@@ -127,6 +127,9 @@ if confirm_install "PHP"; then
     echo "Instalando PHP y extensiones desde el repositorio local..."
     apt install php-fpm php-cli php-mysql -y
     
+    # Detectar la versión de PHP instalada
+    php_ver=$(php -v | head -n 1 | awk '{print $2}' | cut -d'.' -f1-2)
+
     # Preguntar por extensiones opcionales de PHP
     read -p "¿Desea instalar extensiones adicionales de PHP para Laravel? (s/n): " php_extensions
     if [[ "$php_extensions" == "s" ]]; then
