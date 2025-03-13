@@ -115,7 +115,7 @@ if confirm_install "PHP"; then
     # Instalar PHP desde el repositorio oficial
     echo "Instalando PHP $php_ver y extensiones desde el repositorio oficial..."
     add-apt-repository ppa:ondrej/php -y
-    apt update && apt install php$php_ver-fpm php$php_ver-cli php$php_ver-mysql -y
+    apt update && apt install php$php_ver-fpm php$php_ver-cli php$php_ver-mysql php$php_ver-sqlite3 -y
     
     # Preguntar por extensiones opcionales de PHP
     read -p "¿Desea instalar extensiones adicionales de PHP para Laravel? (s/n): " php_extensions
@@ -125,7 +125,7 @@ if confirm_install "PHP"; then
   else
     # Instalar PHP desde el repositorio local (sin preguntar versión)
     echo "Instalando PHP y extensiones desde el repositorio local..."
-    apt install php-fpm php-cli php-mysql -y
+    apt install php-fpm php-cli php-mysql php-sqlite3 -y
     
     # Detectar la versión de PHP instalada
     php_ver=$(php -v | head -n 1 | awk '{print $2}' | cut -d'.' -f1-2)
