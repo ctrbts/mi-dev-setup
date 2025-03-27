@@ -28,12 +28,8 @@ Actualizamos el sistema y agregamos algunas herramientas necesarias
 
 Seteamos el timezone
 
-    sudo timedatectl set-timezone TU_TIMEZONE America/Argentina/Buenos_Aires
+    sudo timedatectl set-timezone TU_TIMEZONE
 [//]: # (sudo timedatectl set-timezone America/Argentina/Buenos_Aires) 
-
-Agregamos nuestro usuario a Docker para evitarproblemas con permisos
-
-    sudo usermod -aG docker $USER
 
 Actualizamos los paquertes de y agregamos las claves y el repo:
 
@@ -53,6 +49,10 @@ Actualizamos los paquertes de y agregamos las claves y el repo:
 Instalamos la última versión
 
     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+Después d einstalar agregamos nuestro usuario a Docker para evitar problemas con permisos
+
+    sudo usermod -aG docker $USER
 
 Verificamos que la instalacion haya teni éxito corriendo la imágen `hello-world`:
 
