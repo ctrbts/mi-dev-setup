@@ -4,6 +4,6 @@ Configuración de desarrollo para mis entornos de trabajo en distintas plataform
 
 Si encuentra algún error en los pasos descritos a continuación, o si alguno de los comandos no está actualizado, ¡hágamelo saber!
 
+- [Ubuntu](/conf/setup-ubuntu.md)
 - [Windows](/conf/setup-win.md)
 - [macOS](/conf/setup-mac.md)
-- [Ubuntu](/conf/setup-ubuntu.md)

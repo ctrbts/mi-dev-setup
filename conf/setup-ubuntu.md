@@ -1,61 +1,45 @@
 # Mi Ubuntu Development Setup
 
-- [DevOps](setup-devops.md)
-
 - [Configuración inicial](#configuración-inicial)
-    - [Actualizar el sistema](maintenance-ubuntu.md)
-    - [Crear un usuario administrador](#crear-un-usuario-administrador)
-    - [Gestores de paquetes y utilidades](#gestores-de-paquetes-y-utilidades)
-    - [Terminal](#terminal)
-    - [Zsh](#zsh)
+  - [Actualizar el sistema](maintenance-ubuntu.md)
+  - [Gestores de paquetes y utilidades](#gestores-de-paquetes-y-utilidades)
+  - [Terminal](#terminal)
+  - [Zsh](#zsh)
 - [Node.js](#node)
-    - [Node modules](#Node-modules)
+  - [Node modules](#Node-modules)
 - [Java Stack](#java-stack)
-    - [OpenJDK](#openjdk)
-    - [Netbeans IDE](#netbeans-ide)
+  - [OpenJDK](#openjdk)
+  - [Netbeans IDE](#netbeans-ide)
 - [Android Stack](#android-stack)
-    - [Gradle](#gradle)
-    - [Android Studio](#android-studio)
+  - [Gradle](#gradle)
+  - [Android Studio](#android-studio)
 - [LAMPP](#lampp)
-    - [Apache](#apache)
-    - [MariaDB](#mariadb)
-    - [MySQL](#mysql)
-    - [PHP](#php)
-    - [Crear un host virtual](#crear-un-host-virtual)
+  - [Apache](#apache)
+  - [MariaDB](#mariadb)
+  - [MySQL](#mysql)
+  - [PHP](#php)
+  - [Crear un host virtual](#crear-un-host-virtual)
+- [Base de datos](#base-de-datos)
+  - [MySQL](#mysql)
+  - [PostgreSQL](#postgresql)
+- [Docker](#docker)
 
 ## Configuración inicial
 
-### Crear un usuario administrador
-
-    adduser NOMBRE_DE_USUARIO && usermod -aG sudo NOMBRE_DE_USUARIO
-
-#### Desactivar el inicio de sesión SSH para root:
-
-Abrimos una terminal y ejecutamos el siguiente comando para editar el archivo sshd_config con privilegios de superusuario:
-    
-    sudo nano /etc/ssh/sshd_config
-
-Buscamos la línea que dice `PermitRootLogin yes` o `#PermitRootLogin prohibit-password`. Cambiamos *yes* a *no* o descomentamos la linea y dejamos `PermitRootLogin prohibit-password`.
-Si no existe la linea, la agregamosa.
-Guarda los cambios y reiniciamos el servicio SSH:
-
-    sudo systemctl restart sshd
-
 ### Gestores de paquetes y utilidades
 
-*Actualizado para Ubuntu 24.04*
+_Actualizado para Ubuntu 24.04_
 
 Actualizamos el sistema y agregamos algunas herramientas necesarias para escritorio y servidor (las configuraremos mas adelante)
 
     sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean
     sudo apt install curl git zsh mc nmap ssh htop -y
 
-Agregamos herramientas de personalización, un gestor de paquetes y soporte para Flatpak y  (solo escritorio)
+Agregamos herramientas de personalización, un gestor de paquetes y soporte para Flatpak y (solo escritorio)
 
     sudo apt install gnome-tweaks dconf-editor -y
     sudo apt install synaptic menu deborphan apt-xapian-index tasksel -y
     sudo apt install flatpak gnome-software-plugin-flatpak -y && sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
 
 Algunas otras configuraciones necesarias
 
@@ -65,7 +49,7 @@ Como vamos a pasar bastante tiempo en la terminal le vamos a dar un toque de col
 
 La tipografía de la terminal es muy importante para mejorar la legilibilidad y evitar el cansancio visual. Las mejores fuentes para codificar son [Fira Code, Fira Mono](https://fonts.google.com/?query=fira) y [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono?query=jetb).
 
-El esquema de color **Gnome Oscuro** es uno de mis preferidos pero podemos instalar unos temas excelentes desde [Gogh Themes](https://gogh-co.github.io/Gogh/) y mejoramos la apariencia del perfil > *Columnas 120 > Filas 40*
+El esquema de color **Gnome Oscuro** es uno de mis preferidos pero podemos instalar unos temas excelentes desde [Gogh Themes](https://gogh-co.github.io/Gogh/) y mejoramos la apariencia del perfil > _Columnas 120 > Filas 40_
 
 ### Zsh
 
@@ -73,7 +57,7 @@ Bash esta bien, pero ZSH esta mejor. Ya lo instalamos en los [Primeros pasos](#p
 
     chsh -s $(which zsh)
 
-Una vez configurado *zsh* podemos eliminar los archivos *.bash* y *.profile*. Luego cerramos sesión y volvemos a entrar para que los cambios se apliquen, cuando iniciemos por primera vez la terminal nos va a preguntar por el archivo de configuración de zsh, elegimo la opción 0 y continuamos.
+Una vez configurado _zsh_ podemos eliminar los archivos _.bash_ y _.profile_. Luego cerramos sesión y volvemos a entrar para que los cambios se apliquen, cuando iniciemos por primera vez la terminal nos va a preguntar por el archivo de configuración de zsh, elegimo la opción 0 y continuamos.
 
 [Oh My ZSH](https://ohmyz.sh/) es un framework con una gran comunidad detrás con muchos temas y plugins para añadir funcionalidad a ZSH, para instalarlo:
 
@@ -96,7 +80,7 @@ Para instalar estos ultimos debemos descargarlo al directorio de plugins con:
     git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions &&
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
-Para activar los plugins anteriores hay que modificar el fichero de configuración *~/.zshrc*:
+Para activar los plugins anteriores hay que modificar el fichero de configuración _~/.zshrc_:
 
     plugins=(
       git
@@ -107,7 +91,6 @@ Para activar los plugins anteriores hay que modificar el fichero de configuraci�
       zsh-syntax-highlighting
     )
 
-
 ## Node
 
 La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](https://github.com/creationix/nvm) (Node Version Manager) que nos permite administrar multiples versiones de Node.js instaladas en el sistema.
@@ -115,7 +98,7 @@ La manera recomendada para instalar [Node.js](http://nodejs.org/) es con [nvm](h
 Para instalar `nvm` copiamos y pegamos el [install script command](https://github.com/creationix/nvm#install--update-script) en la terminal.
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-    
+
 Ahora verificamos las versiones dispinibles de Node
 
     nvm ls-remote --lts
@@ -129,7 +112,6 @@ o alguna versión específica con `nvm install 18.20.2`
 Para setear por defecto una version de node necesitamos hacer `nvm alias default node`
 
 El resto de los comandos estan disponibles desde el repositorio de NVM
-
 
 ## Node modules
 
@@ -159,7 +141,6 @@ Agregamos las siguientes lineas al archivo ~/.zshrc:
 IDE multiplataforma para desarrollo en Java, PHP y otros lenguajes de programación.
 Para descargarlo > https://netbeans.apache.org/download/index.html
 
-
 ## Android Stack
 
 ### Gradle
@@ -172,7 +153,6 @@ Necesitamos agregar las siguientes lineas al archivo ~/.zshrc:
 
     export GRADLE_HOME=/opt/gradle/gradle-8.4
     export PATH=$PATH:$GRADLE_HOME/bin
-
 
 ### Android Studio
 
@@ -195,7 +175,6 @@ Agregue las siguientes líneas a su archivo de configuración ~/.zshrc:
     export PATH=$PATH:$ANDROID_HOME/tools
     export PATH=$PATH:$ANDROID_HOME/tools/bin
     export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 
 ## LAMPP
 
@@ -318,7 +297,6 @@ Abrimos el puerto necesario para permitir el tráfico desde el servidor:
 
 Si MariaDB no funciona, puede iniciarla con el comando `sudo systemctl start mariadb`
 
-
 ### PHP
 
 Instalamos PHP con los adds mas comunes
@@ -353,14 +331,13 @@ Se puede verificar el estado de OPcache con:
 
     php -i | grep opcache
 
-
 #### Crear un host virtual
 
 Ubuntu tiene habilitado un bloque de servidor por defecto, que está configurado para proporcionar documentos del directorio /var/www/html. Si bien esto funciona bien para un solo sitio, puede ser difícil de manejar si alojamos varios. En lugar de modificar /var/www/html, crearemos una estructura de directorio dentro de /var/www para el host virtual y dejaremos /var/www/html establecido como directorio predeterminado que se presentará si una solicitud de cliente no coincide con ningún otro sitio.
 
 Cree el directorio de la siguiente manera:
 
-*reemplace **vhost** con el nombre de su dominio*
+_reemplace **vhost** con el nombre de su dominio_
 
     sudo mkdir /var/www/vhost
 
@@ -425,16 +402,16 @@ Ahora, su nuevo sitio web está activo, pero el directorio root web /var/www/vho
 Incluya el siguiente contenido en este archivo:
 
     <?php
-    
+
     // Función para obtener el contenido de un directorio
     function obtenerContenido($directorio)
     {
       $archivos = array();
       $carpetas = array();
-    
+
       // Abrir el directorio
       $dir = opendir($directorio);
-    
+
       // Leer cada elemento del directorio
       while ($elemento = readdir($dir)) {
         // Si es un archivo
@@ -446,25 +423,25 @@ Incluya el siguiente contenido en este archivo:
           $carpetas[] = $elemento;
         }
       }
-    
+
       // Cerrar el directorio
       closedir($dir);
-    
+
       // Ordenar alfabeticamente
       sort($archivos);
       sort($carpetas);
-    
+
       return array($carpetas, $archivos);
     }
-    
+
     // Obtener el contenido del directorio actual
     $contenido = obtenerContenido(".");
-    
+
     ?>
-    
+
     <!DOCTYPE html>
     <html lang="es">
-    
+
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -475,40 +452,40 @@ Incluya el siguiente contenido en este archivo:
           margin: 20px;
           text-align: center;
         }
-    
+
         .titulo {
           font-size: 36px;
           font-weight: 300;
         }
-    
+
         .subtitulo {
           font-size: 24px;
           font-weight: 300;
         }
-    
+
         .columnas {
           display: flex;
           justify-content: center;
         }
-    
+
         ul {
           list-style: none;
           padding: 0;
           margin: 0.75rem;
           width: 15rem;
         }
-    
+
         li {
           border: 1px solid #ddd;
           padding: 8px;
           margin-bottom: 8px;
         }
-    
+
         li:hover {
           background-color: #f1f1f1;
           font-weight: bold;
         }
-    
+
         a {
           color: #000;
           cursor: pointer;
@@ -516,7 +493,7 @@ Incluya el siguiente contenido en este archivo:
         }
       </style>
     </head>
-    
+
     <body>
       <p class="titulo">Servidor local</p>
       <div class="columnas">
@@ -542,16 +519,15 @@ Incluya el siguiente contenido en este archivo:
         </ul>
       </div>
     </body>
-    
-    </html>
 
+    </html>
 
 Ahora, diríjase a su navegador y acceda al nombre de dominio o la dirección IP de su servidor una vez más:
 
 http://public_server_ip
 
-*Nota sobre DirectoryIndex en Apache
-Con la configuración predeterminada de DirectoryIndex en Apache, un archivo denominado index.html siempre tendrá prioridad sobre un archivo index.php. Esto es útil para establecer páginas de mantenimiento en aplicaciones PHP, dado que se puede crear un archivo index.html temporal que contenga un mensaje informativo para los visitantes. Como esta página tendrá precedencia sobre la página index.php, se convertirá en la página de destino de la aplicación. Una vez que el mantenimiento se completa, el archivo index.html se puede eliminar del root (o cambierle el nombre) para volver mostrar la página habitual de la aplicación.*
+_Nota sobre DirectoryIndex en Apache
+Con la configuración predeterminada de DirectoryIndex en Apache, un archivo denominado index.html siempre tendrá prioridad sobre un archivo index.php. Esto es útil para establecer páginas de mantenimiento en aplicaciones PHP, dado que se puede crear un archivo index.html temporal que contenga un mensaje informativo para los visitantes. Como esta página tendrá precedencia sobre la página index.php, se convertirá en la página de destino de la aplicación. Una vez que el mantenimiento se completa, el archivo index.html se puede eliminar del root (o cambierle el nombre) para volver mostrar la página habitual de la aplicación._
 
 Si desea cambiar este comportamiento, deberá editar el archivo /etc/apache2/mods-enabled/dir.conf y modificar el orden en el que el archivo index.php se enumera en la directiva DirectoryIndex:
 
@@ -559,7 +535,7 @@ sudo nano /etc/apache2/mods-enabled/dir.conf
 
 /etc/apache2/mods-enabled/dir.conf
 <IfModule mod_dir.c>
-        DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
 </IfModule>
 
 Después de guardar y cerrar el archivo, deberá volver a cargar Apache para que los cambios surtan efecto:
@@ -594,10 +570,10 @@ Para probar esta secuencia de comandos, diríjase a su navegador web y acceda al
 
 http://vhost_o_IP/info.php
 
-
 ## Bases de datos
 
 ### MySQL
+
 Instalamos MySql con el comando
 
     sudo apt install mysql-server -y
@@ -611,7 +587,7 @@ Iniciamos sesión en la consola
     sudo mysql
 
 Establecemos la contraseña de root
-    
+
     ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 
 Aseguramos la instalación de MySQL ya que por defecto presenta algunas fallas de seguridad, para esto ejecutamos
@@ -629,8 +605,8 @@ Y creamos un usuario con privilegios en todas las bases
     CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
     GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
 
-
 ### PostgreSQL
+
 Instalamos los paquetes necesarios
 
     sudo apt install postgresql postgresql-contrib postgresql-client
@@ -645,12 +621,48 @@ Abribos el archivo `postgresql.conf`para editarlo
 
 Descomentamos la ínea: `listen_address = 'localhost'` para habilitar el acceso local al administrador. Y agregamo seguridad adicional habilitando el cifrado scram-256 desomentando `password_encryption=scram-sha-256`
 
-Ahora abrimos `pg_hba.conf` y reemplazamos el metodo de cifrado en la linea:   
-`local  all all peer`, reemplazamos *peer* por *scram-sha-256*`.
+Ahora abrimos `pg_hba.conf` y reemplazamos el metodo de cifrado en la linea:  
+`local  all all peer`, reemplazamos _peer_ por _scram-sha-256_`.
 
 En la línea siguiente podemos establecer una máscara de red específica para que acceda a la base de datos, solamente reemplazamos 127.0.0.1 por el mapa de red que queremos permitor (ej. 200.10.20.0/24)
 
-Además agregamos una linea para rechazar cualquier dirección IP que no este gestionada por este archivo 
+Además agregamos una linea para rechazar cualquier dirección IP que no este gestionada por este archivo
 
     host   all all all reject
 
+## Docker
+
+Agregamos las claves y el repositorio:
+
+```shell
+# Agregar  la Docker's official GPG key:
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Agregamos el repositorio a apt:
+echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+$(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+```
+
+Instalamos la última versión
+
+```shell
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+Después de instalar agregamos nuestro usuario a Docker para evitar problemas con permisos
+
+```shell
+sudo usermod -aG docker $USER
+```
+
+Verificamos que la instalacion haya teni éxito corriendo la imágen `hello-world`:
+
+```shell
+sudo docker run hello-world
+```
