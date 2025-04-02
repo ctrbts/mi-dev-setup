@@ -1,5 +1,7 @@
 # Mi Ubuntu Development Setup
 
+_Actualizado para Ubuntu 24.04_
+
 - [Configuración inicial](#configuración-inicial)
   - [Actualizar el sistema](maintenance-ubuntu.md)
   - [Gestores de paquetes y utilidades](#gestores-de-paquetes-y-utilidades)
@@ -13,7 +15,8 @@
 - [Android Stack](#android-stack)
   - [Gradle](#gradle)
   - [Android Studio](#android-studio)
-- [LAMPP](#lampp)
+- [LEMP Stack](#lemp)
+- [LAMPP Stack](#lampp)
   - [Apache](#apache)
   - [MariaDB](#mariadb)
   - [MySQL](#mysql)
@@ -26,14 +29,9 @@
 
 ## Configuración inicial
 
+Primero tenemos que [actualizar el sistema](maintenance-ubuntu.md)
+
 ### Gestores de paquetes y utilidades
-
-_Actualizado para Ubuntu 24.04_
-
-Actualizamos el sistema y agregamos algunas herramientas necesarias para escritorio y servidor (las configuraremos mas adelante)
-
-    sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean
-    sudo apt install curl git zsh mc nmap ssh htop -y
 
 Agregamos herramientas de personalización, un gestor de paquetes y soporte para Flatpak y (solo escritorio)
 
@@ -175,6 +173,11 @@ Agregue las siguientes líneas a su archivo de configuración ~/.zshrc:
     export PATH=$PATH:$ANDROID_HOME/tools
     export PATH=$PATH:$ANDROID_HOME/tools/bin
     export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+## LEMP
+
+Descargamos el script automatizado de instalacion
+[LEMP Install](https://raw.githubusercontent.com/ctrbts/mi-dev-setup/refs/heads/main/conf/lemp-install.sh)
 
 ## LAMPP
 
