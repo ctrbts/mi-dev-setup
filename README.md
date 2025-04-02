@@ -7,5 +7,3 @@ Si encuentra algún error en los pasos descritos a continuación, o si alguno de
 - [Windows](/conf/setup-win.md)
 - [macOS](/conf/setup-mac.md)
 - [Ubuntu](/conf/setup-ubuntu.md)
-    - [Mantenimiento de Ubuntu](/conf/maintenance-ubuntu.md)
-    - [DevOps](/conf/setup-devops.md)

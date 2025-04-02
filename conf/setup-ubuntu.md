@@ -1,6 +1,9 @@
 # Mi Ubuntu Development Setup
 
+- [DevOps](setup-devops.md)
+
 - [Configuración inicial](#configuración-inicial)
+    - [Actualizar el sistema](maintenance-ubuntu.md)
     - [Crear un usuario administrador](#crear-un-usuario-administrador)
     - [Gestores de paquetes y utilidades](#gestores-de-paquetes-y-utilidades)
     - [Terminal](#terminal)
