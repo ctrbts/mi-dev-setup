@@ -42,6 +42,12 @@ sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo ap
 
 [Más información sobre clean y autoclean](https://askubuntu.com/a/3169)
 
+### Agregamos alguna heramientas útiles para nuestro sevidor
+
+```shell
+sudo apt install curl git zsh mc nmap ssh htop -y
+```
+
 ## Limitar snap instalados
 
 Limitarmos la cantidad de versiones de un mismo paquete y desinstalamos las versiones antiguas.
