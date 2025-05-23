@@ -18,13 +18,12 @@ _Actualizado para Ubuntu 24.04_
 - [LEMP Stack](#lemp)
 - [LAMPP Stack](#lampp)
   - [Apache](#apache)
-  - [MariaDB](#mariadb)
-  - [MySQL](#mysql)
+    - [Base de datos](#base-de-datos)
+        - [MariaDB](#mariadb)
+        - [MySQL](#mysql)
+        - [PostgreSQL](#postgresql)
   - [PHP](#php)
   - [Crear un host virtual](#crear-un-host-virtual)
-- [Base de datos](#base-de-datos)
-  - [MySQL](#mysql)
-  - [PostgreSQL](#postgresql)
 - [Docker](#docker)
 
 ## Configuración inicial
