@@ -2,7 +2,6 @@
 
 # Este script automatiza la instalación de un stack para Django (Python)
 # en Ubuntu 24.04 LTS, diferenciando entre entorno de desarrollo y servidor.
-# by Gemini
 
 # Asegurar ejecución como root
 if [[ "$EUID" -ne 0 ]]; then

@@ -137,7 +137,7 @@ if confirm_install "PHP"; then
     else
         echo "Instalando PHP y extensiones desde los repositorios de la distribución..."
         # Esto instalará la versión de PHP por defecto de Ubuntu 24.04 (probablemente PHP 8.3)
-        apt install php libapache2-mod-php php-cli php-common php-mysql-y
+        apt install php libapache2-mod-php php-cli php-common php-mysql -y
         # Detectar la versión de PHP instalada
         PHP_VERSION_SELECTED=$(php -v | head -n 1 | awk '{print $2}' | cut -d'.' -f1-2)
         if [ -z "$PHP_VERSION_SELECTED" ]; then
