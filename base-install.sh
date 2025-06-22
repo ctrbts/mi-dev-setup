@@ -47,9 +47,9 @@ fi
 
 # --- Instalación de Herramientas y Utilidades Esenciales ---
 # Herramientas comunes para ambos entornos
-COMMON_TOOLS="curl git software-properties-common ssh"
+COMMON_TOOLS="curl git software-properties-common"
 # Herramientas adicionales que podrían ser más útiles en servidor o para usuarios avanzados
-SERVER_ORIENTED_TOOLS="mc htop nmap" # nmap puede ser útil en ambos, pero más común en servidor
+SERVER_ORIENTED_TOOLS="mc htop nmap ssh" # nmap puede ser útil en ambos, pero más común en servidor
 
 TOOLS_TO_INSTALL="$COMMON_TOOLS"
 
